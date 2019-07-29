@@ -1,8 +1,20 @@
 # e-demokrácia web applikációkból hívható - ügyfélkapu aláíráson alapuló - login modul
 
+## Kontribútoroknak
+A fejlesztésében közreműködni kívánóknak szóló információk a [ebben a leírásban](/readmeForProgrammer.md) találhatók.
+
+## Készültség
+
+Fejlesztés alatt kb 10% készültség
+
+## Élő demó:
+
+https://szeszt.tk/uklogin
+
+
 ## Áttekintés
 
-Ez egy web -es szolgáltatás. Az a célja, hogy e-demokrácia szoftverek az ügyfélkapus aláíráson alapuló regisztrációt és bejelentkezést használhassanak az ** oAuth2 ** szabvány szerint. 
+Ez egy web -es szolgáltatás. Az a célja, hogy e-demokrácia szoftverek az ügyfélkapus aláíráson alapuló regisztrációt és bejelentkezést használhassanak az **oAuth2** szabvány szerint. 
 A rendszer biztosítja, hogy egy személy egy alkalmazásba csak egyszer regisztrálhat.
 Természetesen egy ügyfélkapú loginnal több alkalmazásba is lehet regisztrálni. 
 
@@ -17,7 +29,7 @@ https://niszavdh.gov.hu
 
 ## Programnyelvek
 
- PHP, MYSQL, JQUERY, bootstrap
+ PHP(7.1+), Javascript, MYSQL, JQUERY, bootstrap
  
 A program Szabó Simon Márk 2019 főpolgármester előválasztás 2. fordulójára készített programjában található ötletek és kód részletek felhasználásával készült.
  
@@ -76,12 +88,12 @@ A login képernyőn a szokásos kiegészitő elemek is szerepelnek:
 - cokkie kezelés elfogadtatása
 
 Miután a user megadja usernevét és jelszavát a program ellenőrzi azokat, sikeres login esetén
-meghívja az app adatokban beállított callback url -t, GET paraméterként küldve: "code", "state", "redirect_uri".
+meghívja az app adatokban beállított callback url -t, GET vagy POST paraméterként küldve: "code", "state", "redirect_uri".
 
-Ezután hívni kell a https://szeszt.tk/uklogin/oath2/access_token url-t, GET paraméterként küldve a "client_id", "client_secret" és "code" adatokat. Válaszként egy json stringet kapunk:
+Ezután hívni kell a https://szeszt.tk/uklogin/oath2/access_token url-t, GET vayg POST paraméterként küldve a "client_id", "client_secret" és "code" adatokat. Válaszként egy json stringet kapunk:
 {"access_token":"xxxxxx"} vagy {"access_token":"", "error":"hibaüzenet"}
 
-Következő lépésként hívni kell a https://szeszt.tk/uklogin/oath2/userinfo címet, GET paraméterként a
+Következő lépésként hívni kell a https://szeszt.tk/uklogin/oath2/userinfo címet, GET vagy POST paraméterként a
 "access_token" értéket küldve. Válaszként a bejelentkezett user nicknevét kapjuk vagy az "error" stringet.
 
 Sikertelen login esetén, az iframe-ben hibaüzenet jelenik meg és újra a login képernyő. az app -nál megadott számú sikertelen kisérlet után a fiók blokkolásra kerül, ez a user ebbe az applikációba a továbbiakban nem tud belépni. A blokkolt fiókokat az applikáció adminisztrátor tudja újra aktivizálni.
@@ -102,14 +114,8 @@ Mindezt részletes help segíti.
 
 A rendszer ellenőrzi:
 - a feltöltött pdf alá van írva és sértetlen?
-- a feltöltött pdf tartalma az a client_id amibe regisztrálunk?
 - az aláíró email hash szerepel már a regisztrált felhasználók között? (ha már szerepel akkor kiírja milyen nick nevet adott korábban meg)
 - a választott nicknév egyedi az adott applikációban?
-
-Hiba esetén hibaüzenet és a hiba jellegétől függően vagy
-- a nicknév/jelszó megadó képernyő jelenik meg (nick név már létezik vagy formailag hibás nicknév/jelszó) vagy 
-- a regsiztrálás kezdő képernyője jelenik meg (pdf aláírás hiba, pdf tartalom hiba) vagy 
-- a login képernyő jelenik meg (ezzel az ügyfélkapu belépéssel már történt regisztráció ebbe az applikációba).
 
 ### Elfelejtett jelszó kezelés folyamata
 
@@ -121,10 +127,9 @@ A teljes regisztrációt kell a usernek megismételnie, azzal az egy különbsé
 #### Az app adminisztrátorokkal kapcsolatban a rendszer a következő adatokat tárolja:
 - nicknév
 - jelszó hash
-- email
 - kezelt app adatai
 
-Mint látható az adminisztrátor valós személyt azonosító adat (név, lakcím, okmány azonosító) nincs tárolva. Mivel az email cím személyes adat, egyes értelmezések szerint ez így is a GDPR hatálya alá tartozik. Tehát erre vonatkozó tájékoztatás jelenik meg, és az admin -nak ezt el kell fogadnia. Lehetősége van a tárolt adatait lekérdezni, és azokat törölni is - ez utóbbi egyúttal az applikáció törlését is jelenti.
+Itt személyes adat nincs kezelve, tehát ez nem tartozik a GDPR hatálya alá,erről tájékoztatást írunk ki.
 
 #### a "normál" felhasználókkal kapcsolatban tárolt adatok ("users" tábla):
 - nick név
@@ -133,6 +138,8 @@ Mint látható az adminisztrátor valós személyt azonosító adat (név, lakc�
 - ügyfélkapunál megadott email hash
 
 Itt személyes adat nincs kezelve, tehát ez nem tartozik a GDPR hatálya alá,erről tájékoztatást írunk ki.
+
+Megjegyzés: A feldolgozás során - technikai okokból - néhány másodpercig a rendszer tárolja az aláírt pdf fájlt és  az abban lévő csatolmányokat. Ezek tartalmazzák az aláíró személy nevét és az ügyfélkapuban használt email címét valamint az aláírás időpontját. Ezen adatok közül a rendszer kizárólag az ügyfélkapus email cím sha256 algoritmussal képzett hash kódját használja és tárolja adatbázisában. Az aláírt pdf fájlt és csatolmányait az ügyfélkapus email cím kinyerése és hashalése után azonnal törli, magát az email címet nem tárolja.
 
 #### cookie kezelés
 A működéshez egy darab un. "munkamenet cookie" használata szükséges, erről tájékoztatás jelenik meg és a felhasználónak ezt el kell fogadnia.
@@ -151,33 +158,33 @@ Az azonos IP címről érkező 10 egymást követő hibás hívás után az IP c
 ## SQL táblák
 
 ### "apps" tábla
-- ** id ** automatikusan képzett sorszám
-- ** name ** applikáció neve
-- ** domain ** applikációt futtató domain
-- ** client_id ** (automatikusan képzett véletlenszerű string)
-- ** client_secret ** (automatikusan képzett véletlenszerű string)
-- ** callback ** sikeres login utáni visszahívandó url
-- ** falseLoginLimit ** sikertelen user login limit
-- ** cssurl ** css file url (lehet üres is)
-- ** admin ** applikáció adminisztrátor username
-- ** pswHash **  applikáció adminisztrátor jelszó "hash"
-- ** email ** applikáció adminisztrátor email
-- ** falseAdminLoginLimit **  sikertelen admin login limit
-- ** errorCounter ** Hibás admin login kisérlet számláló
-- ** enabled ** admin login engedélyezett?
+- **id** automatikusan képzett sorszám
+- **name** applikáció neve
+- **domain** applikációt futtató domain
+- **client_id** (automatikusan képzett véletlenszerű string)
+- **client_secret** (automatikusan képzett véletlenszerű string)
+- **callback** sikeres login utáni visszahívandó url
+- **falseLoginLimit** sikertelen user login limit
+- **cssurl** css file url (lehet üres is)
+- **admin** applikáció adminisztrátor username
+- **pswHash**  applikáció adminisztrátor jelszó "hash"
+- **email** applikáció adminisztrátor email
+- **falseAdminLoginLimit**  sikertelen admin login limit
+- **errorCounter** Hibás admin login kisérlet számláló
+- **enabled** admin login engedélyezett?
 
 ### "users" tábla
 
-- ** id ** automatikusan generált sorszám
-- ** client_id ** melyik applikációba regisztrált
-- ** user ** nick név
-- ** pswhash ** jelszó hash
-- ** emailHash ** ügyfélkapuban megadott email címének hash kódja
-- ** errorCounter ** hibás login kisérlet számláló
-- ** enabled ** login engedélyezett?
-- ** code ** automatikusan generált véletlenszerű egyedi string ( hex(id - random()) )
-- ** access_token ** automatikusan generált véletlenszerű, egyedi string ( hex(id - random()) )
-- ** created ** code + access_token létrehozás időpontja
+- **id** automatikusan generált sorszám
+- **client_id** melyik applikációba regisztrált
+- **user** nick név
+- **pswhash** jelszó hash
+- **emailHash** ügyfélkapuban megadott email címének hash kódja
+- **errorCounter** hibás login kisérlet számláló
+- **enabled** login engedélyezett?
+- **code** automatikusan generált véletlenszerű egyedi string ( hex(id - random()) )
+- **access_token** automatikusan generált véletlenszerű, egyedi string ( hex(id - random()) )
+- **created** code + access_token létrehozás időpontja
 
 A code és az access_token csak 1 percig van tárolva, ezután automatikusan törlődnek. Ugyancsak törlődnek  miután "fel lettek használva"  "userinfo" vagy "access_token" kérés kiszolgálására.
 
@@ -185,4 +192,53 @@ A code és az access_token csak 1 percig van tárolva, ezután automatikusan tö
 
 - ** ip
 - ** errorCount
+
+### Tesztelés
+```
+cd repoRoot
+./tools/test.sh
+```
+
+## Dokumentálás
+```
+cd repoRoot
+./tools/documentor.sh
+```
+
+## kód minőség ellenörzés
+```
+cd repoRoot
+./tools/sonar.sh
+```
+Utolsó teszt eredménye:
+
+https://sonarcloud.io/dashboard?id=utopszkij-uklogin
+
+
+## Telepítés web szerverre
+
+### Rendszer igény:
+PHP 7.1+  shell_exec funkciónak engedélyezve kell lennie
+MYSQL 5.7+
+web server (.htaccess értelmezéssel)
+commandshell: pdfsig, pdfdetach
+
+Létrehozandő MYSQL adatbázis: ** uklogin ** (utf8, magyar rendezéssel)
+
+
+Telepítendő  könyvtárak:
+- controllers
+- core
+- images
+- js
+- langs
+- log (legyen irható a web szerver számára!)
+- models
+- templates
+- views
+
+Telepítendő fájlok
+- index.php
+- .config.php  (átnevezve és értelemszerüen javítva a config.txt -ből)
+- .htaccess (a htaccess.txt átnevezve)
 

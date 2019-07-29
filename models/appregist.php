@@ -35,7 +35,7 @@ class AppregistModel {
     }
     
     /**
-     * get data by token
+     * get data by client_id
      * @param string $client_id
      * @return object|false
      */
@@ -52,6 +52,21 @@ class AppregistModel {
     }
     
     /**
+     * url létezik?
+     * @param string $url
+     * @return bool
+     */
+    protected function url_exists(string $url): bool {
+        $file_headers = @get_headers($url);
+        if(!$file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found') {
+            $exists = false;
+        } else {
+            $exists = true;
+        }
+        return $exists;
+    }
+    
+    /**
      * check record before save
      * az ellenörzések többsége kliens oldalon js -ben is megtörtént
      * - új felvitelnél domain még nem létezik ? (csak szerver oldali ellenörzés)
@@ -65,28 +80,9 @@ class AppregistModel {
         $msg = [];
         $db = new DB();
         $table = $db->table('apps');
-        
-        if ($data->domain == '') {
-            $msg[] = 'ERROR_DOMAIN_EMPTY';
-        }
-        if (!filter_var($data->domain, FILTER_VALIDATE_URL)) {
-            $msg[] = 'ERROR_DOMAIN_INVALID';
-        }
-        if ($data->name == '') {
-            $msg[] = 'ERROR_NAME_EMPTY';
-        }
-        if ($data->callback == '') {
-            $msg[] = 'ERROR_CALLBACK_EMPTY';
-        }
-        if ($data->admin == '') {
-            $msg[] = 'ERROR_ADMIN_EMPTY';
-        }
+        $this->checkNoEmpty($msg, $data);
         if (($data->psw1 != '') && (strlen($data->psw1) < 6)) {
           $msg[] = 'ERROR_PSW_INVALID';
-        }
-    
-        if (($data->client_id == '') && ($data->psw1 == '')) {
-            $msg[] = 'ERROR_PSW_EMPTY';
         }
         if (!filter_var($data->callback, FILTER_VALIDATE_URL)) {
             $msg[] = 'ERROR_CALLBACK_INVALID';
@@ -107,18 +103,16 @@ class AppregistModel {
         if (($data->client_id == '') && ($data->domain == 'https://test.hu')) {
             $msg[] = 'ERROR_DOMAIN_EXISTS';
         }
-        if ($data->dataProcessAccept != 1) {
-            $msg[] = 'ERROR_DATA_ACCEPT_REQUEST';
-        }
-        if ($data->cookieProcessAccept != 1) {
-            $msg[] = 'ERROR_COOKIE_ACCEPT_REQUEST';
-        }
         if ($data->domain == 'https://test.hu') {
             $msg[] = 'ERROR_UKLOGIN_HTML_NOT_EXISTS';
         } else if (($data->domain != 'https://valami.hu') && ($data->domain != '')) {
-            try {
-                $lines = file($data->domain.'/uklogin.html');
-            } catch (Exception $e) {
+            if ($this->url_exists($data->domain.'/uklogin.html')) {
+                try {
+                    $lines = file($data->domain.'/uklogin.html');
+                } catch (Exception $e) {
+                    $lines = false;
+                }
+            } else {
                 $lines = false;
             }
             if ($lines) {
@@ -134,6 +128,81 @@ class AppregistModel {
     }
     
     /**
+     * cshec $data propertys no empty and accept data, cookie processing
+     * @param array msg
+     * @param object data
+     * @return void
+     */
+     protected function checkNoEmpty(array &$msg, $data)   {
+        if ($data->domain == '') {
+            $msg[] = 'ERROR_DOMAIN_EMPTY';
+        }
+        if (!filter_var($data->domain, FILTER_VALIDATE_URL)) {
+            $msg[] = 'ERROR_DOMAIN_INVALID';
+        }
+        if ($data->name == '') {
+            $msg[] = 'ERROR_NAME_EMPTY';
+        }
+        if ($data->callback == '') {
+            $msg[] = 'ERROR_CALLBACK_EMPTY';
+        }
+        if ($data->admin == '') {
+            $msg[] = 'ERROR_ADMIN_EMPTY';
+        }
+        if (($data->client_id == '') && ($data->psw1 == '')) {
+            $msg[] = 'ERROR_PSW_EMPTY';
+        }
+        if ($data->dataProcessAccept != 1) {
+            $msg[] = 'ERROR_DATA_ACCEPT_REQUEST';
+        }
+        if ($data->cookieProcessAccept != 1) {
+            $msg[] = 'ERROR_COOKIE_ACCEPT_REQUEST';
+        }
+     }
+
+     /**
+      * adjust $data before save it
+      * @param object $data
+      */
+     protected function adjustData(&$data) {
+         if ($data->psw1 != '') {
+             $data->pswhash = hash('sha256',$data->psw1, false);
+         }
+         unset($data->psw1);
+         unset($data->psw2);
+         unset($data->dataProcessAccept);
+         unset($data->cookieProcessAccept);
+         $data->adminLoginEnabled = 1;
+         if (!is_numeric($data->falseLoginLimit)) {
+             $data->falseLoginLimit = 0;
+         }
+         if (!is_numeric($data->adminFalseLoginLimit)) {
+             $data->adminFalseLoginLimit = 0;
+         }
+     }
+     
+     /**
+      * create client_id, client_secret update record
+      * @param object $data
+      * @param object $table
+      * @param array $msg
+      * @return void
+      */
+     protected function updateAfterInsert(&$data, &$table, array &$msg) {
+         $id = $table->getInsertedId();
+         $data->id = $id;
+         $data->client_id = ''.random_int(1000000, 9999999).$id;
+         $data->client_secret = ''.random_int(100000000, 999999999).$id;
+         $table = new Table('apps');
+         $table->where(['id','=',$id]);
+         $table->update($data);
+         $s = $table->getErrorMsg();
+         if ($s != '') {
+             $msg[] = $s;
+         }
+     }
+     
+     /**
      * save record
      * insert -nél client_id és client_secret generálás és tárolás
      * update -nél client_id -t, client_secret -et soha nem modosítja
@@ -148,20 +217,7 @@ class AppregistModel {
         $table = $db->table('apps');
         $msg = $this->check($data);
         if (count($msg) == 0) {
-            if ($data->psw1 != '') {
-                $data->pswhash = sha1($data->psw1);
-                unset($data->psw1);
-                unset($data->psw2);
-            }
-            unset($data->dataProcessAccept);
-            unset($data->cookieProcessAccept);
-            $data->adminLoginEnabled = 1;
-            if (!is_numeric($data->falseLoginLimit)) {
-                $data->falseLoginLimit = 0;
-            }
-            if (!is_numeric($data->adminFalseLoginLimit)) {
-                $data->adminFalseLoginLimit = 0;
-            }
+            $this->adjustData($data);
             if ($data->client_id == '') {
                 $data->id = 0;
                 $data->client_secret = '';
@@ -169,16 +225,8 @@ class AppregistModel {
                 $table->insert($data);
                 $s = $table->getErrorMsg();
                 if ($s == '') {
-                    $id = $table->getInsertedId();
+                    $this->updateAfterInsert($data, $table, $msg);
                     // client_id, client_secret generálása, tárolása
-                    $data->id = $id;
-                    $data->client_id = strToHex(''.random_int(1000000, 9999999).$id);
-                    $data->client_secret = strToHex(''.random_int(100000000, 999999999).$id);
-                    $table->update($data);
-                    $s = $table->getErrorMsg();
-                    if ($s != '') {
-                        $msg[] = $s;
-                    }
                 } else {
                     $msg[] = $s;
                 }
@@ -211,8 +259,7 @@ class AppregistModel {
      */
     public function remove(string $client_id): string {
         $msg = '';
-        $db = new DB();
-        $table = $db->table('apps');
+        $table = new Table('apps');
         $table->where(['client_id','=',$client_id]);
         $res = $table->first();
         if ($res) {
@@ -222,6 +269,18 @@ class AppregistModel {
             $msg = 'ERROR_NOT_FOUND';
         }
         return $msg;
+    }
+    
+    /**
+     * update apps record
+     * @param object $rec
+     * @return void
+     */
+    public function update($rec) {
+        $db = new DB();
+        $table = $db->table('apps');
+        $table->where(['client_id','=',$rec->client_id]);
+        $table->update($rec);        
     }
     
 } // class
