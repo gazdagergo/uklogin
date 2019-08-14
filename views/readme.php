@@ -110,8 +110,6 @@ class ReadmeView  extends CommonView  {
    <br/>
    - applikáció adminisztrátor jelszó (kétszer kell beirni)
    <br/>
-   - applikáció adminisztrátor email
-   <br/>
    - sikertelen admin login limit
   </p>
   <p>
@@ -138,7 +136,7 @@ class ReadmeView  extends CommonView  {
   <h3 id="login-folyamat-a-felhasznalo-web-applikacioban">
    login folyamat a felhasználó web applikációban:
   </h3>
-  <pre><code>&lt;iframe ..... src="https://szeszt.tk/uklogin/oath2/loginform/client_id/&lt;client_id&gt;" /&gt;
+  <pre><code>&lt;iframe ..... src="<?php echo MYDOMAIN; ?>/oath2/loginform/client_id/&lt;client_id&gt;" /&gt;
 </code></pre>
   <p>
    Opcionálisan /redirect_uri/
@@ -166,25 +164,21 @@ class ReadmeView  extends CommonView  {
   <p>
    Miután a user megadja usernevét és jelszavát a program ellenőrzi azokat, sikeres login esetén
    <br/>
-   meghívja az app adatokban beállított callback url -t, GET paraméterként küldve: “code”, “state”, “redirect_uri”.
+   meghívja az app adatokban beállított callback url -t, GET vagy POST paraméterként küldve: “code”, “state”, “redirect_uri”.
   </p>
   <p>
    Ezután hívni kell a
-   <a href="https://szeszt.tk/uklogin/oath2/access_token">
-    https://szeszt.tk/uklogin/oath2/access_token
-   </a>
-   url-t, GET paraméterként küldve a “client_id”, “client_secret” és “code” adatokat. Válaszként egy json stringet kapunk:
+   "<?php echo MYDOMAIN; ?>/oath2/access_token" url-t, GET vagy POST paraméterként küldve a “client_id”, “client_secret” és “code” adatokat. Válaszként egy json stringet kapunk:
    <br/>
    {“access_token”:”xxxxxx”} vagy {“access_token”:”“, “error”:”hibaüzenet”}
   </p>
   <p>
    Következő lépésként hívni kell a
-   <a href="https://szeszt.tk/uklogin/oath2/userinfo">
-    https://szeszt.tk/uklogin/oath2/userinfo
-   </a>
-   címet, GET paraméterként a
+   "<?php echo MYDOMAIN; ?>/oath2/userinfo"
+   címet, GET vagy POST paraméterként a
    <br/>
-   “access_token” értéket küldve. Válaszként a bejelentkezett user nicknevét kapjuk vagy az “error” stringet.
+   “access_token” értéket küldve. Válaszként a bejelentkezett user nicknevét kapjuk vagy az “error” stringet:
+   {"nick":"xxxx"} vagy {"error":"not found"}
   </p>
   <p>
    Sikertelen login esetén, az iframe-ben hibaüzenet jelenik meg és újra a login képernyő. az app -nál megadott számú sikertelen kisérlet után a fiók blokkolásra kerül, ez a user ebbe az applikációba a továbbiakban nem tud belépni. A blokkolt fiókokat az applikáció adminisztrátor tudja újra aktivizálni.
@@ -192,7 +186,7 @@ class ReadmeView  extends CommonView  {
   <h3 id="regisztracio-hivasa-a-felhasznalo-web-applikacioban">
    Regisztráció hívása a felhasználó web applikációban
   </h3>
-  <pre><code>&lt;iframe ..... src="https://szeszt.tk/uklogin/oauth2/registform/client_id/&lt;client_id&gt;" /&gt;
+  <pre><code>&lt;iframe ..... src="<?php echo MYDOMAIN; ?>/oauth2/registform/client_id/&lt;client_id&gt;" /&gt;
 </code></pre>
   <p>
    Sikeres regisztrálás után az iframe-ben a login képernyő jelenik meg. Sikertelen esetén hibaüzenet és újból a regisztrálás kezdő képernyője.
@@ -215,10 +209,10 @@ class ReadmeView  extends CommonView  {
   </ol>
   <p>
    A rendszer ellenőrzi:
+   <br />
+   - a feltöltött pdf a megfelelő client_id -t tartalmazza?
    <br/>
    - a feltöltött pdf alá van írva és sértetlen?
-   <br/>
-   - a feltöltött pdf tartalma az a client_id amibe regisztrálunk?
    <br/>
    - az aláíró email hash szerepel már a regisztrált felhasználók között? (ha már szerepel akkor kiírja milyen nick nevet adott korábban meg)
    <br/>
@@ -251,9 +245,6 @@ class ReadmeView  extends CommonView  {
    </li>
    <li>
     jelszó hash
-   </li>
-   <li>
-    email
    </li>
    <li>
     kezelt app adatai
@@ -293,13 +284,7 @@ class ReadmeView  extends CommonView  {
 	<h3>user login brute force támadás</h3>
 	<p>Az applikáció adatoknál beállított limitet elérő hibás kisérlet után a user fiók blokkolása, amit az applikáció adminisztrátor tud feloldani.</p>
 
-	<h3>oAuth access_token hívás brute force támadás</h3>
-	<p>Az azonos IP címről érkező 10 egymást követő hibás hívás után az IP cím blokkolásra kerül. Ezt az "ügyfélkapus-login" rendszer főadminisztrátora tudja feloldani.</p>
-
-	<h3>oAuth userinfo hívás brute force támadás</h3>
-	<p>Az azonos IP címről érkező 10 egymást követő hibás hívás után az IP cím blokkolásra kerül. Ezt az "ügyfélkapus-login" rendszer főadminisztrátora tudja feloldani.</p>
-        	
-         </div><!-- #scope -->
+	     </div><!-- #scope -->
 		   <?php $this->echoFooter(); ?>
          <?php loadJavaScriptAngular('frontpage',$p); ?>
         </body>

@@ -23,10 +23,10 @@ class FrontpageView  extends CommonView  {
 			    <div class="carousel-item active">
 			      <img class="d-block w-100" src="./templates/default/cover_1.jpg" alt="First slide">
 			      <div class="buttons">
-			      	<a href="<?php echo MYDOMAIN; ?>/opt/appregist/add">
-			      		<i class="fa fa-plus-circle"></i>&nbsp;<?php echo NEWAPP; ?></a>&nbsp;
-			      	<a href="<?php echo MYDOMAIN; ?>/opt/readme/show">
-			      		<i class="fa fa-info-circle"></i>&nbsp;<?php echo DESC; ?></a>
+			      	<a href="<?php echo MYDOMAIN; ?>/opt/appregist/add" target="_self">
+			      		<em class="fa fa-plus-circle"></em>&nbsp;<?php echo NEWAPP; ?></a>&nbsp;
+			      	<a href="<?php echo MYDOMAIN; ?>/opt/readme/show" target="_self">
+			      		<em class="fa fa-info-circle"></em>&nbsp;<?php echo DESC; ?></a>
 			      </div>
 			       <div class="carousel-caption d-none d-md-block">
 				   	<h5><?php echo APPTITLE; ?></h5>
@@ -36,10 +36,10 @@ class FrontpageView  extends CommonView  {
 			    <div class="carousel-item">
 			      <img class="d-block w-100" src="./templates/default/cover_2.jpg" alt="Second slide">
 			        <div class="buttons">
-			      	  <a href="<?php echo MYDOMAIN; ?>/opt/appregist/add">
-			      	  	<i class="fa fa-plus-circle"></i>&nbsp;<?php echo NEWAPP; ?></a>&nbsp;
-			      	  <a href="<?php echo MYDOMAIN; ?>/opt/readme/show">
-			      	  	<i class="fa fa-info-circle"></i>&nbsp;<?php echo DESC; ?></a>
+			      	  <a href="<?php echo MYDOMAIN; ?>/opt/appregist/add" target="_self">
+			      	  	<em class="fa fa-plus-circle"></em>&nbsp;<?php echo NEWAPP; ?></a>&nbsp;
+			      	  <a href="<?php echo MYDOMAIN; ?>/opt/readme/show" target="_self">
+			      	  	<em class="fa fa-info-circle"></em>&nbsp;<?php echo DESC; ?></a>
 			        </div>
 			       <div class="carousel-caption d-none d-md-block">
 				   	<h5><?php echo APPTITLE; ?></h5>
@@ -49,17 +49,33 @@ class FrontpageView  extends CommonView  {
 			    <div class="carousel-item">
 			      <img class="d-block w-100" src="./templates/default/cover_4.jpg" alt="Third slide">
 			        <div class="buttons">
-			      	  <a href="<?php echo MYDOMAIN; ?>/opt/appregist/add">
-			      	  	<i class="fa fa-plus-circle"></i>&nbsp;<?php echo NEWAPP; ?></a>&nbsp;
-			      	  <a href="<?php echo MYDOMAIN; ?>/opt/readme/show">
-			      	  	<i class="fa fa-info-circle"></i>&nbsp;<?php echo DESC; ?></a>
+			      	  <a href="<?php echo MYDOMAIN; ?>/opt/appregist/add" target="_self">
+			      	  	<em class="fa fa-plus-circle"></em>&nbsp;<?php echo NEWAPP; ?></a>&nbsp;
+			      	  <a href="<?php echo MYDOMAIN; ?>/opt/readme/show" target="_self">
+			      	  	<em class="fa fa-info-circle"></em>&nbsp;<?php echo DESC; ?></a>
 			        </div>
 			       <div class="carousel-caption d-none d-md-block">
 				   	<h5><?php echo APPTITLE; ?></h5>
 			   	 	<p><?php echo APPINFO; ?></p>
 				   </div>
 			    </div>
+			    
+			    <div class="carousel-item">
+			      <img class="d-block w-100" src="./templates/default/logo.jpg" alt="Foorth slide">
+			        <div class="buttons">
+			      	  <a href="<?php echo MYDOMAIN; ?>/opt/appregist/add" target="_self">
+			      	  	<em class="fa fa-plus-circle"></em>&nbsp;<?php echo NEWAPP; ?></a>&nbsp;
+			      	  <a href="<?php echo MYDOMAIN; ?>/opt/readme/show" target="_self">
+			      	  	<em class="fa fa-info-circle"></em>&nbsp;<?php echo DESC; ?></a>
+			        </div>
+			       <div class="carousel-caption d-none d-md-block">
+				   	<h5><?php echo APPTITLE; ?></h5>
+			   	 	<p><?php echo APPINFO; ?></p>
+				   </div>
+			    </div>
+			    
 			  </div>
+			  
 			  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
 			    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 			    <span class="sr-only"><?php echo PRIOR; ?>Elöző</span>
@@ -68,7 +84,28 @@ class FrontpageView  extends CommonView  {
 			    <span class="carousel-control-next-icon" aria-hidden="true"></span>
 			    <span class="sr-only"><?php echo NEXT; ?></span>
 			  </a>
-			</div><!-- carousel -->        
+			</div><!-- carousel -->     
+			<div class="info">
+			    <?php
+			    /*
+  				Ez egy demó program. Bérelt, megisztott tárhelyen fut ahol technikai okokból az aláírás ellenörzés nem teljes. 
+  				Itt egy ügyfélkapús aláírással többször is lehet regisztrálni. Éles használat esetén külön álló szerverre kell telepiteni, 
+  				ahol a teljeskörű aláírás ellenörzés és ennek segitségével a dupla regisztrálás kiszűrése megvalósítható.
+  				*/
+  				?>
+  				<p>
+  				Ez egy minden párttól, szervezettől független civil kezdeményezés. Teljes egészében magán emberek
+  				adományaiból müködik. A rendszert üzemeltető szerver jelenleg 2019.szeptember 31. -ig van kiifizetve.
+  				Amennyiben módja van rá, kérjük támogassa a rendszer müködését.
+  				</p>
+  				<p>
+  				  <a href="<?php echo MYDOMAIN; ?>/opt/adomany/show" 
+  				     style="background-color:blue; color:white; padding:10px; border-radius:5px;">
+  					Támogatás
+  				  </a>
+  				</p>
+  			</div>
+			   
         	<?php echo htmlPopup(); ?>
           </div><!-- #scope -->
 		  <?php $this->echoFooter(); ?>
