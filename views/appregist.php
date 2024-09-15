@@ -7,15 +7,28 @@ class AppregistView  extends CommonView  {
 	* @return void
 	*/
 	public function form($p) {
-	    echo htmlHead();
-        ?>	
+	    $this->echoHtmlHead();
+	    ?>
         <body ng-app="app">
-         <?php $this->echoNavbar($p); ?>
+	    <?php $this->echoNavbar($p); ?>
         <div ng-controller="ctrl" id="scope" style="display:none" class="appRegist">
             <?php if ($p->client_id == '') : ?>
                 <h2><?php echo txt('NEWAPP'); ?></h2>
             <?php else : ?>
-                <h2>client_id:&nbsp;<?php echo $p->client_id; ?></h2>
+            	<p id="pAppsSelect">
+            	<?php echo txt('LBL_TITLE')?>:&nbsp;<select id="appsSelect">
+            	<?php 
+            	foreach ($p->apps as $app) {
+            	    if ($app->client_id == $p->client_id) {
+            	        echo '<option selected="selected" value="'.$app->client_id.'">'.$app->name.'</option>';
+            	    } else {
+            	        echo '<option value="'.$app->client_id.'">'.$app->name.'</option>';
+            	    }
+            	}
+            	?>
+            	</select>
+            	</p>
+                <h3>client_id:&nbsp;<?php echo $p->client_id; ?></h2>
                 <h3>client_secret:&nbsp;<?php echo $p->client_secret; ?></h2>
             <?php endif; ?>
             <div class="alert alert-warning" role="alert">
@@ -34,23 +47,26 @@ class AppregistView  extends CommonView  {
             	?>
             	</div>
             <?php endif; ?>
-    		<form id="formApp" name="formApp" action="<?php echo txt('MYDOMAIN'); ?>/index.php" method="post">
-    			<input type="hidden" name="option" value="appregist" />
-    			<input type="hidden" name="task" value="save" />
-    			<input type="hidden" name="{{csrtoken}}" value="1" />
+    		<form id="formApp" name="formApp" action="<?php echo txt('MYDOMAIN'); ?>/index.php" 
+    			method="post" target="_self">
+    			<input type="hidden" name="option" id="option" value="appregist" />
+    			<input type="hidden" name="task" id="task" value="save" />
+    			<input type="hidden" name="{{csrToken}}" value="1" />
     			<input type="hidden" name="client_id" id="client_id" value="{{client_id}}" />
+    			<input type="hidden" name="client_secret" id="client_secret" value="{{client_secret}}" />
+    			<input type="hidden" name="id" id="id" value="{{id}}" />
     			<?php if ($p->client_id != '') : ?>
                 <fieldset class="userActivation">
-                	<h2><?php echo txt('USERACTIVATION'); ?></h2>
+                	<legend><?php echo txt('USERACTIVATION'); ?></legend>
                 	<p>
                 		<label><?php echo txt('USER'); ?></label>
-                		<input type="text" name="user" id="user" value="" size="32" />
+                		<input type="text" name="nick" id="nick" value="" size="32" />
                 		<button type="button" id="userActOk" class="btn btn-secondary"><?php echo txt('USRACTOK'); ?></button>
                 	</p>
                 </fieldset>
     			<?php endif; ?>
     			<fieldset class="appDatas">
-    				<h2><?php echo txt('LBL_APPDATAS'); ?></h2>
+    				<legend><?php echo txt('LBL_APPDATAS'); ?></legend>
     				<p>
     					<label><?php echo txt('LBL_TITLE'); ?></label>
     					<input type="text" name="name" id="name"value="{{name}}" size="100" class="appName" />
@@ -76,60 +92,101 @@ class AppregistView  extends CommonView  {
     				</p>
     			</fieldset>
     			<fieldset class="appAdmin">
-    				<h2><?php echo txt('LBL_APPADMIN'); ?></h2>
+    				<legend><?php echo txt('LBL_APPADMIN'); ?></legend>
     				<p>
     					<label><?php echo txt('LBL_ADMIN'); ?></label>
-    					<input type="text" name="admin" id="admin" value="{{admin}}" size="32" 
+    					<input type="hidden" name="admin" id="admin" value="{{admin}}" size="32" 
     						class="appAdmin" />
-    				</p>
-    				<p>
-    					<label><?php echo txt('LBL_PSW1'); ?></label>
-    					<input type="password" name="psw1" id="psw1" value="{{psw1}}" size="32" 
-    						class="appPsw" />
-    				</p>
-    				<p>
-    					<label><?php echo txt('LBL_PSW2'); ?></label>
-    					<input type="password" name="psw2" id="psw2" value="{{psw2}}" size="32" 
-    						class="appPsw" />
-    				</p>
-    				<?php if ($p->client_id != '') : ?>
-    				<p><?php echo txt('PSWCHGINFO'); ?></p>
-    				<?php endif; ?>
-    				<p>
-    					<label><?php echo txt('LBL_FALSEADMINLOGINLIMIT'); ?></label>
-    					<input type="number" min="1" max="10" name="falseAdminLoginLimit" value="{{falseAdminLoginLimit}}" size="10" 
-    						class="appFalseAdminLoginLimit" />
+    					<var>{{admin}}</var>	
     				</p>
     			</fieldset>
+   				<?php if ($p->client_id == '') : ?>
     			<p>
     				<a href="<?php echo txt('MYDOMAIN'); ?>/opt/adatkezeles/show" target="_new">
-    					<?php echo txt('DATAPROCESS');  ?></a>&nbsp;
-    				<var><input type="checkbox" name="dataProcessAccept" id="dataProcessAccept" value="1" /></var>
-    				<?php echo txt('DATAPROCESSACCEPT'); ?>&nbsp;&nbsp;
-    				<var><input type="checkbox" name="cookieProcessAccept" id="cookieProcessAccept" value="1" /></var>
-    				<?php echo txt('COOKIEPROCESSACCEPT'); ?>
-    				
+    				<?php echo txt('DATAPROCESS');  ?></a>&nbsp;
+    				<div style="display:inline-block; width:auto">
+    					<var><input type="checkbox" name="dataProcessAccept" id="dataProcessAccept" value="1"  /></var>
+    					<?php echo txt('DATAPROCESSACCEPT'); ?>&nbsp;&nbsp;
+    				</div>
+    				<div style="display:inline-block; width:auto">
+	    				<var><input type="checkbox" name="cookieProcessAccept" id="cookieProcessAccept" value="1" /></var>
+    					<?php echo txt('COOKIEPROCESSACCEPT'); ?>
+    				</div>	
     			</p>
+    			<?php else :?>
+    			<p style="display:none">
+    				<input type="checkbox" name="dataProcessAccept" id="dataProcessAccept" value="1" checked="checked"  /></var>
+    				<input type="checkbox" name="cookieProcessAccept" id="cookieProcessAccept" value="1" checked="checked" /></var>
+    			</p>
+    			<?php endif; ?>
     			<p class="formButtons">
     				<button type="button" id="formAppOk" class="btn btn-primary">
+    					<em class="fa fa-check-square"></em>
     					<?php echo txt('OK'); ?></button>&nbsp;
-    				<button type="button" id="formAppOk" class="btn btn-secondary" 
+    				<button type="button" id="formAppCancel" class="btn btn-secondary" 
     					onclick="location='<?php  echo MYDOMAIN; ?>';">
+    					<em class="fa fa-arrow-left"></em>
     					<?php echo txt('CANCEL'); ?></button>&nbsp;
     					
     				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    				<?php if ($p->client_id != '') : ?>
     				<button type="button" id="formAppRemove" class="btn btn-danger">
+    					<em class="fa fa-ban"></em>
     					<?php echo txt('APPREMOVE'); ?></button>&nbsp;
+    				<?php endif; ?>	
     			</p>
     		</form>
-        	<?php echo htmlPopup(); ?>
+        	<?php $this->echoHtmlPopup(); ?>
        	</div>
   	  
-        <?php loadJavaScriptAngular('appregist',$p); ?>
+        <?php $this->loadJavaScriptAngular('appregist',$p); ?>
 		<?php $this->echoFooter(); ?>
         </body>
         </html>
         <?php 		
 	}
+	
+	/**
+	 * echo succes message after add or update new app
+	 * @param object $res {client_id, client_secret
+	 * @return void;}
+	 */
+	public function AppsuccessMsg($res) {
+	    $this->echoHtmlHead();
+	    ?>
+        <body ng-app="app">
+	    <?php $this->echoNavbar($res); ?>
+	    <div class="savedMsg" id="scope">
+	    	<h2 class="alert alert-success"><?php echo txt('APPSAVED'); ?></h2>
+	    	<p>Client_id: <?php echo $res->client_id; ?></p>
+	    	<p>Client_secret: <?php echo $res->client_secret; ?></p>
+	    	<p><?php echo txt('ADMININFO'); ?></p>
+	    </div>
+		<?php $this->echoFooter(); ?>
+        </body>
+        </html>
+	    <?php 
+	}
+	
+	/**
+	 * echo not found error
+	 * @param string $msg
+	 * @return void
+	 */
+	public function removedMsg($rec) {
+	    $this->echoHtmlHead();
+	    ?>
+        <body ng-app="app">
+	    <?php $this->echoNavbar($rec); ?>
+	    <div class="successMsg" id="scope">
+	    <h2 class="alert alert-success"><?php echo txt('APPREMOVED'); ?></h2>
+	    <p><?php echo $rec->name; ?></p>
+	    </div>
+		<?php $this->echoFooter(); ?>
+        </body>
+        </html>
+        <?php 
+	}
+	
 }
 ?>

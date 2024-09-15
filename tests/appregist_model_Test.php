@@ -33,14 +33,13 @@ class appregistModelTest extends TestCase
     }
     
     public function test_check_domain_empty() {
-        $this->data = new stdClass();
+        $this->data = new AppRecord();
         $this->data->client_id = '';
         $this->data->domain = '';
         $this->data->name = 'teszt app';
         $this->data->callback = 'https://github.com/utopszkij/logged';
         $this->data->css  = '';
         $this->data->admin = 'admin';
-        $this->data->psw1 = 'testpsw';
         $this->data->dataProcessAccept = 1;
         $this->data->cookieProcessAccept = 1;
         $msg = $this->model->check($this->data);
@@ -48,14 +47,13 @@ class appregistModelTest extends TestCase
     }
     
     public function test_check_domain_invalid() {
-        $this->data = new stdClass();
+        $this->data = new AppRecord();
         $this->data->client_id = '';
         $this->data->domain = 'nem_jo_domain';
         $this->data->name = 'teszt app';
         $this->data->callback = 'https://github.com/utopszkij/logged';
         $this->data->css  = '';
         $this->data->admin = 'admin';
-        $this->data->psw1 = 'testpsw';
         $this->data->dataProcessAccept = 1;
         $this->data->cookieProcessAccept = 1;
         $msg = $this->model->check($this->data);
@@ -63,14 +61,13 @@ class appregistModelTest extends TestCase
     }
 
     public function test_check_daomain_exists() {
-        $this->data = new stdClass();
+        $this->data = new AppRecord();
         $this->data->client_id = '';
         $this->data->domain = 'https://test.hu';
         $this->data->name = 'teszt app';
         $this->data->callback = 'https://github.com/utopszkij/logged';
         $this->data->css  = '';
         $this->data->admin = 'admin';
-        $this->data->psw1 = 'testpsw';
         $this->data->dataProcessAccept = 1;
         $this->data->cookieProcessAccept = 1;
         $msg = $this->model->check($this->data);
@@ -78,14 +75,13 @@ class appregistModelTest extends TestCase
     }
     
     public function test_check_name_empty() {
-        $this->data = new stdClass();
+        $this->data = new AppRecord();
         $this->data->client_id = '';
         $this->data->domain = 'https://valami.hu';
         $this->data->name = '';
         $this->data->callback = 'https://github.com/utopszkij/logged';
         $this->data->css  = '';
         $this->data->admin = 'admin';
-        $this->data->psw1 = 'testpsw';
         $this->data->dataProcessAccept = 1;
         $this->data->cookieProcessAccept = 1;
         $msg = $this->model->check($this->data);
@@ -93,14 +89,13 @@ class appregistModelTest extends TestCase
     }
     
     public function test_check_callback_empty() {
-        $this->data = new stdClass();
+        $this->data = new AppRecord();
         $this->data->client_id = '';
         $this->data->domain = 'https://valami.hu';
         $this->data->name = 'valami';
         $this->data->callback = '';
         $this->data->css  = '';
         $this->data->admin = 'admin';
-        $this->data->psw1 = 'testpsw';
         $this->data->dataProcessAccept = 1;
         $this->data->cookieProcessAccept = 1;
         $msg = $this->model->check($this->data);
@@ -108,14 +103,13 @@ class appregistModelTest extends TestCase
     }
     
     public function test_check_callback_invalid() {
-        $this->data = new stdClass();
+        $this->data = new AppRecord();
         $this->data->client_id = '';
         $this->data->domain = 'https://valami.hu';
         $this->data->name = 'valami';
         $this->data->callback = 'nemjó';
         $this->data->css  = '';
         $this->data->admin = 'admin';
-        $this->data->psw1 = 'testpsw';
         $this->data->dataProcessAccept = 1;
         $this->data->cookieProcessAccept = 1;
         $msg = $this->model->check($this->data);
@@ -123,14 +117,13 @@ class appregistModelTest extends TestCase
     }
     
     public function test_check_callback_not_in_domain() {
-        $this->data = new stdClass();
+        $this->data = new AppRecord();
         $this->data->client_id = '';
         $this->data->domain = 'https://valami.hu';
         $this->data->name = 'valami';
         $this->data->callback = 'https://mashol.hu/logged.php';
         $this->data->css  = '';
         $this->data->admin = 'admin';
-        $this->data->psw1 = 'testpsw';
         $this->data->dataProcessAccept = 1;
         $this->data->cookieProcessAccept = 1;
         $this->data->dataProcessAccept = 1;
@@ -140,14 +133,13 @@ class appregistModelTest extends TestCase
     }
     
     public function test_check_css_invalid() {
-        $this->data = new stdClass();
+        $this->data = new AppRecord();
         $this->data->client_id = '';
         $this->data->domain = 'https://valami.hu';
         $this->data->name = 'valami';
         $this->data->callback = 'https://valami.hu/opt/home/logged';
         $this->data->css  = 'nemjo';
         $this->data->admin = 'admin';
-        $this->data->psw1 = 'testpsw';
         $this->data->dataProcessAccept = 1;
         $this->data->cookieProcessAccept = 1;
         $msg = $this->model->check($this->data);
@@ -155,59 +147,27 @@ class appregistModelTest extends TestCase
     }
 
     public function test_check_admin_empty() {
-        $this->data = new stdClass();
+        $this->data = new AppRecord();
         $this->data->client_id = '';
         $this->data->domain = 'https://valami.hu';
         $this->data->name = 'valami';
         $this->data->callback = 'https://valami.hu/opt/home/logged';
         $this->data->css  = '';
         $this->data->admin = '';
-        $this->data->psw1 = 'testpsw';
         $this->data->dataProcessAccept = 1;
         $this->data->cookieProcessAccept = 1;
         $msg = $this->model->check($this->data);
         $this->assertContains('ERROR_ADMIN_EMPTY',$msg);
     }
      
-    public function test_check_psw_empty() {
-        $this->data = new stdClass();
-        $this->data->client_id = '';
-        $this->data->domain = 'https://valami.hu';
-        $this->data->name = 'valami';
-        $this->data->callback = 'https://valami.hu/opt/home/logged';
-        $this->data->css  = '';
-        $this->data->admin = 'admin';
-        $this->data->psw1 = '';
-        $this->data->dataProcessAccept = 1;
-        $this->data->cookieProcessAccept = 1;
-        $msg = $this->model->check($this->data);
-        $this->assertContains('ERROR_PSW_EMPTY',$msg);
-    }
-    
-     public function test_check_psw_invalid() {
-         $this->data = new stdClass();
-         $this->data->client_id = '';
-         $this->data->domain = 'https://valami.hu';
-         $this->data->name = 'valami';
-         $this->data->callback = 'https://valami.hu/opt/home/logged';
-         $this->data->css  = '';
-         $this->data->admin = 'admin';
-         $this->data->psw1 = '123';
-         $this->data->dataProcessAccept = 1;
-         $this->data->cookieProcessAccept = 1;
-         $msg = $this->model->check($this->data);
-         $this->assertContains('ERROR_PSW_INVALID',$msg);
-    }
-    
     public function test_check_uklogin_html__not_exist() {
-        $this->data = new stdClass();
+        $this->data = new AppRecord();
         $this->data->client_id = '';
         $this->data->domain = 'https://adatmagus.hu';
         $this->data->name = 'valami';
         $this->data->callback = 'https://adatmagus.hu/opt/home/logged';
         $this->data->css  = '';
         $this->data->admin = 'admin';
-        $this->data->psw1 = '123456';
         $this->data->dataProcessAccept = 1;
         $this->data->cookieProcessAccept = 1;
         $msg = $this->model->check($this->data);
@@ -216,14 +176,13 @@ class appregistModelTest extends TestCase
     
     public function test_check_dataProcess_not_accept() {
         // a balmix.hu -n van uklogin.html
-        $this->data = new stdClass();
+        $this->data = new AppRecord();
         $this->data->client_id = '';
         $this->data->domain = 'https://balmix.hu';
         $this->data->name = 'balmix';
         $this->data->callback = 'https://balmix.hu/opt/home/logged';
         $this->data->css  = 'https://balmix.hu/uklogin.css';
         $this->data->admin = 'admin';
-        $this->data->psw1 = '123456';
         $this->data->dataProcessAccept = 0;
         $this->data->cookieProcessAccept = 1;
         $msg = $this->model->check($this->data);
@@ -232,14 +191,13 @@ class appregistModelTest extends TestCase
     
     public function test_check_cookieProcess_not_accept() {
         // a balmix.hu -n van uklogin.html
-        $this->data = new stdClass();
+        $this->data = new AppRecord();
         $this->data->client_id = '';
         $this->data->domain = 'https://balmix.hu';
         $this->data->name = 'balmix';
         $this->data->callback = 'https://balmix.hu/opt/home/logged';
         $this->data->css  = 'https://balmix.hu/uklogin.css';
         $this->data->admin = 'admin';
-        $this->data->psw1 = '123456';
         $this->data->dataProcessAccept = 1;
         $this->data->cookieProcessAccept = 0;
         $msg = $this->model->check($this->data);
@@ -248,14 +206,13 @@ class appregistModelTest extends TestCase
     
     public function test_check_ok() {
         // a balmix.hu -n van uklogin.html
-        $this->data = new stdClass();
+        $this->data = new AppRecord();
         $this->data->client_id = '';
         $this->data->domain = 'https://balmix.hu';
         $this->data->name = 'balmix';
         $this->data->callback = 'https://balmix.hu/opt/home/logged';
         $this->data->css  = 'https://balmix.hu/uklogin.css';
         $this->data->admin = 'admin';
-        $this->data->psw1 = '123456';
         $this->data->dataProcessAccept = 1;
         $this->data->cookieProcessAccept = 1;
         $msg = $this->model->check($this->data);
@@ -265,18 +222,16 @@ class appregistModelTest extends TestCase
     public function test_save_new_ok() {
         global $REQUEST;
         // a balmix.hu -n van uklogin.html
-        $this->data = new stdClass();
+        $this->data = new AppRecord();
         $this->data->client_id = '';
         $this->data->domain = 'https://balmix.hu';
         $this->data->name = 'balmix';
         $this->data->callback = 'https://balmix.hu/opt/home/logged';
         $this->data->css  = 'https://balmix.hu/uklogin.css';
         $this->data->admin = 'admin';
-        $this->data->psw1 = '123456';
         $this->data->dataProcessAccept = 1;
         $this->data->cookieProcessAccept = 1;
         $this->data->falseLoginLimit = 1;
-        $this->data->adminFalseLoginLimit = 1;
         $res = $this->model->save($this->data);
         $REQUEST->client_id = $res->client_id;
         $this->assertEquals(true,isset($res->client_id));
@@ -284,18 +239,16 @@ class appregistModelTest extends TestCase
     
     public function test_save_insert_notok() {
         // a balmix.hu -n van uklogin.html
-        $this->data = new stdClass();
+        $this->data = new AppRecord();
         $this->data->client_id = '';
         $this->data->domain = 'nemjo';
         $this->data->name = 'balmix';
         $this->data->callback = 'https://balmix.hu/opt/home/logged';
         $this->data->css  = 'https://balmix.hu/uklogin.css';
         $this->data->admin = 'admin';
-        $this->data->psw1 = '123456';
         $this->data->dataProcessAccept = 1;
         $this->data->cookieProcessAccept = 1;
         $this->data->falseLoginLimit = 1;
-        $this->data->adminFalseLoginLimit = 1;
         $res = $this->model->save($this->data);
         $this->assertEquals(true,isset($res->error));
     }
@@ -303,34 +256,31 @@ class appregistModelTest extends TestCase
     public function test_save_update_ok() {
         global $REQUEST;
         // a balmix.hu -n van uklogin.html
-        $this->data = new stdClass();
+        $this->data = new AppRecord();
+        $this->data->id = 1;
         $this->data->client_id = $REQUEST->client_id;
         $this->data->domain = 'https://balmix.hu';
         $this->data->name = 'balmix javitva';
         $this->data->callback = 'https://balmix.hu/opt/home/logged';
         $this->data->css  = 'https://balmix.hu/uklogin.css';
         $this->data->admin = 'admin';
-        $this->data->psw1 = '123456';
         $this->data->falseLoginLimit = 5;
-        $this->data->adminFalseLoginLimit = 5;
         $this->data->dataProcessAccept = 1;
         $this->data->cookieProcessAccept = 1;
         $res = $this->model->save($this->data);
-        $this->assertEquals(true,isset($res->client_id));
+        $this->assertEquals(true, isset($res->client_id));
     }
     
     public function test_save_update_notok() {
         // a balmix.hu -n van uklogin.html
-        $this->data = new stdClass();
+        $this->data = new AppRecord();
         $this->data->client_id = 'nincsilyen';
         $this->data->domain = 'nemjo';
         $this->data->name = 'balmix javitva';
         $this->data->callback = 'https://balmix.hu/opt/home/logged';
         $this->data->css  = 'https://balmix.hu/uklogin.css';
         $this->data->admin = 'admin';
-        $this->data->psw1 = '123456';
         $this->data->falseLoginLimit = 5;
-        $this->data->adminFalseLoginLimit = 5;
         $this->data->dataProcessAccept = 1;
         $this->data->cookieProcessAccept = 1;
         $res = $this->model->save($this->data);
@@ -339,7 +289,7 @@ class appregistModelTest extends TestCase
     
     public function test_remove_notfound() {
         // a balmix.hu -n van uklogin.html
-        $this->data = new stdClass();
+        $this->data = new AppRecord();
         $client_id = 'nincsilyen';
         $res = $this->model->remove($client_id);
         $this->assertEquals('ERROR_NOT_FOUND',$res);
@@ -347,7 +297,7 @@ class appregistModelTest extends TestCase
     
     public function test_remove_ok() {
         global $REQUEST;
-        $this->data = new stdClass();
+        $this->data = new AppRecord();
         $client_id = $REQUEST->client_id;
         $res = $this->model->remove($client_id);
         $this->assertEquals('', $res);

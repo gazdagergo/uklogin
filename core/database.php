@@ -131,10 +131,10 @@ class DB {
    protected $inTransaction = false;
     
    function __construct() {
-    	global $mysqli;
-        $this->mysqli = $mysqli;
-        $this->errorMsg = '';
-        $this->errorNum = 0;
+       global $mysqli;
+       $this->mysqli = $mysqli;
+       $this->errorMsg = '';
+       $this->errorNum = 0;
    }
    
 	/**
@@ -205,7 +205,7 @@ class DB {
         return $result;
 	}
     /**
-     * @param fp
+     * sql log írása
      */
      private function writeLog() {
         if (MYSQLLOG) {
@@ -223,7 +223,7 @@ class DB {
 	
 	/**
 	 * load one record by $this->sqlString or from $dbResult
-	 * @return recordObject|false
+	 * @return object|false
 	 */
 	public function loadObject() {
 	    global $dbResult;
@@ -298,7 +298,12 @@ class DB {
      * @return string
      */
 	public function getErrorMsg() : string {
-		return $this->errorMsg;
+	    if ($this->errorMsg != '') {
+		  $result = $this->errorMsg.' sql:'.$this->getQuery();
+	    } else {
+	      $result = '';  
+	    }
+	    return $result;
 	}
 	
 	/**
@@ -306,7 +311,7 @@ class DB {
 	 * @param string|mixed $str
 	 * @return string|mixed
 	 */
-	public static function quote($str) {
+	public static function quote($str): string {
         // global $mysqli;	    
 	    // $result = $mysqli->real_escape_string($str);
         $str = str_replace('"','\"',$str);
@@ -344,8 +349,8 @@ class DB {
     * @param string $columns OPTIONAL default='*'
     * @return Table
     */
-	public static function table(string $fromStr, string $alias = '', string $columns = '*') {
-		$result = new Table();
+	public static function table(string $fromStr, string $alias = '', string $columns = '*'): Table {
+		$result = new Table($fromStr);
 		$result->setFromStr($fromStr, $alias, $columns);
 		return $result;	
 	}  
@@ -357,7 +362,7 @@ class DB {
 	 * @param string $columns OPTIONAL default='*'
 	 * @return Filter
 	 */
-	public static function filter(string $formStr, string $alias = '', string $columns = '*') {
+	public static function filter(string $fromStr, string $alias = '', string $columns = '*'): Filter {
 		$result = new Filter();
 		$result->setFromStr($fromStr, $alias, $columns);
 		return $result;	
@@ -368,7 +373,7 @@ class DB {
 	 * @param callable $fun function()
 	 * @return void
 	 */
-	public static function transaction(callable $fun) {
+	public function transaction(callable $fun) {
 	    $this->inTransaction = true;
 	    $this->mysqli->begin_transaction();
 	    $fun();
@@ -454,14 +459,24 @@ class Table extends DB {
      * @param string $columns
      * @return Table
      */
-	public function setFromStr(string $fromStr, string $alias, string $columns) {
-		$this->fromStr = $fromStr;
+	public function setFromStr(string $fromStr, string $alias = '', string $columns = '*') {
+	    $this->fromStr = $fromStr;
+	    $this->alias = $alias;
+	    $this->columns = $columns;
 		return $this;	
 	}
 
+	function __construct($tableName) {
+	    global $mysqli;
+	    $this->mysqli = $mysqli;
+	    $this->errorMsg = '';
+	    $this->errorNum = 0;
+	    $this->setFromStr($tableName);
+	}
+	
 	/**
 	 * load record set
-	 * @return arrayOfRecordObject
+	 * @return array|false
 	 */
 	public function get() {
 	    $this->createWhereHavingStr();
@@ -499,7 +514,7 @@ class Table extends DB {
 	
 	/**
 	 * load one record
-	 * @return recordObject|boolean
+	 * @return object|boolean
 	 */
 	public function first() {
 		$this->limit = 1;
@@ -619,20 +634,20 @@ class Table extends DB {
 
 	/**
 	 * set $this->limit
-	 * @param numeric $v
+	 * @param int $v
 	 * @return Table
 	 */
-	public function limit(numeric $v) {
+	public function limit(int $v) {
 		$this->limit = $v;
 		return $this;	
 	}	
 
 	/**
 	 * set $this->offset
-	 * @param numeric $v
+	 * @param int $v
 	 * @return Table
 	 */
-	public function offset(numeric $v) {
+	public function offset(int $v) {
 		$this->offset = $v;
 		return $this;	
 	}	
@@ -692,9 +707,9 @@ class Table extends DB {
 	
 	/**
 	 * get last inserted id
-	 * @return unknown
+	 * @return int
 	 */
-	public function getInsertedId() {
+	public function getInsertedId(): int {
 	    global $mysqli;
 	    return $mysqli->insert_id;
 	}
@@ -754,7 +769,7 @@ class Filter extends Table {
 
 	/**
 	 * load record set
-	 * @return arrayOfRecordObject|false
+	 * @return array|false
 	 */
 	public function get() {
 	    $this->createWhereHavingStr();
