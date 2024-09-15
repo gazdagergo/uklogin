@@ -1,0 +1,69 @@
+
+oauth2controller::parsepdf8
+,/var/www/html/uklogin/controllers/oauth2.phpˇ ˇ("1*µ
+28
+,/var/www/html/uklogin/controllers/oauth2.phpÑ	 Ñ(.q
+o
+8
+,/var/www/html/uklogin/controllers/oauth2.phpÑ	 Ñ(-
+
+$res"
+error"__id*
+'ERROR_PDF_SIGN_ERROR'*
+3*b
+3
+
+oauth2.php"O
+8
+,/var/www/html/uklogin/controllers/oauth2.phpÜ Ü(
+implicit return*˘
+18
+,/var/www/html/uklogin/controllers/oauth2.phpÄ Ä(.`^
+8
+,/var/www/html/uklogin/controllers/oauth2.phpÄ Ä(-	
+$parser"smalot\pdfparser\parseru
+s
+8
+,/var/www/html/uklogin/controllers/oauth2.phpÄ Ä(-
+%1"$smalot\pdfparser\parser::__construct*
+	
+$parserig
+8
+,/var/www/html/uklogin/controllers/oauth2.phpÅ Å(,
+%2*
+	
+$parser*
+
+	$filePath2	parsefileR
+P
+8
+,/var/www/html/uklogin/controllers/oauth2.phpÅ Å(,
+$pdf"__id*
+
+%2US
+8
+,/var/www/html/uklogin/controllers/oauth2.phpÇ Ç(
+%3*
+
+$pdf2gettextS
+Q
+8
+,/var/www/html/uklogin/controllers/oauth2.phpÇ Ç(
+$text"__id*
+
+%3n
+l
+8
+,/var/www/html/uklogin/controllers/oauth2.phpÉ É()
+%4"__concat*
+'client_id='*
+
+
+$client_id*
+2
+3:
+	$filePath:
+
+$client_id:
+$resB
+oauth2controller

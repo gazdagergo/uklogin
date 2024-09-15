@@ -55,4 +55,37 @@ function htmlHead() {
 function htmlPopup() {
     return '';
 }
+/**
+ * A "tests" könyvtárból másol a terget -be
+ * postname -től függetlenül mindig ugyanazt a file-t.
+ * @param string $postName
+ * @param string $target
+ * @return string
+ */
+function getUploadedFile(string $postName, string $targetDir): string {
+    $name = 'avdhA3-18840f38-7adf-4f8a-a8b2-c3e307d63b48.pdf';
+    if (file_exists('./tests/'.$name)) {
+        if (copy ('./tests/'.$name, $targetDir.'/'.$name)) {
+            $result = $name;
+        } else {
+            $result = '';
+        }
+    } else {
+        $result = '';
+    }
+    return $result;
+}
+
+function createCsrToken($request, $data) {
+    $request->sessionSet('csrToken','testCsrToken');
+    $data->csrToken = 'testCsrToken';
+}
+
+function checkCsrToken($request) {
+    if ($request->input($request->sessionget('csrToken')) != 1) {
+        echo '<p>invalid csr token</p>'.JSON_encode($request);
+        exit();
+    }
+}
+
 ?>
