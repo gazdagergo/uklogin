@@ -1,0 +1,65 @@
+
+#openidusercontroller::doregistcheck6
+,/var/www/html/uklogin/controllers/openid.phpX X($"1*ô
+36
+,/var/www/html/uklogin/controllers/openid.php] ]( X
+V
+6
+,/var/www/html/uklogin/controllers/openid.php] ](
+%2"__id**
+
+$p"
+psw1X
+V
+6
+,/var/www/html/uklogin/controllers/openid.php] ]( 
+%3"__id**
+
+$p"
+psw2*
+5*§
+56
+,/var/www/html/uklogin/controllers/openid.php` `(&e
+c
+6
+,/var/www/html/uklogin/controllers/openid.php` `(!
+%4"__id**
+
+$p"
+dataprocessaccept*
+7*ò
+76
+,/var/www/html/uklogin/controllers/openid.phpc c(,V
+T
+6
+,/var/www/html/uklogin/controllers/openid.phpc c(
+%5"__id**
+
+$p"
+idX
+V
+6
+,/var/www/html/uklogin/controllers/openid.phpc c(%
+%6"__id**
+
+$p"
+psw1*
+9*`
+9
+
+openid.php"M
+6
+,/var/www/html/uklogin/controllers/openid.phpf f(
+implicit return*š
+16
+,/var/www/html/uklogin/controllers/openid.phpZ Z(X
+V
+6
+,/var/www/html/uklogin/controllers/openid.phpZ Z(
+%1"__id**
+
+$p"
+nick*
+3:
+$pB
+openidusercontroller

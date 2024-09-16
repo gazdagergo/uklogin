@@ -1,8 +1,7 @@
 {
     "require": {
-        "phpmailer/phpmailer": "^6.0"
-    },
-    "require-dev": {
-        "phpdocumentor/phpdocumentor": "dev-master"
+        "smalot/pdfparser": "*",
+        "phpmailer/phpmailer": "6.1.6"
     }
 }
+

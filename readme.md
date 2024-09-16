@@ -1,119 +1,259 @@
 # e-demokrácia web applikációkból hívható - ügyfélkapu aláíráson alapuló - login modul
 
+## Kontribútoroknak
+A fejlesztésében közreműködni kívánóknak szóló információk a [ebben a leírásban](/readmeForProgrammer.md) találhatók.
+
+## Készültség
+
+ß teszt
+
+## Online ß teszt:
+
+https://uklogin.tk
+
 ## Áttekintés
 
-Ez egy web -es szolgáltatás. Az a célja, hogy e-demokrácia szoftverek az ügyfélkapus aláíráson alapuló regisztrációt és bejelentkezést használhassanak az ** oAuth2 ** szabvány szerint. 
-A rendszer biztosítja, hogy egy személy egy alkalmazásba csak egyszer regisztrálhat.
-Természetesen egy ügyfélkapú loginnal több alkalmazásba is lehet regisztrálni. 
+Ez egy web -es szolgáltatás. Az a célja, hogy e-demokrácia szoftverek az ügyfélkapus aláíráson alapuló regisztrációt és bejelentkezést használhassanak az **OpenId** szabvány szerint.
+A rendszer biztosítja, hogy egy személy csak egyszer regisztrálhat.
+(az ügyfélkapus aláírásban szereplő születési név, születési dátum és anyja neve adat egyediségét ellenörzi a program).
 
-A hívó web program iframe -be hívhatja be a regisztráló képernyőt vagy a login képernyőt. Szükség esetén css fájl segítségével az iframe -ben megjelenő formok megjelenését módosíthatja.
+Természetesen egy ügyfélkapú loginnal több alkalmazásba is be lehet lépni.
+
+A hívó web program https protoklon hívhatja be a login képernyőt. Ezen van "regisztrálok" link is azok számára akik még nem regisztráltak.
 
 Az applikáció adminisztrátora az erre a célra szolgáló web felületen tudja az applikációt regisztrálni a rendszerbe.
 
 A regisztrációs folyamatban használt aláírás szolgáltató:
 
-https://niszavdh.gov.hu 
+https://magyarorszag.hu/szuf_avdh_feltoltes
+
+### Facebbok, Google belépés
+
+Lehetőség van Facebook vagy Google fiók segitségével is bejelentkezni. Az ilyen fiokóknál azonban nem garantálható az egyediség, ezt a kliens app által lekérhető userinfóban lávő "audit=0" jelzi, az ügyfélkapuval létrehozott fiokonál "audited=1" szerepel. A kliens programok dönthetik el, hogy az "audited=0" fiokokat elfogadják-e, illetve milyen korlátozozott jogosultságokat adnak nekik.
+
+Késöbb tovább fejlesztésként lehetséges lesz személyes auditálás lehetőségének kialakitása. Itt terveim szerint személyes adat ellenörzés után, az erre feljogosított "auditorok" a facebokkos, goggle -es fiokonál is be tudják állítani az "audited=1" jelzést. Az auditor a születési név, születési dátum, anyja neve adatból képzi azt a hash -t amit az ügyfélkapus regisztrálás is használ, ennek segitségével ellenörizni tudja, hogy ezen a módon se lehessen egy embernek több fiókja.
+
+### Openid Bejelentkezés folyamata
+
+```
+
++--------+                                   +--------+
+|        |                                   |        |
+|        |----(1) /authorize Request-------->|        |
+|        |     respose_type=id_token token   |        |
+|        |  +--------+                       |        |
+|        |  |        |                       |        |
+|        |  |  End-  |<--(2)---login form----|        |
+|        |  |  User  |--(3)---nickname,psw-->|        |
+|   web  |  |        |                       |        |
+| client |  +--------+                       | openId |
+|   app  |                                   | szerver|
+|        |<--------(4) access_token----------|        |
+|        |                                   |        |
+|        |---------(5) /userinfo Request---->|        |
+|        |                                   |        |
+|        |<--------(6) UserInfo Response-----|        |
+|        |                                   |        |
++--------+                                   +--------+
+```
+
+## magyaroszag.hu felhasználásával történő user regisztráció
+
+A felhasználó a
+
+[magyarorszag.hu](http://magyarorszag.hu)
+
+oldalról lettölti az ott tárolt személyi adatait tartalmazó pdf fájlt. Ezután ezt a fájlt a belügyminisztérium által üzemeltetett ingyenes aláírás szolgáltatás
+
+[szuf.magyarorszag.hu](https://szuf.magyarorszag.hu)
+
+segítségével aláírja. Majd az aláírt pdf fájlt feltölti ebbe a programba.
+
+A program a következő ellenőrzéseket végzi el:
+- a pdf alá van írva, és a belügyminisztérium nyilvános aláírás szolgáltatója írta alá?
+- a PDF információkban a megfelelő Creator, Producer, PDF version adat szerepel?
+- a PDF -ben lévő név, anyja neve, lakcím, születési dátum azonos az aláírásban megadottal?
+- az aláírás kezdeményező ügyfélkapuban megadott születési névvel, anyja nevével és születési dátummal még nincs másik fiók hitelesítve.
+
+
+### Mennyire biztonságos az ügyfélkapus hitelesítés?
+
+1. A kormány által biztosított aláírás szolgáltatás a  magyar törvények közhiteles aláírásnak ismerik el. Mivel a progrm azt, hogy egy usernek csak egy hitelesített bejelentkezése lehet ennek az aláírásnak az ellenörzésével biztosítja - ezt nagy biztonságunak fogadhatjuk el.
+
+2. A lakcím adatokat a program a magyarorszag.hu -ról letöltött pdf fájl tartalmából veszi ki. Sajnos megfelelő informatikai eszközökkel a pdf fájlok modosíthatóak. A pdf fájlokban van információ a pdf -et előállító szoftverről és a pdf -et utoljára modosító szoftveről. A program a pdf-ben lévő információk ellenörzésével igyekszik észlelni azt ha a pdf fájlt módosították. A legtöbb könnyen hozzáférhető pdf editorral modosított pdf fájlt nem fogadja el. Sajnos azonban speciális hacker eszközökkel (elég nagy idő és erőforrás ráfordítással) a pdf bizonyára "nyom nélkül" is modosítható. Tovább növeli a biztonságot, hogy a program összeveti az aláírásban szereplő adatokat a pdf ben szereplőkkel. Tehát ezen a módon is csak a lakcím hamisítása lehetséges. Viszont még ilyen módon is csak egyetlen egy ügyfélkapus aláírással hitelesített hamis fiokot tud egy felhasználó létrehozni.
+
+Összefoglalva: Átlagos informatikai tudással rendelkező emberek, ha túl sok időt nem akarnak a csalásra forditani elég nagy biztonsággal csak egy ügyfélkapuval hitelesített, valós adatokat tartalmazó fiokot tudnak létrehozni.
+
+## FIGYELEM FONTOS!
+
+A magyaroszag.hu segítségével történő hitelesítési rendszer több olyan elemet tartalmaz ami esetenként változtatandó lehet amennyiben a magyarorszag.hu rendszerben vagy a használt aláírás szolgáltató rendszerében változás történik (lásd az elöző pontot és a **controllers/pdfparser.php** fájlt). Ezért az éles üzemeltetés folyamán az üzemeltetőnek folyamatosan figyelnie kell, hogy az érintett állami rendszerekben nem történik-e változás!
+
 
 
 ## Programnyelvek
 
- PHP, MYSQL, JQUERY, bootstrap
- 
-A program Szabó Simon Márk 2019 főpolgármester előválasztás 2. fordulójára készített programjában található ötletek és kód részletek felhasználásával készült.
- 
+ PHP(7.1+), Javascript, MYSQL, JQUERY, bootstrap
+
+A program az "aHang" és Szabó Simon Márk 2019 főpolgármester előválasztás 2. fordulójára készített programjában található ötletek és kód részletek felhasználásával készült.
+
 Lásd: https://gitlab.com/mark.szabo-simon/elovalaszto-app?fbclid=IwAR2X4RlNDA4vHw5-4ABkDCzzuifNpE5-u9T7j1X-wuubag4ZY0fSvnifvMA
+
+A program MVC ajánlás szerint struktúrált.
 
 ## Licensz
 
  GNU/GPL
- 
+
 ## Programozó
 
 Fogler Tibor (Utopszkij)
 
-tibor.fogler@gmail.com 
+tibor.fogler@gmail.com
 
 https://github.com/utopszkij
 
-## Működés
-
-### Új applikáció regisztrálás 
+## Új applikáció regisztrálás
 
 Az applikációt web felületen lehet regisztrálni. A megadandó adatok:
 - applikáció neve
 - applikációt futtató domain
 - sikeres login utáni visszahívandó url
-- sikertelen user login limit
-- css file url (lehet üres is)
 - applikáció adminisztrátor username
-- applikáció adminisztrátor jelszó (kétszer kell beirni)
-- applikáció adminisztrátor email
-- sikertelen admin login limit
+- default scope (userinfo tartalma)
+- default adatkezelési leírás URI
+- userinfo formátuma (json string vagy JWE)
+- JWE userinfo kérés esetén a használandó ssh publikus kulcs
 
-A képernyőn van adatkezelés elfogadtatás és cookie engedélyeztetés is.
+A képernyőn van adatkezelés elfogadtatás is.
 
 Annak igazolására, hogy az app. regisztrálását az adott rendszer rendszergazdája végzi, a megadott domainre fel kell tölteni egy "uklogin.html" fájlt, aminek tartalma egyetlen sor: "uklogin".
 
-A sikeres app regisztrálás után a képernyőn megjelenik a ** client_id **  és ** client_secret ** adat. Ezeket gondosan meg kell örizni az app adminisztrálásához és a login/regist rendszer használatához szükség van rájuk.
+A sikeres app regisztrálás után a képernyőn megjelenik a **client_id**  adat. Ezeket gondosan meg kell örizni az app adminisztrálásához és a login/regist rendszer használatához szükség van rájuk.
 
 
 Ezen adatok egy része az adminisztrátor által később is  módosítható, az app admin ugyancsak kezdeményezheti az app és saját adatainak együttes törlését is.
 Az app adatok módosításához, törléséhez természetesen az admin login szükséges. Ha itt a megadott limitet túllépő sikertelen login kisérlet történik akkor az app admin login blokkolásra kerül, ezt ennek az "ügyfélkapus-login" rendszernek az "főadminisztrátora" tudja feloldani.
 
-### login folyamat a felhasználó web applikációban:
+## OpenID müködés
+
+Az openid szolgáltatás konfigurációjának lekérése:
+
 ```
-<iframe ..... src="https://szeszt.tk/uklogin/oath2/loginform/client_id/<client_id>" />
+<ukloginDomain>/openid
 ```
-Opcionálisan /redirect_uri/<url> és /state/xxxxx is megadható. A redirect_uri -csak az app adatoknál megadott domain-en lehet (urlencoded formában), a state tetszőleges kiegészítő infot tartalmazhat. 
 
-Az iframe -ben egy szokásos login képernyő jelenik meg (nicknév és jelszó megadása). 
-A login képernyőn a szokásos kiegészitő elemek is szerepelnek:
-- elfelejtett jelszó
-- még nincs fiókom, regisztrálok
-- fiók törlése
-- tárolt adataim lekérdezése
-- adatkezelési tájékoztató
-- cokkie kezelés elfogadtatása
+A szerver két adatkezeleési módban konfigurálható. A két mód a kezelt user adatokban tér el egymástól (lásd lentebb). A fent megedott végpontról lekérhető json formátumú információ tájékoztat arról, hogy az adott szerver milyen user adatokat tud szolgáltatni.
 
-Miután a user megadja usernevét és jelszavát a program ellenőrzi azokat, sikeres login esetén
-meghívja az app adatokban beállított callback url -t, GET paraméterként küldve: "code", "state", "redirect_uri".
+### OpenId login
 
-Ezután hívni kell a https://szeszt.tk/uklogin/oath2/access_token url-t, GET paraméterként küldve a "client_id", "client_secret" és "code" adatokat. Válaszként egy json stringet kapunk:
-{"access_token":"xxxxxx"} vagy {"access_token":"", "error":"hibaüzenet"}
+végpont:
 
-Következő lépésként hívni kell a https://szeszt.tk/uklogin/oath2/userinfo címet, GET paraméterként a
-"access_token" értéket küldve. Válaszként a bejelentkezett user nicknevét kapjuk vagy az "error" stringet.
-
-Sikertelen login esetén, az iframe-ben hibaüzenet jelenik meg és újra a login képernyő. az app -nál megadott számú sikertelen kisérlet után a fiók blokkolásra kerül, ez a user ebbe az applikációba a továbbiakban nem tud belépni. A blokkolt fiókokat az applikáció adminisztrátor tudja újra aktivizálni.
-
-### Regisztráció hívása a felhasználó web applikációban
 ```
-<iframe ..... src="https://szeszt.tk/uklogin/oauth2/registform/client_id/<client_id>" />
+<ukloginDomain>/openid/authorize
 ```
-Sikeres regisztrálás után az iframe-ben a login képernyő jelenik meg. Sikertelen esetén hibaüzenet és újból a regisztrálás kezdő képernyője.
+
+POST vagy GET pareméterek (url encoded formában):
+
+**client_id** alkalmazás azonosító, vagy a redirect_uri val megegyező string **kötelező**
+
+**redirect_uri** sikeres login után visszahivandó **opcionális**
+
+**policy_uri**  alkalmazás adatkezelési leírása **opcionális de erősen ajánlott**
+
+**scope** alkalmazás által kért user adatok (lásd a **/openid** hívással lekérhető json -ban) **opcionális**
+
+**state** tetszőleges string, ezt is megkapja a redirect_uri **opcionális**
+
+**nonce** tetszőleges string, ezt is megkapja a redirect_uri **opcionális**
+
+**response_type** ha szerepel akkor kötelezően: "token id_token" vagy "code" **opcionális**
 
 
-### Regisztráció folyamata
+**Regisztrált kliens app** esetén a **redirect_uri**, **policy**, **scope** elhagyható, ez esetben a klien regisztrációnál megadottat használjuk.
+Ha viszont megadunk **redirect_uri** -t annak a kliens regisztrációnál megadott domainben kell lennie.
 
-1. A megjelenő első képernyőről a felhasználónak le kell töltenie egy pdf fájlt (ez csak azt tartalmazza melyik app -be regisztrál). Ez a képernyő tartalmazza az adatkezelési tájékoztatót és a cookie használat engedélyeztetést is.
-2. A user a letöltött pdf -et az ügyfélkapus ingyenes aláírás rendszerrel aláírja, és az aláírt pdf -et is letölti saját gépére.
-3. az aláírt pdf -et feltölti ebbe az applikációba, az ezután megjelenő képernyőn usernevet és jelszót választ magának.
-Mindezt részletes help segíti.
 
-A rendszer ellenőrzi:
-- a feltöltött pdf alá van írva és sértetlen?
-- a feltöltött pdf tartalma az a client_id amibe regisztrálunk?
-- az aláíró email hash szerepel már a regisztrált felhasználók között? (ha már szerepel akkor kiírja milyen nick nevet adott korábban meg)
-- a választott nicknév egyedi az adott applikációban?
+**Nem regisztrált kliensnél** a **redirect_uri**, **scope**, **policy** megadása kötelező, **client_id** -ben és a **redirect_uri** -ban egyaránt a visszahívandó URL-t kell szerepeltetni.
 
-Hiba esetén hibaüzenet és a hiba jellegétől függően vagy
-- a nicknév/jelszó megadó képernyő jelenik meg (nick név már létezik vagy formailag hibás nicknév/jelszó) vagy 
-- a regsiztrálás kezdő képernyője jelenik meg (pdf aláírás hiba, pdf tartalom hiba) vagy 
-- a login képernyő jelenik meg (ezzel az ügyfélkapu belépéssel már történt regisztráció ebbe az applikációba).
 
-### Elfelejtett jelszó kezelés folyamata
+A login képernyőn szerepel **"még nincs fiokom, regisztrálok"** link, valamint **"elfelejtettem a jelszavam"** link is. A szerver az ezekre történő kattintást is kezeli.
+A login képernyőn szerepel az alkalmazás által kért user adatok felsorolása is,
+és az alkalmazás adatkezelési leírására mutató link is (ha megadtunk policy_uri -t).
+A felhasználónak az adat kezelést el kell fogadnia.
 
-A teljes regisztrációt kell a usernek megismételnie, azzal az egy különbséggel, hogy most nicknevet nem választhat, hanem a korábban használt marad meg. A rendszer ellenőrzi, hogy ugyanaz az ügyfélkapus aláírás szerepel-e a pdf -en mint ami korábban volt.
+Amennyiben a hívás pillanatában a user már be van jelentkezve az uklogin/openid szolgáltatásba akkor csak az alkalmazás által kért user adatokok átadásához való hozzájárulást kérő képernyő jelenik meg. Ezen is szerepel az alkalmazás adatkezelési leírására mutató link.
+
+Sikeres login, illetve az adatkezeléshez történő hozzájárulás után a **redirect_uri** -ra, ennek hiányában a kliens regisztrációban beállított visszahívási címre kerül a vezérlés.
+
+**token id_token** response_type esetén  négy paramétert átadva:
+- **id_token**,
+- **token**,
+- **state** ,
+- **nonce**.
+
+
+**code** response_type esetén egy paramétert átadva:
+- **code**
+
+A **token** adatot használva a **userinfo** végpontról lekérhetőek a json formátumú  user információk (token = access_token). A **state** és **nonce** adatot a kliens tetszőleges célra használhatja. Gyakran a **state** adatot egy biztonságot növelő egyedi token céljára használják, a **nonce** -ben bpedig a sikeres login után aktiválandó applikáció funciót indító URL szerepel.
+
+**Biztonsági okokból az authorize funkció iframe -ben vagy popup frame -ben nem hívható!**
+
+
+### OpenId logout
+
+végpont:
+
+```
+<ukloginDomain>/openid/logout
+```
+
+POST vagy GET pareméterek:
+
+**token_type_hint**  kötelezően "access_token"
+
+**token**
+
+**redirect_uri**
+
+
+### OpenId refresh
+
+végpont:
+
+```
+<ukloginDomain>/openid/refresh
+```
+
+POST vagy GET pareméterek:
+
+**token_type_hint**  kötelezően "access_token"
+
+**token**
+
+**redirect_uri**
+
+
+### Openid userinfo
+
+végpont:
+
+```
+<ukloginDomain>/openid/userinfo
+```
+
+POST vagy GET pareméterek:
+
+**access_token**
+
+result a korábbi "authorize" hívásban vagy a kliens regisztrációban megadott "scope" paraméterben kért user információk json string vagy JWE formájában.
+
+Ha kliens regisztrációban JWE formátum van beállítva akkor a visszadaott string három részből áll, ezek **pont** -al vannak szeparálva. Mindhárom elem külön-külön base64 eljárással kodolva van. Az egyes elemek tartalma:
+
+- JWE header ``` {"alg":"RSA-OAEP", "enc":"A256CBC", "iv":"..."}';
+- egy a kliens regisztrációban megadott publikus kulcsal kodolt "szimetrikus titkositó kulcs"
+- a userinfot tartalmazó JSON string a 2.részben (kodoltan) küldött "szimetrikus titkositó kulccsal" az 1.részben megadott szimetrikus titkosító algoritmussal ("enc") és "iv" -vel titkositva.
+
 
 
 ### GDPR megfelelés
@@ -121,68 +261,115 @@ A teljes regisztrációt kell a usernek megismételnie, azzal az egy különbsé
 #### Az app adminisztrátorokkal kapcsolatban a rendszer a következő adatokat tárolja:
 - nicknév
 - jelszó hash
-- email
 - kezelt app adatai
 
-Mint látható az adminisztrátor valós személyt azonosító adat (név, lakcím, okmány azonosító) nincs tárolva. Mivel az email cím személyes adat, egyes értelmezések szerint ez így is a GDPR hatálya alá tartozik. Tehát erre vonatkozó tájékoztatás jelenik meg, és az admin -nak ezt el kell fogadnia. Lehetősége van a tárolt adatait lekérdezni, és azokat törölni is - ez utóbbi egyúttal az applikáció törlését is jelenti.
-
-#### a "normál" felhasználókkal kapcsolatban tárolt adatok ("users" tábla):
-- nick név
-- jelszó hash
-- melyik applikációba regisztrált
-- ügyfélkapunál megadott email hash
-
 Itt személyes adat nincs kezelve, tehát ez nem tartozik a GDPR hatálya alá,erről tájékoztatást írunk ki.
+
+#### a "normál" felhasználókkal kapcsolatban tárolt adatok :
+
+A szerver két adatkezelési beállítással üzemeltethető
+
+**Csökkentet openid adatkezelési beállításnál**
+- azonsoító kód
+- bejelentkezési név
+- állandó lakcímből az irányító szám és település név
+- jelszó hash
+- ügyfélkapunál megadott aláírásból képzett (reális idő alatt nem visszafejthető) kód
+- system adminisztrátor (Igen vagy nem)
+- hitelesített adat (Igen vagy nem)
+
+** Teljes Openid adatkezelési beállításnál**
+- Azonoító kód
+- Bejelentkezési név
+- Jelszó hash
+- Postai irányító szám
+- Település
+- utca és házszám
+- E-mail
+- E-mail ellenörzött (Igen vagy Nem)
+- Második kersztnév
+- Első keresztnév
+- Vezeték név
+- Avatar kép URI
+- Születési dátum
+- Telefon szám
+- Telefon szám ellenörzött  (Igen vagy Nem)
+- Utolsó módosítás időpontja
+- Az aláírás adataiból képzett (reális idő alatt nem visszafejthető) kód
+- system adminisztrátor (Igen vagy nem)
+- hitelesített adat (Igen vagy nem)
+
+
+**Ezek személyes adatok, kezelésüknél a GDPR ide vonatkozó előírásait kell érvényesíteni.**
+
+
+Megjegyzés: A feldolgozás során - technikai okokból - néhány másodpercig a rendszer tárolja az aláírt pdf fájlt és  az abban lévő csatolmányokat. Ezek tartalmazzák az aláíró személyi adatait (név, lakcím, születési dátum, anyja neve, születési név, okmány azonosítók, személyi szám).
+ Ezen adatok közül a rendszer kizárólag a születési névből, születési dátumból és anyja nevéből SHA256 hash algoritmussal
+ képzett hash kódját, valamint a fentebb leirt user adatokat használja és tárolja adatbázisában. A többi személyes adatot nem tárolja. (a hash kódból reális idő alatt nem fejthetőek vissz az adatok)
+Az aláírt pdf fájlt és csatolmányait a a kód előállítása, és a kezelt user adatok tárolása  után azonnal törli,
+
 
 #### cookie kezelés
 A működéshez egy darab un. "munkamenet cookie" használata szükséges, erről tájékoztatás jelenik meg és a felhasználónak ezt el kell fogadnia.
 
-## Brute force támadás elleni védekezés
+### Tesztelés
+```
+cd repoRoot
+./tools/test.sh
+```
 
-### user login brute force támadás
-Az applikáció adatoknál beállított limitet elérő hibás kisérlet után a user fiók blokkolása, amit az applikáció adminisztrátor tud feloldani.
+## Dokumentálás
+```
+cd repoRoot
+./tools/documentor.sh
+```
+A dokumentáció a "doc" könyvtárba kerül
 
-### oAuth access_token hívás brute force támadás
-Az azonos IP címről érkező 10 egymást követő hibás hívás után az IP cím blokkolásra kerül. Ezt az "ügyfélkapus-login" rendszer főadminisztrátora tudja feloldani.
+[documentation](https://uklogin.tk/doc/)
 
-### oAuth userinfo hívás brute force támadás
-Az azonos IP címről érkező 10 egymást követő hibás hívás után az IP cím blokkolásra kerül. Ezt az "ügyfélkapus-login" rendszer főadminisztrátora tudja feloldani.
+## kód minőség ellenörzés
+```
+cd repoRoot
+./tools/sonar.sh
+```
+Utolsó teszt eredménye:
 
-## SQL táblák
+[sonarcloud.io](https://sonarcloud.io/dashboard?id=utopszkij-uklogin)
 
-### "apps" tábla
-- ** id ** automatikusan képzett sorszám
-- ** name ** applikáció neve
-- ** domain ** applikációt futtató domain
-- ** client_id ** (automatikusan képzett véletlenszerű string)
-- ** client_secret ** (automatikusan képzett véletlenszerű string)
-- ** callback ** sikeres login utáni visszahívandó url
-- ** falseLoginLimit ** sikertelen user login limit
-- ** cssurl ** css file url (lehet üres is)
-- ** admin ** applikáció adminisztrátor username
-- ** pswHash **  applikáció adminisztrátor jelszó "hash"
-- ** email ** applikáció adminisztrátor email
-- ** falseAdminLoginLimit **  sikertelen admin login limit
-- ** errorCounter ** Hibás admin login kisérlet számláló
-- ** enabled ** admin login engedélyezett?
 
-### "users" tábla
+## Telepítés web szerverre
 
-- ** id ** automatikusan generált sorszám
-- ** client_id ** melyik applikációba regisztrált
-- ** user ** nick név
-- ** pswhash ** jelszó hash
-- ** emailHash ** ügyfélkapuban megadott email címének hash kódja
-- ** errorCounter ** hibás login kisérlet számláló
-- ** enabled ** login engedélyezett?
-- ** code ** automatikusan generált véletlenszerű egyedi string ( hex(id - random()) )
-- ** access_token ** automatikusan generált véletlenszerű, egyedi string ( hex(id - random()) )
-- ** created ** code + access_token létrehozás időpontja
+### Rendszer igény:
 
-A code és az access_token csak 1 percig van tárolva, ezután automatikusan törlődnek. Ugyancsak törlődnek  miután "fel lettek használva"  "userinfo" vagy "access_token" kérés kiszolgálására.
+- PHP 7.1+  shell_exec funkciónak engedélyezve kell lennie
+- MYSQL 5.7+
+- web server (.htaccess értelmezéssel)
+- https tanusitvány
+- php shell_exec -al hívhatóan  pdfsig, pdfdetach, pdftotext, pdfinfo parancsok (lásd: poppler-utils)
+- Létrehozandó egy MYSQL adatbázis: **uklogin** (utf8, magyar rendezéssel)
 
-### "hacker" tábla
+Ha facebbok és/vagy google bejelentkezési opciót is akarunk akkor ezt a wbhelyet  regsiztrálni kell OAuth2 kliensként az Fb/Google adminisztrátori felületein,és az ott kapott client_id és client_secret adatokat beirni a .config.php -ba (lásd controllers/fblogin.php és controllers/googlelogin.php). 
 
-- ** ip
-- ** errorCount
+Telepítendő  könyvtárak:
+- controllers
+- core
+- images
+- js
+- langs
+- log (legyen irható a web szerver számára!)
+- models
+- templates
+- vendor
+- views
+- work (legyen irható a web szerver számára!)
 
+Telepítendő fájlok
+- index.php
+- .config.php  (config.txt átnevezve és értelemszerüen javítva)
+- .htaccess (a htaccess.txt átnevezve)
+- example.php
+- readme.md
+
+Ahol ezt  külön nem jelöltük ott a fájlok, könyvtárak csak olvashatóak legyenek a web szerver számára.(oktális 640 jogosultság)
+
+**Telepítés, beüzemelés után, az első regisztrált user "sysadmin=1" jelölést kap, ez lesz az első rendszer adminisztrátor.**

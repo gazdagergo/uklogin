@@ -1,0 +1,150 @@
+
+issucontroller::form4
+*/var/www/html/uklogin/controllers/issu.php ("1*\
+2
+
+issu.php"K
+4
+*/var/www/html/uklogin/controllers/issu.php (
+implicit return*Ç
+14
+*/var/www/html/uklogin/controllers/issu.php ('ge
+4
+*/var/www/html/uklogin/controllers/issu.php (&
+%1*
+issucontroller*
+
+'issu'2getviewO
+M
+4
+*/var/www/html/uklogin/controllers/issu.php (&
+$view"__id*
+
+%1IG
+4
+*/var/www/html/uklogin/controllers/issu.php (
+$data"params^
+\
+4
+*/var/www/html/uklogin/controllers/issu.php (
+%2"params::__construct*	
+
+$dataFD
+4
+*/var/www/html/uklogin/controllers/issu.php (
+%3"$ArrayY
+W
+4
+*/var/www/html/uklogin/controllers/issu.php (
+
+$data"
+msgs"__id*
+
+%3`^
+4
+*/var/www/html/uklogin/controllers/issu.php (/
+%4*
+
+
+$request*	
+'title'2inputZ
+X
+4
+*/var/www/html/uklogin/controllers/issu.php (/
+
+$data"
+title"__id*
+
+%4_]
+4
+*/var/www/html/uklogin/controllers/issu.php (-
+%5*
+
+
+$request*
+
+'body'2inputY
+W
+4
+*/var/www/html/uklogin/controllers/issu.php (-
+
+$data"
+body"__id*
+
+%5a_
+4
+*/var/www/html/uklogin/controllers/issu.php (1
+%6*
+
+
+$request*
+
+'sender'2input[
+Y
+4
+*/var/www/html/uklogin/controllers/issu.php (1
+
+$data"
+sender"__id*
+
+%6`^
+4
+*/var/www/html/uklogin/controllers/issu.php (/
+%7*
+
+
+$request*	
+'email'2inputZ
+X
+4
+*/var/www/html/uklogin/controllers/issu.php (/
+
+$data"
+email"__id*
+
+%7qo
+4
+*/var/www/html/uklogin/controllers/issu.php (?
+%8*
+
+
+$request*
+'adminNick'*
+''2
+sessionget^
+\
+4
+*/var/www/html/uklogin/controllers/issu.php (?
+
+$data"
+	adminNick"__id*
+
+%8tr
+4
+*/var/www/html/uklogin/controllers/issu.php (E
+%9*
+
+
+$request*
+'access_token'*
+''2
+sessiongeta
+_
+4
+*/var/www/html/uklogin/controllers/issu.php (E
+
+$data"
+access_token"__id*
+
+%9[Y
+4
+*/var/www/html/uklogin/controllers/issu.php (
+%10*	
+
+$view*	
+
+$data2form*
+2:
+
+$requestB
+issucontroller

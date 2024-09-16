@@ -1,0 +1,151 @@
+18.04 LTS (64 bit) ubuntura
+===========================
+
+
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install nano
+sudo apt-get install mc
+
+
+LAMP telepítése
+---------------
+
+2020.05.20 -án a tasksel -es telepités nem ment, 
+	apt install lamp-server^   ment le, minden kérdésre alapértelmezett válasszal.
+	úgy, hogy elötte NEM VOLT apt update, upgrade !	utána futtatam ezeket.
+
+sudo apt install tasksel
+
+sudo tasksel install lamp-server
+
+sudo nano etc/apache2/mods-enabled/dir.conf -ben index.php előre helyezése 
+
+sudo service apache2 start
+
+SSL első telepítése
+-------------------
+(előtte már domaint kellet rá irányitani)
+
+sudo apt-get update
+sudo apt-get install software-properties-common
+sudo add-apt-repository universe
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt-get update
+sudo apt-get install certbot python-certbot-apache
+-- kérdez email cimet, domain nevet, adatkezelés elfogadást
+-- az /etc/letsescrypt -ben vannak a dolgai
+
+További domainekhez telepités:
+sudo certbot --apache -d yourdomain.com
+
+FTP szerver telepítése
+----------------------
+
+sudo apt-get install vsftpd
+sudo service vsftpd start  (az ftp klienssben sftp -t kell beállítani)
+--- /etc/vsftp.conf -ban vannak a dolgai
+
+phpmyadmin telepítése
+---------------------
+
+sudo apt install phpmyadmin php-mbstring php-gettext
+
+-- létrehoz egy phpmyadmin mysql usert és kéri ennek jelszavát.-- 
+
+.htaccess használat engedélyezése
+---------------------------------
+/etc/apache2/apache2.conf -ban:
+
+<Directory /var/www/>
+	Options Indexes FollowSymLinks
+	AllowOverride All
+	Require all granted
+</Directory>
+
+sudo service apache2 restart
+sudo service vsftpd restart
+
+uklogin afatbázis létrehozása phpmyadmin -al
+--------------------------------------------
+
+program feltöltése
+------------------
+(zip - unzip)
+htaccess.txt -> .htaccess
+config.txt --> .config.php
+
+konfigurálás
+------------
+.config.php javitása
+
+
+Sajnos a pdfsig jelenleg a 18.4 ubuntu-n nem müködik
+
+upgrade Ubunto 19.04 -re:
+==========================
+https://www.linuxbabe.com/ubuntu/upgrade-ubuntu-18-04-18-10-to-ubuntu-19-04
+
+sudo nano /etc/ssh/sshd_config 
+   file végére hozzáadni:
+	ClientAliveInterval 60
+	
+sudo systemctl restart ssh
+sudo apt update && sudo apt dist-upgrade
+sudo apt install update-manager-core
+sudo nano /etc/update-manager/release-upgrades
+     At the bottom of this file, change the value of Prompt from lts to normal.
+
+     Prompt=normal
+do-release-upgrade
+
+.......... több kérdés....hosszú folyamat....... a végén reboot -ot csinál
+
+verzió ellenörzés:
+
+lsb_release -a
+
+Ebben telepíthető a poppler-utils újabb verziója .....
+
+pdf kezelő eszközök
+-------------------
+
+install poppler-utils
+
+tüzfal beállítás
+----------------
+ufw status verbose
+ufw enable
+ufw allow 22               !--------- nagyon fontos ssh hozzáférés
+          20 FTP
+          21 FTP
+          22 FTP
+          25 Mail
+          53 DNS
+          80 http
+          143 imap
+          443 https
+          465 smtps
+          585 imaps
+          587 smtps
+          1022 ssh
+
+mail server telepités
+=====================
+
+https://www.linuxbabe.com/mail-server/ubuntu-18-04-iredmail-email-server
+
+
+
+Biztonságos szerver beállítási tanácsok:
+========================================
+
+apache biztonságos beállítási tippek:
+
+https://geekflare.com/apache-web-server-hardening-security/
+
+MYSQL szerver biztonságos beállítása:
+
+https://www.digitalocean.com/community/tutorials/how-to-secure-mysql-and-mariadb-databases-in-a-linux-vps
+
+    

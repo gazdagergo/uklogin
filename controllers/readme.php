@@ -1,18 +1,21 @@
 <?php
-class ReadmeController {
-	public function show($request) {
-      // echo frontpage
-	   $request->set('sessionid','0');
-		$request->set('lng','hu');
-		//$model = getModel('default');
-		$view = getView('readme');
-		$data = new stdClass(); //  $data = $model->getData(....);
-		$data->option = $request->input('option','default');
-		if ($request->sessionGet('user','') != '') {
-		    $data->user = $request->sessionGet('user','');
-		}
-		$view->display($data);
-		
+/**
+ * OpenId szolgáltatás magyarorszag.hu ügyfélkapu használatával
+ * @package uklogin
+ * @author Fogler Tibor
+ */
+
+/**
+* readme kezelő osztály
+*/
+class ReadmeController extends Controller {
+    
+	 /**
+	 * readme megjelenités
+	 * @param Request $request
+	 */
+    public function show(Request $request) {
+	    $this->docPage($request,  'readme');
 	}
 }
 ?>

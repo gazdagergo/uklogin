@@ -1,30 +1,1283 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <testsuites>
-  <testsuite name="tests" tests="23" assertions="23" errors="0" failures="0" skipped="0" time="0.489168">
-    <testsuite name="appregistModelTest" file="/var/www/html/uklogin/tests/appregist_model_Test.php" tests="23" assertions="23" errors="0" failures="0" skipped="0" time="0.489168">
-      <testcase name="test_start" class="appregistModelTest" classname="appregistModelTest" file="/var/www/html/uklogin/tests/appregist_model_Test.php" line="28" assertions="1" time="0.004363"/>
-      <testcase name="test_check_domain_empty" class="appregistModelTest" classname="appregistModelTest" file="/var/www/html/uklogin/tests/appregist_model_Test.php" line="35" assertions="1" time="0.001673"/>
-      <testcase name="test_check_domain_invalid" class="appregistModelTest" classname="appregistModelTest" file="/var/www/html/uklogin/tests/appregist_model_Test.php" line="50" assertions="1" time="0.002681"/>
-      <testcase name="test_check_daomain_exists" class="appregistModelTest" classname="appregistModelTest" file="/var/www/html/uklogin/tests/appregist_model_Test.php" line="65" assertions="1" time="0.001074"/>
-      <testcase name="test_check_name_empty" class="appregistModelTest" classname="appregistModelTest" file="/var/www/html/uklogin/tests/appregist_model_Test.php" line="80" assertions="1" time="0.000954"/>
-      <testcase name="test_check_callback_empty" class="appregistModelTest" classname="appregistModelTest" file="/var/www/html/uklogin/tests/appregist_model_Test.php" line="95" assertions="1" time="0.000969"/>
-      <testcase name="test_check_callback_invalid" class="appregistModelTest" classname="appregistModelTest" file="/var/www/html/uklogin/tests/appregist_model_Test.php" line="110" assertions="1" time="0.000935"/>
-      <testcase name="test_check_callback_not_in_domain" class="appregistModelTest" classname="appregistModelTest" file="/var/www/html/uklogin/tests/appregist_model_Test.php" line="125" assertions="1" time="0.000899"/>
-      <testcase name="test_check_css_invalid" class="appregistModelTest" classname="appregistModelTest" file="/var/www/html/uklogin/tests/appregist_model_Test.php" line="142" assertions="1" time="0.000953"/>
-      <testcase name="test_check_admin_empty" class="appregistModelTest" classname="appregistModelTest" file="/var/www/html/uklogin/tests/appregist_model_Test.php" line="157" assertions="1" time="0.000921"/>
-      <testcase name="test_check_psw_empty" class="appregistModelTest" classname="appregistModelTest" file="/var/www/html/uklogin/tests/appregist_model_Test.php" line="172" assertions="1" time="0.000981"/>
-      <testcase name="test_check_psw_invalid" class="appregistModelTest" classname="appregistModelTest" file="/var/www/html/uklogin/tests/appregist_model_Test.php" line="187" assertions="1" time="0.000942"/>
-      <testcase name="test_check_uklogin_html__not_exist" class="appregistModelTest" classname="appregistModelTest" file="/var/www/html/uklogin/tests/appregist_model_Test.php" line="202" assertions="1" time="0.106272"/>
-      <testcase name="test_check_dataProcess_not_accept" class="appregistModelTest" classname="appregistModelTest" file="/var/www/html/uklogin/tests/appregist_model_Test.php" line="217" assertions="1" time="0.040562"/>
-      <testcase name="test_check_cookieProcess_not_accept" class="appregistModelTest" classname="appregistModelTest" file="/var/www/html/uklogin/tests/appregist_model_Test.php" line="233" assertions="1" time="0.045708"/>
-      <testcase name="test_check_ok" class="appregistModelTest" classname="appregistModelTest" file="/var/www/html/uklogin/tests/appregist_model_Test.php" line="249" assertions="1" time="0.045235"/>
-      <testcase name="test_save_new_ok" class="appregistModelTest" classname="appregistModelTest" file="/var/www/html/uklogin/tests/appregist_model_Test.php" line="265" assertions="1" time="0.103064"/>
-      <testcase name="test_save_insert_notok" class="appregistModelTest" classname="appregistModelTest" file="/var/www/html/uklogin/tests/appregist_model_Test.php" line="285" assertions="1" time="0.001286"/>
-      <testcase name="test_save_update_ok" class="appregistModelTest" classname="appregistModelTest" file="/var/www/html/uklogin/tests/appregist_model_Test.php" line="303" assertions="1" time="0.097110"/>
-      <testcase name="test_save_update_notok" class="appregistModelTest" classname="appregistModelTest" file="/var/www/html/uklogin/tests/appregist_model_Test.php" line="322" assertions="1" time="0.000887"/>
-      <testcase name="test_remove_notfound" class="appregistModelTest" classname="appregistModelTest" file="/var/www/html/uklogin/tests/appregist_model_Test.php" line="340" assertions="1" time="0.000971"/>
-      <testcase name="test_remove_ok" class="appregistModelTest" classname="appregistModelTest" file="/var/www/html/uklogin/tests/appregist_model_Test.php" line="348" assertions="1" time="0.029500"/>
-      <testcase name="test_end" class="appregistModelTest" classname="appregistModelTest" file="/var/www/html/uklogin/tests/appregist_model_Test.php" line="356" assertions="1" time="0.001227"/>
+  <testsuite name="tests" tests="79" assertions="93" errors="0" failures="0" skipped="0" time="0.875351">
+    <testsuite name="adatkezelesControllerTest" file="/var/www/html/uklogin/tests/adatkezerles_controller_Test.php" tests="2" assertions="2" errors="0" failures="0" skipped="0" time="0.019827">
+      <testcase name="test_start" class="adatkezelesControllerTest" classname="adatkezelesControllerTest" file="/var/www/html/uklogin/tests/adatkezerles_controller_Test.php" line="27" assertions="1" time="0.004471"/>
+      <testcase name="test_show" class="adatkezelesControllerTest" classname="adatkezelesControllerTest" file="/var/www/html/uklogin/tests/adatkezerles_controller_Test.php" line="34" assertions="1" time="0.015356">
+        <system-out>        &lt;style type="text/css"&gt;
+        h1,h2,h3,h4,h5 {margin-top:15px;}
+        &lt;/style&gt;
+        &lt;body&gt;
+       				&lt;nav class="navbar navbar-expand-lg navbar-light bg-light"&gt;
+			  MAINMENU&amp;nbsp;
+			  &lt;div class="collapse navbar-collapse" id="navbarNav"&gt;
+			    &lt;ul class="navbar-nav mr-auto"&gt;
+			      &lt;li class="nav-item"&gt;
+			        &lt;a class="nav-link" target="_self" href="MYDOMAIN"&gt;
+			        	&lt;em class="fa fa-home"&gt;&lt;/em&gt;&amp;nbsp;HOME&lt;span class="sr-only"&gt;(current)&lt;/span&gt;&lt;/a&gt;
+			      &lt;/li&gt;
+			      &lt;li class="nav-item"&gt;
+			        &lt;a class="nav-link" target="_self" href="MYDOMAIN/opt/readme/show"&gt;
+			        	&lt;em class="fa fa-info"&gt;&lt;/em&gt;&amp;nbsp;READMY&lt;/a&gt;
+			      &lt;/li&gt;
+			      &lt;li class="nav-item"&gt;
+			        &lt;a class="nav-link" target="_self" href="MYDOMAIN/opt/appregist/add"&gt;
+			        	&lt;em class="fa fa-plus"&gt;&lt;/em&gt;&amp;nbsp;NEWAPP&lt;/a&gt;
+			      &lt;/li&gt;
+			      &lt;li class="nav-item"&gt;
+			        &lt;a class="nav-link" target="_self" href="MYDOMAIN/example.php"&gt;
+			        	&lt;em class="fa fa-compass"&gt;&lt;/em&gt;&amp;nbsp;EXAMPLE&lt;/a&gt;
+			      &lt;/li&gt;
+			      			    &lt;/ul&gt;
+			    &lt;ul class="navbar-nav"&gt;
+			          			      &lt;li class="nav-item"&gt;
+    			        &lt;a class="nav-link" target="ifrmOpenid"
+    			            onclick="$('#divOpenid').show(); $('#scope').hide(); true"
+    			            href="MYDOMAIN/openid/authorize/?redirect_uri=%2Fopt%2Fdefault%2Flogged%2F"&gt;
+    			        	&lt;em class="fa fa-sign-in"&gt;&lt;/em&gt;&amp;nbsp;LOGIN&lt;/a&gt;
+    			      &lt;/li&gt;
+			      			    &lt;/ul&gt;
+			  &lt;/div&gt;
+			  &lt;div class="clr"&gt;&lt;/div&gt;
+			  &lt;button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"&gt;
+			    &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+			  &lt;/button&gt;
+			&lt;/nav&gt;
+			&lt;p style="background-color:red; color:white"&gt;Ez a rendszer jelenleg ß teszt állapotban használható.&lt;/p&gt;
+				&lt;div style="padding:0px 5% 5% 5%; text-align:left"&gt;
+			&lt;div class="page-icon"&gt;	
+				&lt;em class="fa fa-book"&gt;&lt;/em&gt;
+			&lt;/div&gt;
+			&lt;h1&gt; ﻿ADATKEZELÉSI LEÍRÁS
+&lt;/h1&gt; 
+Verzió: V1.00  érvényes: 2020.06.01. -
+(csökkentett adattartalmú konfiguráció)
+&lt;br /&gt;
+Jelen adatvédelmi - adatkezelési leírás (továbbiakban: "Leírás") célja, hogy a
+&lt;br /&gt;
+&lt;strong&gt;Fogler Tibor Vilmos&lt;/strong&gt;
+&lt;br /&gt;
+1036 Budapest Pacsirtamező u 61 I/4
+tel: +36 30 210 6501
+email: tibor.fogler@gmail.com
+&lt;br /&gt;
+(továbbiakban: "Adatkezelő" vagy "Szolgáltató")
+&lt;br /&gt;
+&lt;strong&gt;uklogin.tk&lt;/strong&gt;  oldalon elérhető openid szolgáltatás (továbbiakban "Szolgáltatás") tárolt adatok kezelésével, felhasználásával, továbbításával, valamint az Adatkezelőnél való regisztrációval kapcsolatosan a legszélesebb körben tájékoztassa az érintetteket.
+&lt;br /&gt;
+&lt;h2&gt; 1. Fogalmak:
+&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;adatállomány: az egy nyilvántartó-rendszerben kezelt adatok összessége,
+&lt;/li&gt;&lt;li&gt;adatfeldolgozás: az adatkezelési műveletekhez kapcsolódó technikai feladatok elvégzése, függetlenül a műveletek végrehajtásához alkalmazott módszertől és eszköztől, valamint az alkalmazás helyétől,
+&lt;/li&gt;&lt;li&gt;adatfeldolgozó: az a természetes vagy jogi személy, illetve jogi személyiséggel nem rendelkező szervezet, aki vagy amely az adatkezelő megbízásából - beleértve a jogszabály rendelkezése alapján történő megbízást is - személyes adatok feldolgozását végzi,
+&lt;/li&gt;&lt;li&gt;adatkezelés: az alkalmazott eljárástól függetlenül a személyes adatokon végzett bármely művelet, vagy a műveletek összessége, így például gyűjtése, felvétele, rögzítése, rendszerezése, tárolása, megváltoztatása, felhasználása, továbbítása, nyilvánosságra hozatala, összehangolása vagy összekapcsolása, zárolása, törlése és megsemmisítése, valamint az adatok további felhasználásának megakadályozása. Adatkezelésnek számít a fénykép-, hang- vagy képfelvétel készítése, valamint a személy azonosítására alkalmas fizikai jellemzők (pl. ujj- vagy tenyérnyomat, DNS-minta, íriszkép) rögzítése is,
+&lt;/li&gt;&lt;li&gt;adatkezelő: az a természetes vagy jogi személy, illetve jogi személyiséggel nem rendelkező szervezet, aki, vagy amely a személyes adatok kezelésének célját meghatározza, az adatkezelésre (beleértve a felhasznált eszközt) vonatkozó döntéseket meghozza és végrehajtja, vagy az általa megbízott adatfeldolgozóval végrehajtatja;
+&lt;/li&gt;&lt;li&gt;adatmegsemmisítés: az adatok vagy az azokat tartalmazó adathordozó teljes fizikai megsemmisítése,
+&lt;/li&gt;&lt;li&gt;adattovábbítás: ha az adatot meghatározott harmadik személy számára hozzáférhetővé teszik,
+&lt;/li&gt;&lt;li&gt;adattörlés: az adatok felismerhetetlenné tétele oly módon, hogy a helyreállításuk többé nem lehetséges,
+&lt;/li&gt;&lt;li&gt;adatzárolás: az adatok továbbításának, megismerésének, nyilvánosságra hozatalának, átalakításának, megváltoztatásának, megsemmisítésének, törlésének, összekapcsolásának vagy összehangolásának és felhasználásának véglegesen vagy meghatározott időre történő lehetetlenné tétele,
+&lt;/li&gt;&lt;li&gt;harmadik személy: olyan természetes vagy jogi személy, illetve jogi személyiséggel nem rendelkező szervezet, amely vagy aki nem azonos az érintettel, az adatkezelővel vagy az adatfeldolgozóval.
+&lt;/li&gt;&lt;li&gt;hozzájárulás: az érintett kívánságának önkéntes és határozott kinyilvánítása, amely megfelelő tájékoztatáson alapul, és amellyel félreérthetetlen beleegyezését adja a rá vonatkozó személyes adatok - teljes körű vagy egyes műveletekre kiterjedő - kezeléséhez,
+&lt;/li&gt;&lt;li&gt;különleges adat: a faji eredetre, a nemzeti és etnikai kisebbséghez tartozásra, a politikai véleményre vagy pártállásra, a vallásos vagy más világnézeti meggyőződésre, az érdekképviseleti szervezeti tagságra, az egészségi állapotra, a kóros szenvedélyre, a szexuális életre vonatkozó adat, valamint a bűnügyi személyes adat,
+&lt;/li&gt;&lt;li&gt;nyilvánosságra hozatal: ha az adatot bárki számára hozzáférhetővé teszik,
+&lt;/li&gt;&lt;li&gt;regisztráció: a szolgáltatást igénybe vevő azonosításához szükséges és elégséges azonosító adatok megadása az adatkezelő részére
+&lt;/li&gt;&lt;li&gt;személyes adat: bármely meghatározott (azonosított vagy azonosítható) természetes személlyel (a továbbiakban: "Érintett") kapcsolatba hozható adat, az adatból levonható, az érintettre vonatkozó következtetés. A személyes adat az adatkezelés során mindaddig megőrzi e minőségét, amíg kapcsolata az érintettel helyreállítható. A személy különösen akkor tekinthető azonosíthatónak, ha őt - közvetlenül vagy közvetve - név, azonosító jel, illetőleg egy vagy több, fizikai, fiziológiai, mentális, gazdasági, kulturális vagy szociális azonosságára jellemző tényező alapján azonosítani lehet;
+&lt;/li&gt;&lt;li&gt;tiltakozás: az érintett nyilatkozata, amellyel személyes adatainak kezelését kifogásolja, és az adatkezelés megszüntetését, illetve a kezelt adatok törlését kéri
+&lt;/li&gt;&lt;/ul&gt; 
+&lt;h2&gt; 2. Adatkezelésre, adatfeldolgozásra vonatkozó szabályok:
+&lt;/h2&gt;Személyes adat akkor kezelhető, ha
+&lt;ul&gt;&lt;li&gt;ahhoz az érintett hozzájárul, vagy
+&lt;/li&gt;&lt;li&gt;azt törvény vagy - törvény felhatalmazása alapján, az abban meghatározott körben - helyi önkormányzat rendelete elrendeli.
+&lt;/li&gt;&lt;li&gt;Az érintett felhasználó regisztrációja során megadott adatait, mint a - szolgáltatást igénybe vevő azonosításához szükséges és elégséges azonosító adatokat a szolgáltató a 2001. évi CVIII. Tv. szerint, az információs társadalommal összefüggő szolgáltatás nyújtására irányuló szerződés létrehozása, tartalmának meghatározása, módosítása, teljesítésének figyelemmel kísérése, az abból származó ellenértékek számlázása, valamint az azzal kapcsolatos követelések érvényesítése céljából kezeli.
+&lt;/li&gt;&lt;li&gt;A megadott adatokat az adatkezelő a szolgáltatás üzemeltetése idejéig tárolja, kivéve ha azok törlését a felhasználó korábban kéri. (az adat törlés a honlapon a "profil" oldalon kezdeményezhető)
+&lt;/li&gt;&lt;/ul&gt;Különleges adatot az Adatkezelő nem kezel.
+&lt;ul&gt;&lt;li&gt;Törvény közérdekből - az adatok körének kifejezett megjelölésével - elrendelheti a személyes adat nyilvánosságra hozatalát. Minden egyéb esetben a nyilvánosságra hozatalhoz az érintett hozzájárulása, különleges adat esetében írásbeli hozzájárulása szükséges. Kétség esetén azt kell vélelmezni, hogy az érintett a hozzájárulását nem adta meg. Az érintett hozzájárulását megadottnak kell tekinteni az érintett közszereplése során általa közölt vagy a nyilvánosságra hozatal céljából általa átadott adatok tekintetében. Az érintett kérelmére indult eljárásban a szükséges adatainak kezeléséhez való hozzájárulását vélelmezni kell. Erre a tényre az érintett figyelmét fel kell hívni.
+&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;
+Jelen Szabályzat szempontjából adatfeldolgozó:
+&lt;br /&gt;
+&lt;strong&gt;LEBAKER Kft. &lt;/strong&gt;
+cweb.hu
+1165 Budapest, Bökényföldi u 101
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;ul&gt;&lt;li&gt;Az adatfeldolgozónak a személyes adatok feldolgozásával kapcsolatos jogait és kötelezettségeit az adatkezelő határozza meg. Az adatkezelési műveletekre vonatkozó utasítások jogszerűségéért az adatkezelő felel. Az adatfeldolgozó tevékenységi körén belül, illetőleg az adatkezelő által meghatározott keretek között felelős a személyes adatok feldolgozásáért, megváltoztatásáért, törléséért, továbbításáért és nyilvánosságra hozataláért. Az adatfeldolgozó tevékenységének ellátása során más adatfeldolgozót nem vehet igénybe. Az adatfeldolgozó az adatkezelést érintő érdemi döntést nem hozhat, a tudomására jutott személyes adatokat kizárólag az adatkezelő rendelkezései szerint dolgozhatja fel, saját céljára adatfeldolgozást nem végezhet, továbbá a személyes adatokat az adatkezelő rendelkezései szerint köteles tárolni és megőrizni.
+&lt;/li&gt;&lt;li&gt;Az adatkezelés célja: A szolgáltatás web oldalán a "leírás" menüpontban leírt szolgáltatás nyújtása.
+&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;
+&lt;h2&gt; 3. Kezelt adatok
+&lt;/h2&gt;&lt;br /&gt;
+3.1 Regisztrált felhasználók adatai
+&lt;br /&gt;
+&lt;ul&gt;&lt;li&gt;bejelentkezési név,
+&lt;/li&gt;&lt;li&gt;jelszó sha256 hash kódja,
+&lt;/li&gt;&lt;li&gt;gépileg képzett azonosító kód (regisztrálási sorszám)
+&lt;/li&gt;&lt;li&gt;gépileg képzett személy azonosító hash kód (születési névből, születési dátumból, anyja neve adatból képezve)
+&lt;/li&gt;&lt;li&gt;rendszer adminisztrátor (igen vagy nem).
+&lt;/li&gt;&lt;li&gt;adatok hitelesítettek? (igen vagy nem)
+&lt;/li&gt;&lt;li&gt;hitelesítési info (hitelesítő személy bejelentkezési neve vagy "ügyfélkapu", hitelesítés időpontja
+&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;
+3.2 Kliens alkalmazások adatai
+&lt;br /&gt;
+&lt;ul&gt;&lt;li&gt;megnevezés
+&lt;/li&gt;&lt;li&gt;domain
+&lt;/li&gt;&lt;li&gt;alapértelmezett visszahívási uri
+&lt;/li&gt;&lt;li&gt;alapértelmezett kért adatok
+&lt;/li&gt;&lt;li&gt;adatkezelési leírás uri
+&lt;/li&gt;&lt;li&gt;felhasználói adatok kért formátuma (JSON vagy JWE)
+&lt;/li&gt;&lt;li&gt;JWE kódoláshoz publikus kulcs
+&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;
+Az uklogin "személyes adatokat" és "különleges adatokat" tartósan nem tárol és nem kezel. (lásd 5.1 -et is!)
+&lt;br /&gt;
+Az igénybe vevő regisztrálásával hozzájárulását adja ahhoz, hogy a szolgáltatóval együttműködő más szolgáltatók (továbbiakban: harmadik fél) részére adatait a szolgáltató teljes egészében vagy részlegesen átadja. Az ilyen adat átadás előtt minden egyes esetben a program engedélyt kér a felhasználótól (tájékoztató szöveg a képernyőn és bekattintandó "checkbox", a képernyőn tételesen fel van sorolva milyen adatok lesznek átadva). 
+&lt;ul&gt;&lt;li&gt;A szolgáltató és az adatkezelő nem tárol és kezel semilyen információt azzal kapcsolatban, hogy milyen harmadik félnek a számára történt (a fentebb leírtak szerint a felhasználó által minden egyes esetben külön jóváhagyatott) adat átadás.
+&lt;/li&gt;&lt;li&gt;A szolgáltató és az adatkezelő semilyen felelőséget nem vállal azért, hogy a harmadik fél (kliens alkalmazás) az átadott adatokat milyen célra, milyen módon kezeli, felelősége kizárólag arra terjed ki, hogy a képernyőn felsorolt (a felhasználó által jóváhagyott) adatokat adja át,
+&lt;/li&gt;&lt;li&gt;Az adatkezelési jog megszűnése esetén a szolgáltató a szolgáltatást igénybe vevő adatait saját nyilvántartásából törli.
+&lt;/li&gt;&lt;li&gt;A szolgáltató biztosítja, hogy az igénybe vevő az információs társadalommal összefüggő szolgáltatás igénybevétele előtt és az igénybevétel során bármikor megismerhesse, hogy a szolgáltató mely adatkezelési célokból mely adatfajtákat kezel.
+&lt;/li&gt;&lt;li&gt;Amennyiben a törlést megelözően harmadik félnek történt adat átadás akkor a felhasználónak kell intézkednie, hogy szükség esetén a róla letárolt adatokat a harmadik fél is törölje (mivel erről a szolgáltató, adatkezelő nyilvántartást nem vezet).
+&lt;/li&gt;&lt;li&gt;A regisztráció csak akkor lehetséges, ha a felhasználó a képernyőn lévő "checkbox" bejelölésével,  elismeri, hogy a szolgáltató adatkezelési szabályait megismerte, és elfogadta, illetve a regisztrációja az adatkezeléshez való hozzájárulásnak minősül.
+&lt;/li&gt;&lt;li&gt;Az adatkezelő vállalja, hogy amennyiben bármilyen módon változtatna a személyes adatok kezelésére vonatkozó elvein és gyakorlatán, ezekről a változásokról előzetesen értesíti honlapjának látogatóit, hogy azok mindig pontosan és folyamatosan ismerjék az adatkezelő portáljának egész területén érvényes adatkezelési elveket és gyakorlatot. A személyes adatok kezeléséről és védelméről szóló jelen Szabályzat mindig a ténylegesen alkalmazott elveket és a valóságos gyakorlatot tükrözi.
+&lt;/li&gt;&lt;li&gt;Ha a személyes adatokat olyan módon szeretnénk felhasználni, hogy ez a felhasználási mód eltérne a személyes adatok gyűjtésekor meghirdetett elvektől és céloktól, akkor előzetesen e-mailen keresztül értesítjük az érintetteket, akiknek felajánljuk azt a lehetőséget, hogy eldönthessék, vállalják-e, azaz hozzájárulnak-e az új feltételek mentén is személyes adataik korábbiaktól eltérő módon történő kezeléséhez.
+&lt;/li&gt;&lt;li&gt;Nem minősülnek személyes adatnak azok az anonim információk, melyeket a személyes azonosíthatóság kizárásával gyűjtenek és természetes személlyel nem hozhatóak kapcsolatba, illetve azok a demográfiai adatok sem minősülnek személyes adatnak, melyeket úgy gyűjtenek, hogy nem kapcsolják hozzá azokat azonosítható személyek személyes adataihoz, s ezáltal nem állítható fel kapcsolat természetes személlyel.
+&lt;/li&gt;&lt;li&gt;Az érintettek által biztosított személyes, illetve egyéb adatokat nem egészítjük ki és nem kapcsoljuk össze más forrásból származó adatokkal, vagy információval. Amennyiben a jövőben különböző forrásokból származó adatok ilyenfajta összekapcsolására kerülne sor, ezt a tényt kizárólag a megfelelő tájékoztatást követően, előzetesen, az adott érintettől kapott hozzájárulás esetén tesszük meg.
+&lt;/li&gt;&lt;li&gt;Amennyiben az arra feljogosított hatóságok a jogszabályokban előírt módon kérik fel személyes adatok átadására a szolgáltatót, az adatkezelő - törvényi kötelezettségének eleget téve - átadja a kért és rendelkezésre álló információkat.
+&lt;/li&gt;&lt;li&gt;Amennyiben felhasználóink személyes adatokat bocsátanak a rendelkezésünkre, minden szükséges lépést megteszünk, hogy biztosítsuk ezeknek az adatoknak a biztonságát - mind a hálózati kommunikáció (tehát online adatkezelés) során, mind az adatok tárolása, őrzése (tehát offline adatkezelés) során.
+&lt;/li&gt;&lt;li&gt;A tárolt adatokhoz csak az illetékes munkaköröket betöltő személyek férhetnek hozzá.
+&lt;/li&gt;&lt;/ul&gt; 
+&lt;h2&gt; 4. Érintettek jogai:
+&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;Az érintett tájékoztatást kérhet személyes adatai kezeléséről, valamint kérheti személyes adatainak helyesbítését, illetve - a jogszabályban elrendelt adatkezelések kivételével - törlését. A tárolt adatok a szolgáltatás honlapján a "profil" oldalon tekinthetőek meg, itt van lehetőség a tárolt adatok módosítására, törlésére, és gépi adatfeldolgozásra alkalmas formában történő letöltésére is.
+&lt;/li&gt;&lt;li&gt;Az érintett kérelmére az adatkezelő tájékoztatást ad az általa kezelt, illetőleg az általa megbízott feldolgozó által feldolgozott adatairól, az adatkezelés céljáról, jogalapjáról, időtartamáról, az adatfeldolgozó nevéről, címéről (székhelyéről) és az adatkezeléssel összefüggő tevékenységéről, továbbá arról, hogy kik és milyen célból kapják vagy kapták meg az adatokat. Az adatkezelő köteles a kérelem benyújtásától számított legrövidebb idő alatt, legfeljebb azonban 30 napon belül írásban, közérthető formában megadni a tájékoztatást.
+&lt;/li&gt;&lt;li&gt;Az érintett tájékoztatását az adatkezelő csak akkor tagadhatja meg, ha azt törvény, az állam külső és belső biztonsága, így a honvédelem, a nemzetbiztonság, a bűnmegelőzés vagy bűnüldözés érdekében, továbbá állami vagy helyi önkormányzati pénzügyi érdekből, valamint az érintett vagy mások jogainak védelme érdekében korlátozza. Az adatkezelő köteles az érintettel a felvilágosítás megtagadásának indokát közölni. Az elutasított kérelmekről az adatkezelő az adatvédelmi biztost évente értesíti.
+&lt;/li&gt;&lt;li&gt;A valóságnak meg nem felelő adatot az adatkezelő helyesbíteni köteles.
+&lt;/li&gt;&lt;li&gt;A személyes adatot törölni kell, ha:
+&lt;/li&gt;&lt;li&gt;kezelése jogellenes,
+&lt;/li&gt;&lt;li&gt;az érintett kéri,
+&lt;/li&gt;&lt;li&gt;az hiányos vagy téves - és ez az állapot jogszerűen nem korrigálható -, feltéve, hogy a törlést törvény nem zárja ki,
+&lt;/li&gt;&lt;li&gt;az adatkezelés célja megszűnt, vagy az adatok tárolásának törvényben meghatározott határideje lejárt,
+&lt;/li&gt;&lt;li&gt;azt a bíróság vagy az adatvédelmi biztos elrendelte.
+&lt;/li&gt;&lt;li&gt;Amennyiben a törlést megelözően harmadik félnek történt adat átadás akkor a felhasználónak kell intézkednie, hogy szükség esetén a róla letárolt adatokat a harmadik fél is törölje.
+&lt;/li&gt;&lt;li&gt;A helyesbítésről és a törlésről az érintettet, értesíteni kell. Az értesítés mellőzhető, ha ez az adatkezelés céljára való tekintettel az érintett jogos érdekét nem sérti.
+&lt;/li&gt;&lt;li&gt;Az érintett tiltakozhat személyes adatának kezelése ellen, ha:
+&lt;/li&gt;&lt;li&gt;a személyes adatok kezelése (továbbítása) kizárólag az adatkezelő vagy az adatátvevő jogának vagy jogos érdekének érvényesítéséhez szükséges, kivéve, ha az adatkezelést törvény rendelte el,
+&lt;/li&gt;&lt;li&gt;a személyes adat felhasználása vagy továbbítása közvetlen üzletszerzés, közvélemény-kutatás vagy tudományos kutatás céljára történik,
+&lt;/li&gt;&lt;li&gt;a tiltakozás jogának gyakorlását egyébként törvény lehetővé teszi.
+&lt;/li&gt;&lt;li&gt;Az adatkezelő - az adatkezelés egyidejű felfüggesztésével - a tiltakozást köteles a kérelem benyújtásától számított legrövidebb időn belül, de legfeljebb 15 nap alatt megvizsgálni, és annak eredményéről a kérelmezőt írásban tájékoztatni. Amennyiben a tiltakozás indokolt, az adatkezelő köteles az adatkezelést - beleértve a további adatfelvételt és adattovábbítást is - megszüntetni, és az adatokat zárolni. Amennyiben az érintett az adatkezelőnek ezen döntésével nem ért egyet, az ellen - annak közlésétől számított 30 napon belül - bírósághoz fordulhat. Amennyiben a törlést megelözően harmadik félnek történt adat átadás akkor a felhasználónak kell intézkednie, hogy szükség esetén a róla letárolt adatokat a harmadik fél is törölje.
+&lt;/li&gt;&lt;li&gt;Az adatkezelő az érintett adatát nem törölheti, ha az adatkezelést törvény rendelte el. Az adat azonban nem továbbítható az adatátvevő részére, ha az adatkezelő egyetértett a tiltakozással, illetőleg a bíróság a tiltakozás jogosságát megállapította.
+&lt;/li&gt;&lt;li&gt;Az érintett a jogainak megsértése esetén az adatkezelő ellen bírósághoz fordulhat.
+&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;
+&lt;h2&gt; 5. Adatkezelési folyamatok
+&lt;/h2&gt;&lt;br /&gt;
+&lt;h3&gt; 5.1 Regisztrálás az ügyfélkaput használva
+&lt;/h3&gt;&lt;br /&gt;
+A felhasználó bejelentkezik a magyarorszag.hu rendszerbe (ehhez un “ügyfélkapu hozzáférés” szükséges, amit az okmány irodákban lehet kérni)
+https://magyarorszag.hu
+Ez az adatkezelés a magyarorszag.hu szerveren történik. Adatkezelési leírása: https://www.nyilvantarto.hu/ugyseged/Tajekoztato.xhtml
+&lt;br /&gt;
+Innen letölti az ott tárolt személyes adatait pdf fájl formájában
+https://www.nyilvantarto.hu/ugyseged/NyilvantartottSzemelyesAdatokLekerdezeseMegjelenitoPage.xhtml
+Ez az adatkezelés is a magyarorszag.hu szerveren történik. Adatkezelési leírása ott tekinthető meg.
+&lt;br /&gt;
+A letöltött pdf adattartalma:
+&lt;ul&gt;&lt;li&gt;jelenleg viselt teljes név
+&lt;/li&gt;&lt;li&gt;személyi azonosító (személyi szám)
+&lt;/li&gt;&lt;li&gt;születési dátum
+&lt;/li&gt;&lt;li&gt;neme
+&lt;/li&gt;&lt;li&gt;születési név
+&lt;/li&gt;&lt;li&gt;anyja neve
+&lt;/li&gt;&lt;li&gt;állampolgársága
+&lt;/li&gt;&lt;li&gt;születési hely
+&lt;/li&gt;&lt;li&gt;családi állapot
+&lt;/li&gt;&lt;li&gt;nyilvántartás jogcíme
+&lt;/li&gt;&lt;li&gt;adatait letiltotta (igen vagy nem)
+&lt;/li&gt;&lt;li&gt;állandó lakcím (postai irányítószám település utca házszám stb)
+&lt;/li&gt;&lt;li&gt;bejelentés dátuma
+&lt;/li&gt;&lt;li&gt;kijelentés dátuma
+&lt;/li&gt;&lt;li&gt;fiktívvé nyilvánítás dátuma
+&lt;/li&gt;&lt;li&gt;cím státusza
+&lt;/li&gt;&lt;li&gt;tartózkodási hely (ha eltér a lakcímtől)
+&lt;/li&gt;&lt;li&gt;személyazonosító igazolvány adatok (okmányazonosító, arckép van vagy nincs, érvényességi idő, érvényesség ténye, aláírás igen vagy nem)
+&lt;/li&gt;&lt;li&gt;személyi azonosítót és lakcímet igazoló hatósági igazolvány adatok (okmány azonosító, érvényesség ténye)
+&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;
+A user a letöltött pdf fájlt elektronikusan aláírja a kormányzat által ingyenesen biztosított elektronikus aláírási szolgáltatás segítségével
+https://szuf.magyarorszag.hu/szuf_avdh_feltoltes
+Ezt az adatfeldolgozát is az ugyfelkapu.hu rendszer végzi. Adatkezelési tájékoztatója ott tekinthető meg.
+&lt;br /&gt;
+Az aláírási folyamat során a pdf adattartalma kiegészül a következőkkel:
+&lt;ul&gt;&lt;li&gt;aláírás szolgáltató adatai
+&lt;/li&gt;&lt;li&gt;aláírás időpontja
+&lt;/li&gt;&lt;li&gt;az aláírást kezdeményező személy születési neve, jelenlegi viselt neve, anyja neve, születési dátuma.
+&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;
+A user az aláírt pdf fájlt feltölti az “uklogin” Openid szerverre.
+&lt;br /&gt;
+Itt az “uklogin” szerver a következő adatfeldolgozást végzi:
+&lt;ul&gt;&lt;li&gt;az aláírásban szereplő születési név, születési dátum és anyja neve adatból képez egy “sha256 hash” kódot (továbbiakban “idhash”),
+&lt;/li&gt;&lt;li&gt;kiemeli a pdf-ből a fentebb felsorolt “kezelt adatokat”.
+&lt;/li&gt;&lt;li&gt;a pdf -ben szereplő többi adatot nem kezeli, a feltöltött pdf -et a feldolgozás után (1-2 másodperc) azonnal törli.
+&lt;/li&gt;&lt;li&gt;ezután a user a képernyőn további kiegészítő adatokat ad meg magáról:
+&lt;/li&gt;&lt;/ul&gt;  nickname,  password,
+&lt;ul&gt;&lt;li&gt;elfogadja a képernyőn megjelenő link segítségével olvasható “uklogin rendszer adatkezelési tájékoztatója” -t.
+&lt;/li&gt;&lt;li&gt;ha mindez megtörtént akkor létrejön egy új user rekord. A rekordban az “idhash”, a fentebb felsorolt “kezelt user adatok” szerepelnek valamint a létrehozás dátuma.
+&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;
+&lt;h3&gt; 5.2 Bejelentkezés
+&lt;/h3&gt;A felhasználó a képernyőre beírja a bejeletkezési nevét és jelszavát.  A képernyőn megjelenik az uklogin program adatkezelési leírására mutató link. A felhasználónak egy checkbox bejelölésével hozzá kell járulnia az adatkezeléshez. A program ellenörzi a beírt adatok helyességét, és ha minden rendben van akkor a user sikeresen bejelentkezett. A begépelt jelszót a program nem tárolja.
+&lt;br /&gt;
+&lt;h3&gt; 5.3 Bejelentkezés Facebook fiókkal
+&lt;/h3&gt;Ezt a lehetőséget választva, a felhasználónak a facebook fiókjába kell bejelentkeznia. Az uklogin rendszer a facebook -ból kéri le a felhasználó adatait, a "nick" név ilyenkor a keresztnév és a regisztrálási sorszámból képződik (ez jelenik meg az uklogin rendszerben a felhasználó akcióinál a többiek számára) . A többi kezelt adat ilyenkor üres,
+&lt;br /&gt;
+&lt;h3&gt; 5.4 Bejelentkezés Google fiókkal
+&lt;/h3&gt;Ezt a lehetőséget választva, a felhasználónak a google fiókjába kell bejelentkeznia. Az uklogin rendszer a google-ból kéri le a felhasználó adatait, a "nick" név ilyenkor a keresztnév és a regisztrálási sorszámból képződik (ez jelenik meg az uklogin rendszerben a felhasználó akcióinál a többiek számára) . A többi kezelt adat ilyenkor üres,
+&lt;br /&gt;
+&lt;h3&gt; 5.5 Adat átadás kliens alkalmazásnak
+&lt;/h3&gt;A képernyőn megjelenik a kliens alkalmazás neve vagy URL címe, a kliens által kért felhasználói adatok tételes felsorolása, a kliens alkalmazás adatkezelési leírására mutató link. A felhasználónak egy "checkbox" bejelölésével hozzá kell járulnia az adat átadáshoz. Ha a hozzájárulás megtörtént akkor a felsorolt adatokat az uklogin átadja a kliens alkalmazásnak.
+A szolgáltató és az adatkezelő nem tárol és kezel semilyen információt azzal kapcsolatban, hogy milyen harmadik félnek a számára történt (a fentebb leírtak szerint a felhasználó által minden egyes esetben külön jóváhagyatott) adat átadás.
+A szolgáltató és az adatkezelő semilyen felelőséget nem vállal azért, hogy a harmadik fél (kliens alkalmazás) az átadott adatokat milyen célra, milyen módon kezeli, felelősége kizárólag arra terjed ki, hogy a képernyőn felsorolt (a felhasználó által jováhagyott) adatokat adja át,
+&lt;br /&gt;
+&lt;h3&gt; 5.6 Felhasználói adatok módosítása
+&lt;/h3&gt;Bejelentkezés után a felhasználók saját adatai közül módosíthatnak azokon amik nem az ügyfélkapuból lettek átvéve, azaz:
+&lt;ul&gt;&lt;li&gt;bejelentkezési név
+&lt;/li&gt;&lt;li&gt;jelszó
+&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;
+&lt;h3&gt; 5.7 Felhasználói adatok lekérése JSON formátumban
+&lt;/h3&gt;Bejelentkezés után a felhasználó kérheti saját adatait JSON formában. Az adatok a képernyőn jelennek meg onnan CTRL/C - CTRL/V módszerrel menthetőek, további feldolgozás céljára.
+&lt;br /&gt;
+&lt;h3&gt; 5.8 Felhasználói adatok törlése
+&lt;/h3&gt;Bejelentkezés után a felhasználó egy gomb nyomással kérheti a róla tárolt személyes adatok azaz a regisztrációjának a törlését. Törlés után természetesen a rendszerbe nem tud bejelentkezni.
+Mivel az uklogin rendszer nem vezet nyilvántartást az adat átadásokról, a program nem tud arról gondoskodni, hogy az adatok azokból a kliens alkalmazásokból is törlődjenek ahová korábban adat átadás történt. Szükség esetén erről a felhasználónak kell gondoskodnia!
+&lt;br /&gt;
+&lt;h3&gt; 5.9 Cookie (csoki) kezelés
+&lt;/h3&gt;&lt;br /&gt;
+Az uklogin OpenID szerver működése során egy darab un. “munkamenet” cookie-t tárol az Ön gépén. Ez technikai okokból feltétlenül szükséges a szolgáltatás működéséhez. Nyomkövető cokkie -t a nem használunk . Ez a munkamenet cookie csak azt az információt tartalmazza, hogy ön az uklogin OpenID szolgáltatást használja, nem tartalmaz arról információt melyik kliens app -be lépett be, és ott milyen tevékenységet végzett.
+&lt;br /&gt;
+&lt;h2&gt; 6. Adatkezeléssel kapcsolatban illetékes hatóság
+&lt;/h2&gt;Név: Nemzeti Adatvédelmi És Információszabadság Hatóság
+Elérhetőségek:
+https://naih.hu/uegyfelszolgalat,--kapcsolat.html
+Ügyfélszolgálati idő: kedd és csütörtök 9:00–12:00 és 13:00–16:00 óra között.
+Telefonszám:
++36 (30) 683-5969
++36 (30) 549-6838
+&lt;br /&gt;
+posta cím: 1530  Budapest, Pf.: 5.
+cím: 1125  Budapest, Szilágyi Erzsébet fasor 22/c
+Telefon: +36 (1) 391-1400
+Fax: +36 (1) 391-1410
+E-mail: ugyfelszolgalat@naih.hu
+URL: http://naih.hu
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;strong&gt;Fogler Tibor Vilmos sk.&lt;/strong&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;h2&gt; 7. Kapcsolódó dokumentumok:
+&lt;/h2&gt; 
+ &lt;a href="https://uklogin.tk/doc/adatkezelesiszabalyzat.rtf"&gt;Adatkezelési szabályzat&lt;/a&gt;
+&lt;br /&gt;
+ &lt;a href="https://uklogin.tk/doc/adatkezelesinyilvantartas.rtf"&gt;Adatkezelési nyilvántartás&lt;/a&gt;
+&lt;br /&gt;
+ &lt;a href="https://www.gdpr.info.hu/gdpr-rendelet-szovege"&gt;GDPR rendelet&lt;/a&gt;
+ 
+&lt;br /&gt;
+ &lt;a href="https://net.jogtar.hu/jogszabaly?docid=A1100112.TV"&gt;2011. évi CXII. törvény az információs önrendelkezési jogról és az információszabadságról&lt;/a&gt;
+ 
+ 
+&lt;br /&gt;
+       	&lt;/div&gt;
+       	      	&lt;div id="footer"&gt;
+      	&lt;p&gt;
+			&lt;a href="MYDOMAIN/opt/impresszum/show" target="_self"&gt;
+				&lt;em class="fa fa-pencil"&gt;&lt;/em&gt;&amp;nbsp;IMPRESSUM&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+			&lt;a href="MYDOMAIN/opt/adatkezeles/show" target="_self"&gt;
+				&lt;em class="fa fa-lock"&gt;&lt;/em&gt;&amp;nbsp;DATAPROCESS&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+			&lt;a href="http://www.gnu.hu/gpl.html" target="_new"&gt;
+				&lt;em class="fa fa-copyright"&gt;&lt;/em&gt;&amp;nbsp;LICENCE: GNU/GPL&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+			&lt;a href="https://github.com/utopszkij/uklogin" target="_self"&gt;
+				&lt;em class="fa fa-github"&gt;&lt;/em&gt;&amp;nbsp;SOURCE&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+			&lt;a href="/opt/issu/form" target="_self"&gt;
+				&lt;em class="fa fa-bug"&gt;&lt;/em&gt;&amp;nbsp;BUGMSG&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+      	&lt;/p&gt;
+		&lt;p&gt;SWRESOURCE:
+				&lt;a href="https://www.php.net/manual/en/index.php" target="_self"&gt;php&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://fontawesome.com/icons?d=gallery" target="_self"&gt;fontAwesome&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://www.w3schools.com/css/" target="_self"&gt;css&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://getbootstrap.com/" target="_self"&gt;bootstrap&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://jquery.com/" target="_self"&gt;Jquery&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://angularjs.org/" target="_self"&gt;AngularJs&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://www.fpdf.org" target="_self"&gt;fpdf&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://github.com/smalot/pdfparser" target="_self"&gt;smalot&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://github.com/tan-tan-kanarek/github-php-client"&gt;
+					tan-tan-kanarek_github_kliens
+				&lt;/a&gt;
+		&lt;/p&gt;
+		&lt;p&gt;Teszteléshez: phpunit&amp;nbsp;mocha&amp;nbsp;sonar-cloud&amp;nbsp;&lt;/p&gt;
+		&lt;p&gt;SWFORKINFO&amp;nbsp;
+	    	&lt;a href="https://gitlab.com/mark.szabo-simon/elovalaszto-app?fbclid=IwAR2X4RlNDA4vHw5-4ABkDCzzuifNpE5-u9T7j1X-wuubag4ZY0fSvnifvMA"&gt;lásd itt&lt;/a&gt;&lt;/p&gt;
+		&lt;/div&gt;
+               	&lt;/body&gt;
+       	&lt;/html&gt;
+        </system-out>
+      </testcase>
+    </testsuite>
+    <testsuite name="adomanyControllerTest" file="/var/www/html/uklogin/tests/adomany_controller_Test.php" tests="2" assertions="2" errors="0" failures="0" skipped="0" time="0.001714">
+      <testcase name="test_start" class="adomanyControllerTest" classname="adomanyControllerTest" file="/var/www/html/uklogin/tests/adomany_controller_Test.php" line="28" assertions="1" time="0.001032"/>
+      <testcase name="test_show" class="adomanyControllerTest" classname="adomanyControllerTest" file="/var/www/html/uklogin/tests/adomany_controller_Test.php" line="35" assertions="1" time="0.000682">
+        <system-out>	
+        &lt;body ng-app="app"&gt;
+          			&lt;nav class="navbar navbar-expand-lg navbar-light bg-light"&gt;
+			  MAINMENU&amp;nbsp;
+			  &lt;div class="collapse navbar-collapse" id="navbarNav"&gt;
+			    &lt;ul class="navbar-nav mr-auto"&gt;
+			      &lt;li class="nav-item"&gt;
+			        &lt;a class="nav-link" target="_self" href="MYDOMAIN"&gt;
+			        	&lt;em class="fa fa-home"&gt;&lt;/em&gt;&amp;nbsp;HOME&lt;span class="sr-only"&gt;(current)&lt;/span&gt;&lt;/a&gt;
+			      &lt;/li&gt;
+			      &lt;li class="nav-item"&gt;
+			        &lt;a class="nav-link" target="_self" href="MYDOMAIN/opt/readme/show"&gt;
+			        	&lt;em class="fa fa-info"&gt;&lt;/em&gt;&amp;nbsp;READMY&lt;/a&gt;
+			      &lt;/li&gt;
+			      &lt;li class="nav-item"&gt;
+			        &lt;a class="nav-link" target="_self" href="MYDOMAIN/opt/appregist/add"&gt;
+			        	&lt;em class="fa fa-plus"&gt;&lt;/em&gt;&amp;nbsp;NEWAPP&lt;/a&gt;
+			      &lt;/li&gt;
+			      &lt;li class="nav-item"&gt;
+			        &lt;a class="nav-link" target="_self" href="MYDOMAIN/example.php"&gt;
+			        	&lt;em class="fa fa-compass"&gt;&lt;/em&gt;&amp;nbsp;EXAMPLE&lt;/a&gt;
+			      &lt;/li&gt;
+			      			    &lt;/ul&gt;
+			    &lt;ul class="navbar-nav"&gt;
+			          			      &lt;li class="nav-item"&gt;
+    			        &lt;a class="nav-link" target="ifrmOpenid"
+    			            onclick="$('#divOpenid').show(); $('#scope').hide(); true"
+    			            href="MYDOMAIN/openid/authorize/?redirect_uri=%2Fopt%2Fdefault%2Flogged%2F"&gt;
+    			        	&lt;em class="fa fa-sign-in"&gt;&lt;/em&gt;&amp;nbsp;LOGIN&lt;/a&gt;
+    			      &lt;/li&gt;
+			      			    &lt;/ul&gt;
+			  &lt;/div&gt;
+			  &lt;div class="clr"&gt;&lt;/div&gt;
+			  &lt;button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"&gt;
+			    &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+			  &lt;/button&gt;
+			&lt;/nav&gt;
+			&lt;p style="background-color:red; color:white"&gt;Ez a rendszer jelenleg ß teszt állapotban használható.&lt;/p&gt;
+		          &lt;div ng-controller="ctrl" id="scope" style="display:block; padding:20px;"&gt;
+            &lt;h2&gt;Adományozás&lt;/h2&gt;
+          	&lt;h3&gt;Tájékoztatás&lt;/h3&gt;
+          	&lt;p&gt;A szoftver teljes egészében önkéntes munkával, grátisz lett kifejlesztve.
+          	A rendszergazdai munka is ilyen formában van megoldva. Viszont a működéshez szükséges 
+          	VPS szerver pénzbe kerül. Jelenleg a Forpsi-cloud small szervert,ingyenes domaint 
+          	és ingyenes https tanusítványt használunk.
+          	Az adományokat kizárólag a szerver bérlés finanszirozására használjuk fel.
+          	Ha komolyabb érdeklődés lesz a rendszer használatára akkor domain név és minősített https
+          	tanusitvány beszerzése és fentartása is szükséges lehet.&lt;/p&gt;
+          	&lt;p&gt;Minden adományt - akár 1000 Ft -ot is - hálásan köszönünk. Az adományok beérkezéséről és
+          	felhasználásáról lentebb részletes elszámolást teszünk közzé.&lt;/p&gt;
+          	&lt;p&gt;Ha azt kivánja, hogy neve vagy szervezete szerepeljen az elszámolásban akkor azt az utalás
+          	közleményében jelezze! Ha a közleményben erről nem rendelkezik az adományt névtelenül
+          	szerepeltetjük az elszámolásban.&lt;/p&gt;
+          	
+          	&lt;p&gt;Bankszámla: 11600006-00000000-23190212&lt;/p&gt;
+          	&lt;p&gt;IBAN: HU75 1160 0006 0000 0000 2319 0212&lt;/p&gt;
+          	
+          	&lt;p&gt;Ethereum tárca: 0xb7233a1474eb3f0359b01A83e57C636DE78C09Da&lt;/p&gt;
+          	
+          	
+          	&lt;iframe style="width:600px; height:600px" title="elszamolas"
+          	 src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRjHIFVnLDw03ykdEEr72iIot5ONW_8rqkebk1Yz1vM0y-jr6p50SwNkVKrYFkH58YrVwseJf3qfl3t/pubhtml?gid=0&amp;amp;single=true&amp;amp;widget=true&amp;amp;headers=false"&gt;&lt;/iframe&gt;
+          	
+          	&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+          	&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+          	&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+          	&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+          	&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+          	&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+          	&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+          	&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+          	&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+          	&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+          	&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+          	&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+          	&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+          	&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+          	&lt;/div&gt;&lt;!-- #scope --&gt;
+		        	&lt;div id="footer"&gt;
+      	&lt;p&gt;
+			&lt;a href="MYDOMAIN/opt/impresszum/show" target="_self"&gt;
+				&lt;em class="fa fa-pencil"&gt;&lt;/em&gt;&amp;nbsp;IMPRESSUM&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+			&lt;a href="MYDOMAIN/opt/adatkezeles/show" target="_self"&gt;
+				&lt;em class="fa fa-lock"&gt;&lt;/em&gt;&amp;nbsp;DATAPROCESS&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+			&lt;a href="http://www.gnu.hu/gpl.html" target="_new"&gt;
+				&lt;em class="fa fa-copyright"&gt;&lt;/em&gt;&amp;nbsp;LICENCE: GNU/GPL&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+			&lt;a href="https://github.com/utopszkij/uklogin" target="_self"&gt;
+				&lt;em class="fa fa-github"&gt;&lt;/em&gt;&amp;nbsp;SOURCE&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+			&lt;a href="/opt/issu/form" target="_self"&gt;
+				&lt;em class="fa fa-bug"&gt;&lt;/em&gt;&amp;nbsp;BUGMSG&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+      	&lt;/p&gt;
+		&lt;p&gt;SWRESOURCE:
+				&lt;a href="https://www.php.net/manual/en/index.php" target="_self"&gt;php&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://fontawesome.com/icons?d=gallery" target="_self"&gt;fontAwesome&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://www.w3schools.com/css/" target="_self"&gt;css&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://getbootstrap.com/" target="_self"&gt;bootstrap&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://jquery.com/" target="_self"&gt;Jquery&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://angularjs.org/" target="_self"&gt;AngularJs&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://www.fpdf.org" target="_self"&gt;fpdf&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://github.com/smalot/pdfparser" target="_self"&gt;smalot&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://github.com/tan-tan-kanarek/github-php-client"&gt;
+					tan-tan-kanarek_github_kliens
+				&lt;/a&gt;
+		&lt;/p&gt;
+		&lt;p&gt;Teszteléshez: phpunit&amp;nbsp;mocha&amp;nbsp;sonar-cloud&amp;nbsp;&lt;/p&gt;
+		&lt;p&gt;SWFORKINFO&amp;nbsp;
+	    	&lt;a href="https://gitlab.com/mark.szabo-simon/elovalaszto-app?fbclid=IwAR2X4RlNDA4vHw5-4ABkDCzzuifNpE5-u9T7j1X-wuubag4ZY0fSvnifvMA"&gt;lásd itt&lt;/a&gt;&lt;/p&gt;
+		&lt;/div&gt;
+                &lt;/body&gt;
+        &lt;/html&gt;
+        </system-out>
+      </testcase>
+    </testsuite>
+    <testsuite name="appregistControllerTest" file="/var/www/html/uklogin/tests/appregist_controller_Test.php" tests="12" assertions="12" errors="0" failures="0" skipped="0" time="0.203207">
+      <testcase name="test_start" class="appregistControllerTest" classname="appregistControllerTest" file="/var/www/html/uklogin/tests/appregist_controller_Test.php" line="28" assertions="1" time="0.000812"/>
+      <testcase name="test_save_domainEmpty" class="appregistControllerTest" classname="appregistControllerTest" file="/var/www/html/uklogin/tests/appregist_controller_Test.php" line="35" assertions="1" time="0.004972"/>
+      <testcase name="test_save_insert_ok" class="appregistControllerTest" classname="appregistControllerTest" file="/var/www/html/uklogin/tests/appregist_controller_Test.php" line="52" assertions="1" time="0.064255"/>
+      <testcase name="test_save_update_ok" class="appregistControllerTest" classname="appregistControllerTest" file="/var/www/html/uklogin/tests/appregist_controller_Test.php" line="69" assertions="1" time="0.038480"/>
+      <testcase name="test_adminform_found" class="appregistControllerTest" classname="appregistControllerTest" file="/var/www/html/uklogin/tests/appregist_controller_Test.php" line="90" assertions="1" time="0.005798"/>
+      <testcase name="test_adminform_noneInApps" class="appregistControllerTest" classname="appregistControllerTest" file="/var/www/html/uklogin/tests/appregist_controller_Test.php" line="97" assertions="1" time="0.003000"/>
+      <testcase name="test_adminform_manyApps" class="appregistControllerTest" classname="appregistControllerTest" file="/var/www/html/uklogin/tests/appregist_controller_Test.php" line="105" assertions="1" time="0.003324"/>
+      <testcase name="test_adminform_adminNotLogged" class="appregistControllerTest" classname="appregistControllerTest" file="/var/www/html/uklogin/tests/appregist_controller_Test.php" line="118" assertions="1" time="0.003317"/>
+      <testcase name="test_appremove_OK" class="appregistControllerTest" classname="appregistControllerTest" file="/var/www/html/uklogin/tests/appregist_controller_Test.php" line="125" assertions="1" time="0.035121"/>
+      <testcase name="test_appremove_NOTFOUND" class="appregistControllerTest" classname="appregistControllerTest" file="/var/www/html/uklogin/tests/appregist_controller_Test.php" line="140" assertions="1" time="0.006531"/>
+      <testcase name="test_adminform_notfound" class="appregistControllerTest" classname="appregistControllerTest" file="/var/www/html/uklogin/tests/appregist_controller_Test.php" line="150" assertions="1" time="0.002607"/>
+      <testcase name="test_end" class="appregistControllerTest" classname="appregistControllerTest" file="/var/www/html/uklogin/tests/appregist_controller_Test.php" line="158" assertions="1" time="0.034990"/>
+    </testsuite>
+    <testsuite name="defaultControllerTest" file="/var/www/html/uklogin/tests/default_controller_Test.php" tests="4" assertions="4" errors="0" failures="0" skipped="0" time="0.006562">
+      <testcase name="test_start" class="defaultControllerTest" classname="defaultControllerTest" file="/var/www/html/uklogin/tests/default_controller_Test.php" line="28" assertions="1" time="0.001945"/>
+      <testcase name="test_logged" class="defaultControllerTest" classname="defaultControllerTest" file="/var/www/html/uklogin/tests/default_controller_Test.php" line="35" assertions="1" time="0.001489">
+        <system-out>        &lt;script type="text/javascript"&gt;
+        	window.parent.document.location = "";
+        &lt;/script&gt;
+        </system-out>
+      </testcase>
+      <testcase name="test_logout" class="defaultControllerTest" classname="defaultControllerTest" file="/var/www/html/uklogin/tests/default_controller_Test.php" line="42" assertions="1" time="0.001822"/>
+      <testcase name="test_default" class="defaultControllerTest" classname="defaultControllerTest" file="/var/www/html/uklogin/tests/default_controller_Test.php" line="49" assertions="1" time="0.001306">
+        <system-out>	
+        &lt;body ng-app="app" style="height:2000px"&gt;
+         			&lt;nav class="navbar navbar-expand-lg navbar-light bg-light"&gt;
+			  MAINMENU&amp;nbsp;
+			  &lt;div class="collapse navbar-collapse" id="navbarNav"&gt;
+			    &lt;ul class="navbar-nav mr-auto"&gt;
+			      &lt;li class="nav-item"&gt;
+			        &lt;a class="nav-link" target="_self" href="MYDOMAIN"&gt;
+			        	&lt;em class="fa fa-home"&gt;&lt;/em&gt;&amp;nbsp;HOME&lt;span class="sr-only"&gt;(current)&lt;/span&gt;&lt;/a&gt;
+			      &lt;/li&gt;
+			      &lt;li class="nav-item"&gt;
+			        &lt;a class="nav-link" target="_self" href="MYDOMAIN/opt/readme/show"&gt;
+			        	&lt;em class="fa fa-info"&gt;&lt;/em&gt;&amp;nbsp;READMY&lt;/a&gt;
+			      &lt;/li&gt;
+			      &lt;li class="nav-item"&gt;
+			        &lt;a class="nav-link" target="_self" href="MYDOMAIN/opt/appregist/add"&gt;
+			        	&lt;em class="fa fa-plus"&gt;&lt;/em&gt;&amp;nbsp;NEWAPP&lt;/a&gt;
+			      &lt;/li&gt;
+			      &lt;li class="nav-item"&gt;
+			        &lt;a class="nav-link" target="_self" href="MYDOMAIN/example.php"&gt;
+			        	&lt;em class="fa fa-compass"&gt;&lt;/em&gt;&amp;nbsp;EXAMPLE&lt;/a&gt;
+			      &lt;/li&gt;
+			      			    &lt;/ul&gt;
+			    &lt;ul class="navbar-nav"&gt;
+			          			      &lt;li class="nav-item"&gt;
+    			        &lt;a class="nav-link" target="ifrmOpenid"
+    			            onclick="$('#divOpenid').show(); $('#scope').hide(); true"
+    			            href="MYDOMAIN/openid/authorize/?redirect_uri=%2Fopt%2Fdefault%2Flogged%2F"&gt;
+    			        	&lt;em class="fa fa-sign-in"&gt;&lt;/em&gt;&amp;nbsp;LOGIN&lt;/a&gt;
+    			      &lt;/li&gt;
+			      			    &lt;/ul&gt;
+			  &lt;/div&gt;
+			  &lt;div class="clr"&gt;&lt;/div&gt;
+			  &lt;button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"&gt;
+			    &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+			  &lt;/button&gt;
+			&lt;/nav&gt;
+			&lt;p style="background-color:red; color:white"&gt;Ez a rendszer jelenleg ß teszt állapotban használható.&lt;/p&gt;
+				 &lt;div id="divOpenid" style="display:none;"&gt;
+			&lt;iframe name="ifrmOpenid" src="" style="border-style:none; width:100%; height:1000px" title="openid"&gt;&lt;/iframe&gt;
+		 &lt;/div&gt;     
+         &lt;div ng-controller="ctrl" id="scope" style="display:none;"&gt;
+			&lt;div id="carouselExampleControls" class="carousel slide" data-ride="carousel"&gt;
+			  &lt;div class="carousel-inner"&gt;
+			    &lt;div class="carousel-item active"&gt;
+			      &lt;img class="d-block w-100" src="./templates/default/cover_1.jpg" alt="First slide"&gt;
+			      &lt;div class="buttons"&gt;
+			      	&lt;a href="/opt/appregist/add" target="_self"&gt;
+			      		&lt;em class="fa fa-plus-circle"&gt;&lt;/em&gt;&amp;nbsp;NEWAPP&lt;/a&gt;&amp;nbsp;
+			      	&lt;a href="/opt/readme/show" target="_self"&gt;
+			      		&lt;em class="fa fa-info-circle"&gt;&lt;/em&gt;&amp;nbsp;DESC&lt;/a&gt;
+			      &lt;/div&gt;
+			       &lt;div class="carousel-caption d-none d-md-block"&gt;
+				   	&lt;h5&gt;APPTITLE&lt;/h5&gt;
+			   	 	&lt;p&gt;APPINFO&lt;/p&gt;
+				   &lt;/div&gt;
+			    &lt;/div&gt;
+			    &lt;div class="carousel-item"&gt;
+			      &lt;img class="d-block w-100" src="./templates/default/cover_2.jpg" alt="Second slide"&gt;
+			        &lt;div class="buttons"&gt;
+			      	  &lt;a href="/opt/appregist/add" target="_self"&gt;
+			      	  	&lt;em class="fa fa-plus-circle"&gt;&lt;/em&gt;&amp;nbsp;NEWAPP&lt;/a&gt;&amp;nbsp;
+			      	  &lt;a href="/opt/readme/show" target="_self"&gt;
+			      	  	&lt;em class="fa fa-info-circle"&gt;&lt;/em&gt;&amp;nbsp;DESC&lt;/a&gt;
+			        &lt;/div&gt;
+			       &lt;div class="carousel-caption d-none d-md-block"&gt;
+				   	&lt;h5&gt;APPTITLE&lt;/h5&gt;
+			   	 	&lt;p&gt;APPINFO&lt;/p&gt;
+				   &lt;/div&gt;
+			    &lt;/div&gt;
+			    &lt;div class="carousel-item"&gt;
+			      &lt;img class="d-block w-100" src="./templates/default/cover_4.jpg" alt="Third slide"&gt;
+			        &lt;div class="buttons"&gt;
+			      	  &lt;a href="/opt/appregist/add" target="_self"&gt;
+			      	  	&lt;em class="fa fa-plus-circle"&gt;&lt;/em&gt;&amp;nbsp;NEWAPP&lt;/a&gt;&amp;nbsp;
+			      	  &lt;a href="/opt/readme/show" target="_self"&gt;
+			      	  	&lt;em class="fa fa-info-circle"&gt;&lt;/em&gt;&amp;nbsp;DESC&lt;/a&gt;
+			        &lt;/div&gt;
+			       &lt;div class="carousel-caption d-none d-md-block"&gt;
+				   	&lt;h5&gt;APPTITLE&lt;/h5&gt;
+			   	 	&lt;p&gt;APPINFO&lt;/p&gt;
+				   &lt;/div&gt;
+			    &lt;/div&gt;
+			    
+			    &lt;div class="carousel-item"&gt;
+			      &lt;img class="d-block w-100" src="./templates/default/logo.jpg" alt="Foorth slide"&gt;
+			        &lt;div class="buttons"&gt;
+			      	  &lt;a href="/opt/appregist/add" target="_self"&gt;
+			      	  	&lt;em class="fa fa-plus-circle"&gt;&lt;/em&gt;&amp;nbsp;NEWAPP&lt;/a&gt;&amp;nbsp;
+			      	  &lt;a href="/opt/readme/show" target="_self"&gt;
+			      	  	&lt;em class="fa fa-info-circle"&gt;&lt;/em&gt;&amp;nbsp;DESC&lt;/a&gt;
+			        &lt;/div&gt;
+			       &lt;div class="carousel-caption d-none d-md-block"&gt;
+				   	&lt;h5&gt;APPTITLE&lt;/h5&gt;
+			   	 	&lt;p&gt;APPINFO&lt;/p&gt;
+				   &lt;/div&gt;
+			    &lt;/div&gt;
+			    
+			  &lt;/div&gt;
+			  
+			  &lt;a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"&gt;
+			    &lt;span class="carousel-control-prev-icon" aria-hidden="true"&gt;&lt;/span&gt;
+			    &lt;span class="sr-only"&gt;PRIORElöző&lt;/span&gt;
+			  &lt;/a&gt;
+			  &lt;a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next"&gt;
+			    &lt;span class="carousel-control-next-icon" aria-hidden="true"&gt;&lt;/span&gt;
+			    &lt;span class="sr-only"&gt;NEXT&lt;/span&gt;
+			  &lt;/a&gt;
+			&lt;/div&gt;&lt;!-- carousel --&gt;   
+			&lt;div class="counters"&gt;
+				&lt;div class="appCount"&gt;
+					&lt;em class="fa fa-cog"&gt;&lt;/em&gt;&lt;br /&gt;
+					Regisztrált applikációk száma:
+					&lt;var&gt;0&lt;/var&gt;
+				&lt;/div&gt;
+				&lt;div class="userCount"&gt;
+					&lt;em class="fa fa-user"&gt;&lt;/em&gt;&lt;br /&gt;
+					Regisztrált felhasználói fiókok száma:
+					&lt;var&gt;0&lt;/var&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;  
+			&lt;div class="info"&gt;
+  				&lt;p&gt;
+  				Ez egy minden párttól, szervezettől független civil kezdeményezés. Teljes egészében magán emberek
+  				adományaiból működik. A rendszert üzemeltető szerver jelenleg 2019.szeptember 31. -ig van kiifizetve.
+  				Amennyiben módja van rá, kérjük támogassa a rendszer működését.
+  				&lt;/p&gt;
+  				&lt;p&gt;
+  				  &lt;a href="/opt/adomany/show" 
+  				     style="background-color:blue; color:white; padding:10px; border-radius:5px;"&gt;
+  					Támogatás
+  				  &lt;/a&gt;
+  				&lt;/p&gt;
+  			&lt;/div&gt;
+			   
+        	          &lt;/div&gt;&lt;!-- #scope --&gt;
+		        	&lt;div id="footer"&gt;
+      	&lt;p&gt;
+			&lt;a href="MYDOMAIN/opt/impresszum/show" target="_self"&gt;
+				&lt;em class="fa fa-pencil"&gt;&lt;/em&gt;&amp;nbsp;IMPRESSUM&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+			&lt;a href="MYDOMAIN/opt/adatkezeles/show" target="_self"&gt;
+				&lt;em class="fa fa-lock"&gt;&lt;/em&gt;&amp;nbsp;DATAPROCESS&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+			&lt;a href="http://www.gnu.hu/gpl.html" target="_new"&gt;
+				&lt;em class="fa fa-copyright"&gt;&lt;/em&gt;&amp;nbsp;LICENCE: GNU/GPL&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+			&lt;a href="https://github.com/utopszkij/uklogin" target="_self"&gt;
+				&lt;em class="fa fa-github"&gt;&lt;/em&gt;&amp;nbsp;SOURCE&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+			&lt;a href="/opt/issu/form" target="_self"&gt;
+				&lt;em class="fa fa-bug"&gt;&lt;/em&gt;&amp;nbsp;BUGMSG&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+      	&lt;/p&gt;
+		&lt;p&gt;SWRESOURCE:
+				&lt;a href="https://www.php.net/manual/en/index.php" target="_self"&gt;php&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://fontawesome.com/icons?d=gallery" target="_self"&gt;fontAwesome&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://www.w3schools.com/css/" target="_self"&gt;css&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://getbootstrap.com/" target="_self"&gt;bootstrap&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://jquery.com/" target="_self"&gt;Jquery&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://angularjs.org/" target="_self"&gt;AngularJs&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://www.fpdf.org" target="_self"&gt;fpdf&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://github.com/smalot/pdfparser" target="_self"&gt;smalot&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://github.com/tan-tan-kanarek/github-php-client"&gt;
+					tan-tan-kanarek_github_kliens
+				&lt;/a&gt;
+		&lt;/p&gt;
+		&lt;p&gt;Teszteléshez: phpunit&amp;nbsp;mocha&amp;nbsp;sonar-cloud&amp;nbsp;&lt;/p&gt;
+		&lt;p&gt;SWFORKINFO&amp;nbsp;
+	    	&lt;a href="https://gitlab.com/mark.szabo-simon/elovalaszto-app?fbclid=IwAR2X4RlNDA4vHw5-4ABkDCzzuifNpE5-u9T7j1X-wuubag4ZY0fSvnifvMA"&gt;lásd itt&lt;/a&gt;&lt;/p&gt;
+		&lt;/div&gt;
+                          &lt;/body&gt;
+        &lt;/html&gt;
+        </system-out>
+      </testcase>
+    </testsuite>
+    <testsuite name="ExampleTest" file="/var/www/html/uklogin/tests/example_Test.php" tests="3" assertions="3" errors="0" failures="0" skipped="0" time="0.131667">
+      <testcase name="test_code" class="ExampleTest" classname="ExampleTest" file="/var/www/html/uklogin/tests/example_Test.php" line="17" assertions="1" time="0.124889"/>
+      <testcase name="test_logoute" class="ExampleTest" classname="ExampleTest" file="/var/www/html/uklogin/tests/example_Test.php" line="24" assertions="1" time="0.004763"/>
+      <testcase name="test_home" class="ExampleTest" classname="ExampleTest" file="/var/www/html/uklogin/tests/example_Test.php" line="31" assertions="1" time="0.002015"/>
+    </testsuite>
+    <testsuite name="impresszumControllerTest" file="/var/www/html/uklogin/tests/impresszum_controller_Test.php" tests="2" assertions="2" errors="0" failures="0" skipped="0" time="0.001770">
+      <testcase name="test_start" class="impresszumControllerTest" classname="impresszumControllerTest" file="/var/www/html/uklogin/tests/impresszum_controller_Test.php" line="28" assertions="1" time="0.001057"/>
+      <testcase name="test_show" class="impresszumControllerTest" classname="impresszumControllerTest" file="/var/www/html/uklogin/tests/impresszum_controller_Test.php" line="35" assertions="1" time="0.000713">
+        <system-out>	
+        &lt;body ng-app="app"&gt;
+          			&lt;nav class="navbar navbar-expand-lg navbar-light bg-light"&gt;
+			  MAINMENU&amp;nbsp;
+			  &lt;div class="collapse navbar-collapse" id="navbarNav"&gt;
+			    &lt;ul class="navbar-nav mr-auto"&gt;
+			      &lt;li class="nav-item"&gt;
+			        &lt;a class="nav-link" target="_self" href="MYDOMAIN"&gt;
+			        	&lt;em class="fa fa-home"&gt;&lt;/em&gt;&amp;nbsp;HOME&lt;span class="sr-only"&gt;(current)&lt;/span&gt;&lt;/a&gt;
+			      &lt;/li&gt;
+			      &lt;li class="nav-item"&gt;
+			        &lt;a class="nav-link" target="_self" href="MYDOMAIN/opt/readme/show"&gt;
+			        	&lt;em class="fa fa-info"&gt;&lt;/em&gt;&amp;nbsp;READMY&lt;/a&gt;
+			      &lt;/li&gt;
+			      &lt;li class="nav-item"&gt;
+			        &lt;a class="nav-link" target="_self" href="MYDOMAIN/opt/appregist/add"&gt;
+			        	&lt;em class="fa fa-plus"&gt;&lt;/em&gt;&amp;nbsp;NEWAPP&lt;/a&gt;
+			      &lt;/li&gt;
+			      &lt;li class="nav-item"&gt;
+			        &lt;a class="nav-link" target="_self" href="MYDOMAIN/example.php"&gt;
+			        	&lt;em class="fa fa-compass"&gt;&lt;/em&gt;&amp;nbsp;EXAMPLE&lt;/a&gt;
+			      &lt;/li&gt;
+			      			    &lt;/ul&gt;
+			    &lt;ul class="navbar-nav"&gt;
+			          			      &lt;li class="nav-item"&gt;
+    			        &lt;a class="nav-link" target="ifrmOpenid"
+    			            onclick="$('#divOpenid').show(); $('#scope').hide(); true"
+    			            href="MYDOMAIN/openid/authorize/?redirect_uri=%2Fopt%2Fdefault%2Flogged%2F"&gt;
+    			        	&lt;em class="fa fa-sign-in"&gt;&lt;/em&gt;&amp;nbsp;LOGIN&lt;/a&gt;
+    			      &lt;/li&gt;
+			      			    &lt;/ul&gt;
+			  &lt;/div&gt;
+			  &lt;div class="clr"&gt;&lt;/div&gt;
+			  &lt;button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"&gt;
+			    &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+			  &lt;/button&gt;
+			&lt;/nav&gt;
+			&lt;p style="background-color:red; color:white"&gt;Ez a rendszer jelenleg ß teszt állapotban használható.&lt;/p&gt;
+		          &lt;div ng-controller="ctrl" id="scope" style="display:block; padding:20px;"&gt;
+          	&lt;h2&gt;Impresszum&lt;/h2&gt;
+          	&lt;p&gt;A szoftver teljes egészében önkéntes munkával, grátisz lett kifejlesztve.
+          	A rendszer üzemeltetése is ilyen formában van megoldva.
+          	&lt;/p&gt;
+          	&lt;p&gt;
+          	A szoftver az 
+          	&lt;a href="https://www.facebook.com/groups/edemomakers/"&gt;
+          		informatikusok az e-demokráciáért
+          	&lt;/a&gt; facebbok csoport támogatásával Fogler Tibor fejlesztette ki és üzemelteti.
+          	&lt;/p&gt;
+          	&lt;p&gt;e-mail: tibor.fogler@gmail.com&lt;/p&gt;
+          	&lt;p&gt;web: &lt;a href="https://github.com/utopszkij"&gt;github.com/utopszkij&lt;/a&gt;&lt;br /&gt;
+          	&lt;a href="https://www.facebook.com/utopszkij.almodozo"&gt;facebook.com/utopszkij.almodozo&lt;/a&gt;
+          	&lt;/p&gt;
+          	&lt;p&gt;Licensz: GNU/GPL&lt;/p&gt;
+          	&lt;p&gt;
+          	A szoftvert mindenki saját felelőségére használhatja, a szoftver használata során az esetleges szoftver hibák által
+          	okozott esetleges károkért a fejlesztő semminemű felelőséget nem vállal, még akkor sem ha a hibáról tudomása lehetett.
+          	&lt;/p&gt;
+          	&lt;p&gt;
+          	A szoftver üzemeltetése teljes egészében adományokból van finanszírozva. Ha adományok nem érkeznek, akkor
+          	sajnos anyagi lehetőségek hiányában a rendszer üzemeltetése leáll. :(
+          	&lt;/p&gt;
+          	&lt;p style="text-align:center"&gt;
+          		&lt;a href="index.php/opt/adomany/show"&gt;Adományozás&lt;/a&gt;
+          	&lt;/p&gt;
+	      &lt;/div&gt;&lt;!-- #scope --&gt;
+		        	&lt;div id="footer"&gt;
+      	&lt;p&gt;
+			&lt;a href="MYDOMAIN/opt/impresszum/show" target="_self"&gt;
+				&lt;em class="fa fa-pencil"&gt;&lt;/em&gt;&amp;nbsp;IMPRESSUM&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+			&lt;a href="MYDOMAIN/opt/adatkezeles/show" target="_self"&gt;
+				&lt;em class="fa fa-lock"&gt;&lt;/em&gt;&amp;nbsp;DATAPROCESS&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+			&lt;a href="http://www.gnu.hu/gpl.html" target="_new"&gt;
+				&lt;em class="fa fa-copyright"&gt;&lt;/em&gt;&amp;nbsp;LICENCE: GNU/GPL&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+			&lt;a href="https://github.com/utopszkij/uklogin" target="_self"&gt;
+				&lt;em class="fa fa-github"&gt;&lt;/em&gt;&amp;nbsp;SOURCE&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+			&lt;a href="/opt/issu/form" target="_self"&gt;
+				&lt;em class="fa fa-bug"&gt;&lt;/em&gt;&amp;nbsp;BUGMSG&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+      	&lt;/p&gt;
+		&lt;p&gt;SWRESOURCE:
+				&lt;a href="https://www.php.net/manual/en/index.php" target="_self"&gt;php&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://fontawesome.com/icons?d=gallery" target="_self"&gt;fontAwesome&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://www.w3schools.com/css/" target="_self"&gt;css&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://getbootstrap.com/" target="_self"&gt;bootstrap&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://jquery.com/" target="_self"&gt;Jquery&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://angularjs.org/" target="_self"&gt;AngularJs&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://www.fpdf.org" target="_self"&gt;fpdf&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://github.com/smalot/pdfparser" target="_self"&gt;smalot&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://github.com/tan-tan-kanarek/github-php-client"&gt;
+					tan-tan-kanarek_github_kliens
+				&lt;/a&gt;
+		&lt;/p&gt;
+		&lt;p&gt;Teszteléshez: phpunit&amp;nbsp;mocha&amp;nbsp;sonar-cloud&amp;nbsp;&lt;/p&gt;
+		&lt;p&gt;SWFORKINFO&amp;nbsp;
+	    	&lt;a href="https://gitlab.com/mark.szabo-simon/elovalaszto-app?fbclid=IwAR2X4RlNDA4vHw5-4ABkDCzzuifNpE5-u9T7j1X-wuubag4ZY0fSvnifvMA"&gt;lásd itt&lt;/a&gt;&lt;/p&gt;
+		&lt;/div&gt;
+                &lt;/body&gt;
+        &lt;/html&gt;
+        </system-out>
+      </testcase>
+    </testsuite>
+    <testsuite name="IssuControllerTest" file="/var/www/html/uklogin/tests/issu_controller_Test.php" tests="4" assertions="4" errors="0" failures="0" skipped="0" time="0.004097">
+      <testcase name="test_start" class="IssuControllerTest" classname="IssuControllerTest" file="/var/www/html/uklogin/tests/issu_controller_Test.php" line="28" assertions="1" time="0.001022"/>
+      <testcase name="test_form" class="IssuControllerTest" classname="IssuControllerTest" file="/var/www/html/uklogin/tests/issu_controller_Test.php" line="35" assertions="1" time="0.000772"/>
+      <testcase name="test_send_error" class="IssuControllerTest" classname="IssuControllerTest" file="/var/www/html/uklogin/tests/issu_controller_Test.php" line="40" assertions="1" time="0.000888"/>
+      <testcase name="test_send_ok" class="IssuControllerTest" classname="IssuControllerTest" file="/var/www/html/uklogin/tests/issu_controller_Test.php" line="49" assertions="1" time="0.001415"/>
+    </testsuite>
+    <testsuite name="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" tests="44" assertions="58" errors="0" failures="0" skipped="0" time="0.472949">
+      <testcase name="test_start" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="31" assertions="1" time="0.001249"/>
+      <testcase name="test_doregist_nickPswEmailEmpty" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="41" assertions="2" time="0.064814"/>
+      <testcase name="test_doregist_pswsNotEqual" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="58" assertions="2" time="0.007420"/>
+      <testcase name="test_doregist_sessionError" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="72" assertions="2" time="0.003252"/>
+      <testcase name="test_doregist_ok" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="86" assertions="1" time="0.042480"/>
+      <testcase name="test_doregist_nickExists" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="118" assertions="2" time="0.006941"/>
+      <testcase name="test_dologin_nickPswEmpty" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="154" assertions="2" time="0.002825"/>
+      <testcase name="test_dologin_wrong_notfound" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="168" assertions="2" time="0.003057"/>
+      <testcase name="test_dologin_wrong_psw" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="181" assertions="2" time="0.002980"/>
+      <testcase name="test_dologin_ok" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="193" assertions="1" time="0.003446"/>
+      <testcase name="test_doscopeform_ok" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="208" assertions="1" time="0.005864"/>
+      <testcase name="test_doscopeform_notAccept" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="224" assertions="2" time="0.002526"/>
+      <testcase name="test_doscopeform_notlogged" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="241" assertions="2" time="0.001525"/>
+      <testcase name="test_authorize_wrongResponseType" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="260" assertions="2" time="0.002970"/>
+      <testcase name="test_authorize_wrongScope" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="275" assertions="2" time="0.002930"/>
+      <testcase name="test_authorize_redirect_uriEmpty" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="290" assertions="2" time="0.002948"/>
+      <testcase name="test_authorize_ok1" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="305" assertions="2" time="0.002987"/>
+      <testcase name="test_authorize_ok2" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="320" assertions="2" time="0.006547"/>
+      <testcase name="test_registform_redirect_uriEmpty" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="341" assertions="1" time="0.003053"/>
+      <testcase name="test_registform_scopeWorng" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="356" assertions="1" time="0.003161"/>
+      <testcase name="test_registform_response_typeWrong" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="371" assertions="1" time="0.002498"/>
+      <testcase name="test_registform_OK" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="385" assertions="1" time="0.002542"/>
+      <testcase name="test_registform2_notUpladedFile" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="403" assertions="1" time="0.001823"/>
+      <testcase name="test_registform2_wrongUploadedFile" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="420" assertions="1" time="0.001697"/>
+      <testcase name="test_registform2_ok" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="437" assertions="1" time="0.077848"/>
+      <testcase name="test_forgetpswform" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="457" assertions="1" time="0.001731"/>
+      <testcase name="test_userinfo_notfound" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="467" assertions="1" time="0.001922"/>
+      <testcase name="test_userinfo_OK" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="476" assertions="1" time="0.002546"/>
+      <testcase name="test_logout_noredirect" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="488" assertions="1" time="0.001500"/>
+      <testcase name="test_logout_redirect" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="498" assertions="1" time="0.001451"/>
+      <testcase name="test_refresh_noredirect" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="512" assertions="1" time="0.001350"/>
+      <testcase name="test_refresh_redirect" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="522" assertions="1" time="0.001339"/>
+      <testcase name="test_revoke" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="536" assertions="1" time="0.001343"/>
+      <testcase name="test_emailverify_OK" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="550" assertions="1" time="0.039160"/>
+      <testcase name="test_profileform_notlogged" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="560" assertions="1" time="0.003246"/>
+      <testcase name="test_profileform_ok" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="569" assertions="1" time="0.003238"/>
+      <testcase name="test_profilesave_accessviolation" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="582" assertions="1" time="0.003535"/>
+      <testcase name="test_profilesave_ok" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="597" assertions="1" time="0.032099"/>
+      <testcase name="test_mydata_accessviolation" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="614" assertions="1" time="0.003047"/>
+      <testcase name="test_mydata_ok" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="622" assertions="1" time="0.004739"/>
+      <testcase name="test_delaccount_accessviolation" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="635" assertions="1" time="0.002113"/>
+      <testcase name="test_delaccount_ok" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="643" assertions="1" time="0.032610"/>
+      <testcase name="test_openid2_doregist_ok" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="653" assertions="1" time="0.041436"/>
+      <testcase name="test_end" class="openidControllerTest" classname="openidControllerTest" file="/var/www/html/uklogin/tests/openid_controller_Test.php" line="687" assertions="1" time="0.035161"/>
+    </testsuite>
+    <testsuite name="readmeControllerTest" file="/var/www/html/uklogin/tests/readme_controller_Test.php" tests="2" assertions="2" errors="0" failures="0" skipped="0" time="0.030888">
+      <testcase name="test_start" class="readmeControllerTest" classname="readmeControllerTest" file="/var/www/html/uklogin/tests/readme_controller_Test.php" line="28" assertions="1" time="0.002814"/>
+      <testcase name="test_show" class="readmeControllerTest" classname="readmeControllerTest" file="/var/www/html/uklogin/tests/readme_controller_Test.php" line="35" assertions="1" time="0.028074">
+        <system-out>        &lt;style type="text/css"&gt;
+        h1,h2,h3,h4,h5 {margin-top:15px;}
+        &lt;/style&gt;
+        &lt;body&gt;
+       				&lt;nav class="navbar navbar-expand-lg navbar-light bg-light"&gt;
+			  MAINMENU&amp;nbsp;
+			  &lt;div class="collapse navbar-collapse" id="navbarNav"&gt;
+			    &lt;ul class="navbar-nav mr-auto"&gt;
+			      &lt;li class="nav-item"&gt;
+			        &lt;a class="nav-link" target="_self" href="MYDOMAIN"&gt;
+			        	&lt;em class="fa fa-home"&gt;&lt;/em&gt;&amp;nbsp;HOME&lt;span class="sr-only"&gt;(current)&lt;/span&gt;&lt;/a&gt;
+			      &lt;/li&gt;
+			      &lt;li class="nav-item"&gt;
+			        &lt;a class="nav-link" target="_self" href="MYDOMAIN/opt/readme/show"&gt;
+			        	&lt;em class="fa fa-info"&gt;&lt;/em&gt;&amp;nbsp;READMY&lt;/a&gt;
+			      &lt;/li&gt;
+			      &lt;li class="nav-item"&gt;
+			        &lt;a class="nav-link" target="_self" href="MYDOMAIN/opt/appregist/add"&gt;
+			        	&lt;em class="fa fa-plus"&gt;&lt;/em&gt;&amp;nbsp;NEWAPP&lt;/a&gt;
+			      &lt;/li&gt;
+			      &lt;li class="nav-item"&gt;
+			        &lt;a class="nav-link" target="_self" href="MYDOMAIN/example.php"&gt;
+			        	&lt;em class="fa fa-compass"&gt;&lt;/em&gt;&amp;nbsp;EXAMPLE&lt;/a&gt;
+			      &lt;/li&gt;
+			      			    &lt;/ul&gt;
+			    &lt;ul class="navbar-nav"&gt;
+			          			      &lt;li class="nav-item"&gt;
+    			        &lt;a class="nav-link" target="ifrmOpenid"
+    			            onclick="$('#divOpenid').show(); $('#scope').hide(); true"
+    			            href="MYDOMAIN/openid/authorize/?redirect_uri=%2Fopt%2Fdefault%2Flogged%2F"&gt;
+    			        	&lt;em class="fa fa-sign-in"&gt;&lt;/em&gt;&amp;nbsp;LOGIN&lt;/a&gt;
+    			      &lt;/li&gt;
+			      			    &lt;/ul&gt;
+			  &lt;/div&gt;
+			  &lt;div class="clr"&gt;&lt;/div&gt;
+			  &lt;button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"&gt;
+			    &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+			  &lt;/button&gt;
+			&lt;/nav&gt;
+			&lt;p style="background-color:red; color:white"&gt;Ez a rendszer jelenleg ß teszt állapotban használható.&lt;/p&gt;
+				&lt;div style="padding:0px 5% 5% 5%; text-align:left"&gt;
+			&lt;div class="page-icon"&gt;	
+				&lt;em class="fa fa-book"&gt;&lt;/em&gt;
+			&lt;/div&gt;
+			&lt;h1&gt; e-demokrácia web applikációkból hívható - ügyfélkapu aláíráson alapuló - login modul
+&lt;/h1&gt;&lt;br /&gt;
+&lt;h2&gt; Kontribútoroknak
+&lt;/h2&gt;A fejlesztésében közreműködni kívánóknak szóló információk a &lt;a href="/readmeForProgrammer.md"&gt;ebben a leírásban&lt;/a&gt; találhatók.
+&lt;br /&gt;
+&lt;h2&gt; Készültség
+&lt;/h2&gt;&lt;br /&gt;
+ß teszt
+&lt;br /&gt;
+&lt;h2&gt; Online ß teszt:
+&lt;/h2&gt;&lt;br /&gt;
+https://uklogin.tk
+&lt;br /&gt;
+&lt;h2&gt; Áttekintés
+&lt;/h2&gt;&lt;br /&gt;
+Ez egy web -es szolgáltatás. Az a célja, hogy e-demokrácia szoftverek az ügyfélkapus aláíráson alapuló regisztrációt és bejelentkezést használhassanak az &lt;strong&gt;OpenId&lt;/strong&gt; szabvány szerint.
+A rendszer biztosítja, hogy egy személy csak egyszer regisztrálhat.
+(az ügyfélkapus aláírásban szereplő születési név, születési dátum és anyja neve adat egyediségét ellenörzi a program).
+&lt;br /&gt;
+Természetesen egy ügyfélkapú loginnal több alkalmazásba is be lehet lépni.
+&lt;br /&gt;
+A hívó web program iframe -be hívhatja be a login képernyőt. Ezen van "regisztrálok" link is azok számára akik még nem regisztráltak.
+&lt;br /&gt;
+Az applikáció adminisztrátora az erre a célra szolgáló web felületen tudja az applikációt regisztrálni a rendszerbe.
+&lt;br /&gt;
+A regisztrációs folyamatban használt aláírás szolgáltató:
+&lt;br /&gt;
+https://magyarorszag.hu/szuf_avdh_feltoltes
+&lt;br /&gt;
+&lt;h3&gt; Facebbok, Google belépés
+&lt;/h3&gt;&lt;br /&gt;
+Lehetőség van Facebook vagy Google fiók segitségével is bejelentkezni. Az ilyen fiokóknál azonban nem garantálható az egyediség, ezt a kliens app által lekérhető userinfóban lávő "audit=0" jelzi, az ügyfélkapuval létrehozott fiokonál "audited=1" szerepel. A kliens programok dönthetik el, hogy az "audited=0" fiokokat elfogadják-e, illetve milyen korlátozozott jogosultságokat adnak nekik.
+&lt;br /&gt;
+Késöbb tovább fejlesztésként lehetséges lesz személyes auditálás lehetőségének kialakitása. Itt terveim szerint személyes adat ellenörzés után, az erre feljogosított "auditorok" a facebokkos, goggle -es fiokonál is be tudják állítani az "audited=1" jelzést. Az auditor a születési név, születési dátum, anyja neve adatból képzi azt a hash -t amit az ügyfélkapus regisztrálás is használ, ennek segitségével ellenörizni tudja, hogy ezen a módon se lehessen egy embernek több fiókja.
+&lt;br /&gt;
+&lt;h3&gt; Openid Bejelentkezés folyamata
+&lt;/h3&gt;&lt;br /&gt;
+&lt;pre&gt;&lt;code&gt;&lt;br /&gt;
+&lt;br /&gt;
++--------+                                   +--------+
+|        |                                   |        |
+|        |----(1) /authorize Request--------&amp;gt;|        |
+|        |     respose_type=id_token token   |        |
+|        |  +--------+                       |        |
+|        |  |        |                       |        |
+|        |  |  End-  |&amp;lt;--(2)---login form----|        |
+|        |  |  User  |--(3)---nickname,psw--&amp;gt;|        |
+|   web  |  |        |                       |        |
+| client |  +--------+                       | openId |
+|   app  |                                   | szerver|
+|        |&amp;lt;--------(4) access_token----------|        |
+|        |                                   |        |
+|        |---------(5) /userinfo Request----&amp;gt;|        |
+|        |                                   |        |
+|        |&amp;lt;--------(6) UserInfo Response-----|        |
+|        |                                   |        |
++--------+                                   +--------+
+&lt;/code&gt;&lt;/pre&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;h2&gt; magyaroszag.hu felhasználásával történő user regisztráció
+&lt;/h2&gt;&lt;br /&gt;
+A felhasználó a
+&lt;br /&gt;
+&lt;a href="http://magyarorszag.hu"&gt;magyarorszag.hu&lt;/a&gt;
+&lt;br /&gt;
+oldalról lettölti az ott tárolt személyi adatait tartalmazó pdf fájlt. Ezután ezt a fájlt a belügyminisztérium által üzemeltetett ingyenes aláírás szolgáltatás
+&lt;br /&gt;
+&lt;a href="https://szuf.magyarorszag.hu"&gt;szuf.magyarorszag.hu&lt;/a&gt;
+&lt;br /&gt;
+segítségével aláírja. Majd az aláírt pdf fájlt feltölti ebbe a programba.
+&lt;br /&gt;
+A program a következő ellenőrzéseket végzi el:
+&lt;ul&gt;&lt;li&gt;a pdf alá van írva, és a belügyminisztérium nyilvános aláírás szolgáltatója írta alá?
+&lt;/li&gt;&lt;li&gt;a PDF információkban a megfelelő Creator, Producer, PDF version adat szerepel?
+&lt;/li&gt;&lt;li&gt;a PDF -ben lévő név, anyja neve, lakcím, születési dátum azonos az aláírásban megadottal?
+&lt;/li&gt;&lt;li&gt;az aláírás kezdeményező ügyfélkapuban megadott születési névvel, anyja nevével és születési dátummal még nincs másik fiók hitelesítve.
+&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;h3&gt; Mennyire biztonságos az ügyfélkapus hitelesítés?
+&lt;/h3&gt;&lt;br /&gt;
+1. A kormány által biztosított aláírás szolgáltatás a  magyar törvények közhiteles aláírásnak ismerik el. Mivel a progrm azt, hogy egy usernek csak egy hitelesített bejelentkezése lehet ennek az aláírásnak az ellenörzésével biztosítja - ezt nagy biztonságunak fogadhatjuk el.
+&lt;br /&gt;
+2. A lakcím adatokat a program a magyarorszag.hu -ról letöltött pdf fájl tartalmából veszi ki. Sajnos megfelelő informatikai eszközökkel a pdf fájlok modosíthatóak. A pdf fájlokban van információ a pdf -et előállító szoftverről és a pdf -et utoljára modosító szoftveről. A program a pdf-ben lévő információk ellenörzésével igyekszik észlelni azt ha a pdf fájlt módosították. A legtöbb könnyen hozzáférhető pdf editorral modosított pdf fájlt nem fogadja el. Sajnos azonban speciális hacker eszközökkel (elég nagy idő és erőforrás ráfordítással) a pdf bizonyára "nyom nélkül" is modosítható. Tovább növeli a biztonságot, hogy a program összeveti az aláírásban szereplő adatokat a pdf ben szereplőkkel. Tehát ezen a módon is csak a lakcím hamisítása lehetséges. Viszont még ilyen módon is csak egyetlen egy ügyfélkapus aláírással hitelesített hamis fiokot tud egy felhasználó létrehozni.
+&lt;br /&gt;
+Összefoglalva: Átlagos informatikai tudással rendelkező emberek, ha túl sok időt nem akarnak a csalásra forditani elég nagy biztonsággal csak egy ügyfélkapuval hitelesített, valós adatokat tartalmazó fiokot tudnak létrehozni.
+&lt;br /&gt;
+&lt;h2&gt; FIGYELEM FONTOS!
+&lt;/h2&gt;&lt;br /&gt;
+A magyaroszag.hu segítségével történő hitelesítési rendszer több olyan elemet tartalmaz ami esetenként változtatandó lehet amennyiben a magyarorszag.hu rendszerben vagy a használt aláírás szolgáltató rendszerében változás történik (lásd az elöző pontot és a &lt;strong&gt;controllers/pdfparser.php&lt;/strong&gt; fájlt). Ezért az éles üzemeltetés folyamán az üzemeltetőnek folyamatosan figyelnie kell, hogy az érintett állami rendszerekben nem történik-e változás!
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;h2&gt; Programnyelvek
+&lt;/h2&gt;&lt;br /&gt;
+ PHP(7.1+), Javascript, MYSQL, JQUERY, bootstrap
+&lt;br /&gt;
+A program az "aHang" és Szabó Simon Márk 2019 főpolgármester előválasztás 2. fordulójára készített programjában található ötletek és kód részletek felhasználásával készült.
+&lt;br /&gt;
+Lásd: https://gitlab.com/mark.szabo-simon/elovalaszto-app?fbclid=IwAR2X4RlNDA4vHw5-4ABkDCzzuifNpE5-u9T7j1X-wuubag4ZY0fSvnifvMA
+&lt;br /&gt;
+A program MVC ajánlás szerint struktúrált.
+&lt;br /&gt;
+&lt;h2&gt; Licensz
+&lt;/h2&gt;&lt;br /&gt;
+ GNU/GPL
+&lt;br /&gt;
+&lt;h2&gt; Programozó
+&lt;/h2&gt;&lt;br /&gt;
+Fogler Tibor (Utopszkij)
+&lt;br /&gt;
+tibor.fogler@gmail.com
+&lt;br /&gt;
+https://github.com/utopszkij
+&lt;br /&gt;
+&lt;h2&gt; Új applikáció regisztrálás
+&lt;/h2&gt;&lt;br /&gt;
+Az applikációt web felületen lehet regisztrálni. A megadandó adatok:
+&lt;ul&gt;&lt;li&gt;applikáció neve
+&lt;/li&gt;&lt;li&gt;applikációt futtató domain
+&lt;/li&gt;&lt;li&gt;sikeres login utáni visszahívandó url
+&lt;/li&gt;&lt;li&gt;applikáció adminisztrátor username
+&lt;/li&gt;&lt;li&gt;default scope (userinfo tartalma)
+&lt;/li&gt;&lt;li&gt;default adatkezelési leírás URI
+&lt;/li&gt;&lt;li&gt;userinfo formátuma (json string vagy JWE)
+&lt;/li&gt;&lt;li&gt;JWE userinfo kérés esetén a használandó ssh publikus kulcs
+&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;
+A képernyőn van adatkezelés elfogadtatás is.
+&lt;br /&gt;
+Annak igazolására, hogy az app. regisztrálását az adott rendszer rendszergazdája végzi, a megadott domainre fel kell tölteni egy "uklogin.html" fájlt, aminek tartalma egyetlen sor: "uklogin".
+&lt;br /&gt;
+A sikeres app regisztrálás után a képernyőn megjelenik a &lt;strong&gt;client_id&lt;/strong&gt;  adat. Ezeket gondosan meg kell örizni az app adminisztrálásához és a login/regist rendszer használatához szükség van rájuk.
+&lt;br /&gt;
+&lt;br /&gt;
+Ezen adatok egy része az adminisztrátor által később is  módosítható, az app admin ugyancsak kezdeményezheti az app és saját adatainak együttes törlését is.
+Az app adatok módosításához, törléséhez természetesen az admin login szükséges. Ha itt a megadott limitet túllépő sikertelen login kisérlet történik akkor az app admin login blokkolásra kerül, ezt ennek az "ügyfélkapus-login" rendszernek az "főadminisztrátora" tudja feloldani.
+&lt;br /&gt;
+&lt;h2&gt; OpenID müködés
+&lt;/h2&gt;&lt;br /&gt;
+Az openid szolgáltatás konfigurációjának lekérése:
+&lt;br /&gt;
+&lt;pre&gt;&lt;code&gt;&lt;br /&gt;
+&amp;lt;ukloginDomain&amp;gt;/openid
+&lt;/code&gt;&lt;/pre&gt;&lt;br /&gt;
+&lt;br /&gt;
+A szerver két adatkezeleési módban konfigurálható. A két mód a kezelt user adatokban tér el egymástól (lásd lentebb). A fent megedott végpontról lekérhető json formátumú információ tájékoztat arról, hogy az adott szerver milyen user adatokat tud szolgáltatni.
+&lt;br /&gt;
+&lt;h3&gt; OpenId login
+&lt;/h3&gt;&lt;br /&gt;
+végpont:
+&lt;br /&gt;
+&lt;pre&gt;&lt;code&gt;&lt;br /&gt;
+&amp;lt;ukloginDomain&amp;gt;/openid/authorize
+&lt;/code&gt;&lt;/pre&gt;&lt;br /&gt;
+&lt;br /&gt;
+POST vagy GET pareméterek (url encoded formában):
+&lt;br /&gt;
+&lt;strong&gt;client_id&lt;/strong&gt; alkalmazás azonosító, vagy a redirect_uri val megegyező string &lt;strong&gt;kötelező&lt;/strong&gt;
+&lt;br /&gt;
+&lt;strong&gt;redirect_uri&lt;/strong&gt; sikeres login után visszahivandó &lt;strong&gt;opcionális&lt;/strong&gt;
+&lt;br /&gt;
+&lt;strong&gt;policy_uri&lt;/strong&gt;  alkalmazás adatkezelési leírása &lt;strong&gt;opcionális de erősen ajánlott&lt;/strong&gt;
+&lt;br /&gt;
+&lt;strong&gt;scope&lt;/strong&gt; alkalmazás által kért user adatok (lásd a &lt;strong&gt;/openid&lt;/strong&gt; hívással lekérhető json -ban) &lt;strong&gt;opcionális&lt;/strong&gt;
+&lt;br /&gt;
+&lt;strong&gt;state&lt;/strong&gt; tetszőleges string, ezt is megkapja a redirect_uri &lt;strong&gt;opcionális&lt;/strong&gt;
+&lt;br /&gt;
+&lt;strong&gt;nonce&lt;/strong&gt; tetszőleges string, ezt is megkapja a redirect_uri &lt;strong&gt;opcionális&lt;/strong&gt;
+&lt;br /&gt;
+&lt;strong&gt;response_type&lt;/strong&gt; ha szerepel akkor kötelezően: "token id_token" vagy "code" &lt;strong&gt;opcionális&lt;/strong&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;strong&gt;Regisztrált kliens app&lt;/strong&gt; esetén a &lt;strong&gt;redirect_uri&lt;/strong&gt;, &lt;strong&gt;policy&lt;/strong&gt;, &lt;strong&gt;scope&lt;/strong&gt; elhagyható, ez esetben a klien regisztrációnál megadottat használjuk.
+Ha viszont megadunk &lt;strong&gt;redirect_uri&lt;/strong&gt; -t annak a kliens regisztrációnál megadott domainben kell lennie.
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;strong&gt;Nem regisztrált kliensnél&lt;/strong&gt; a &lt;strong&gt;redirect_uri&lt;/strong&gt;, &lt;strong&gt;scope&lt;/strong&gt;, &lt;strong&gt;policy&lt;/strong&gt; megadása kötelező, **client_id** -ben és a **redirect_uri** -ban egyaránt a visszahívandó URL-t kell szerepeltetni.
+&lt;br /&gt;
+&lt;br /&gt;
+A login képernyőn szerepel &lt;strong&gt;"még nincs fiokom, regisztrálok"&lt;/strong&gt; link, valamint &lt;strong&gt;"elfelejtettem a jelszavam"&lt;/strong&gt; link is. A szerver az ezekre történő kattintást is kezeli.
+A login képernyőn szerepel az alkalmazás által kért user adatok felsorolása is,
+és az alkalmazás adatkezelési leírására mutató link is (ha megadtunk policy_uri -t).
+A felhasználónak az adat kezelést el kell fogadnia.
+&lt;br /&gt;
+Amennyiben a hívás pillanatában a user már be van jelentkezve az uklogin/openid szolgáltatásba akkor csak az alkalmazás által kért user adatokok átadásához való hozzájárulást kérő képernyő jelenik meg. Ezen is szerepel az alkalmazás adatkezelési leírására mutató link.
+&lt;br /&gt;
+Sikeres login, illetve az adatkezeléshez történő hozzájárulás után a &lt;strong&gt;redirect_uri&lt;/strong&gt; -ra, ennek hiányában a kliens regisztrációban beállított visszahívási címre kerül a vezérlés.
+&lt;br /&gt;
+&lt;strong&gt;token id_token&lt;/strong&gt; response_type esetén  négy paramétert átadva:
+&lt;ul&gt;&lt;li&gt;&lt;strong&gt;id_token&lt;/strong&gt;,
+&lt;/li&gt;&lt;li&gt;&lt;strong&gt;token&lt;/strong&gt;,
+&lt;/li&gt;&lt;li&gt;&lt;strong&gt;state&lt;/strong&gt; ,
+&lt;/li&gt;&lt;li&gt;&lt;strong&gt;nonce&lt;/strong&gt;.
+&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;strong&gt;code&lt;/strong&gt; response_type esetén egy paramétert átadva:
+&lt;ul&gt;&lt;li&gt;&lt;strong&gt;code&lt;/strong&gt;
+&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;
+A &lt;strong&gt;token&lt;/strong&gt; adatot használva a &lt;strong&gt;userinfo&lt;/strong&gt; végpontról lekérhetőek a json formátumú  user információk (token = access_token). A &lt;strong&gt;state&lt;/strong&gt; és &lt;strong&gt;nonce&lt;/strong&gt; adatot a kliens tetszőleges célra használhatja. Gyakran a **state** adatot egy biztonságot növelő egyedi token céljára használják, a **nonce** -ben bpedig a sikeres login után aktiválandó applikáció funciót indító URL szerepel.
+&lt;br /&gt;
+&lt;h3&gt; OpenId logout
+&lt;/h3&gt;&lt;br /&gt;
+végpont:
+&lt;br /&gt;
+&lt;pre&gt;&lt;code&gt;&lt;br /&gt;
+&amp;lt;ukloginDomain&amp;gt;/openid/logout
+&lt;/code&gt;&lt;/pre&gt;&lt;br /&gt;
+&lt;br /&gt;
+POST vagy GET pareméterek:
+&lt;br /&gt;
+&lt;strong&gt;token_type_hint&lt;/strong&gt;  kötelezően "access_token"
+&lt;br /&gt;
+&lt;strong&gt;token&lt;/strong&gt;
+&lt;br /&gt;
+&lt;strong&gt;redirect_uri&lt;/strong&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;h3&gt; OpenId refresh
+&lt;/h3&gt;&lt;br /&gt;
+végpont:
+&lt;br /&gt;
+&lt;pre&gt;&lt;code&gt;&lt;br /&gt;
+&amp;lt;ukloginDomain&amp;gt;/openid/refresh
+&lt;/code&gt;&lt;/pre&gt;&lt;br /&gt;
+&lt;br /&gt;
+POST vagy GET pareméterek:
+&lt;br /&gt;
+&lt;strong&gt;token_type_hint&lt;/strong&gt;  kötelezően "access_token"
+&lt;br /&gt;
+&lt;strong&gt;token&lt;/strong&gt;
+&lt;br /&gt;
+&lt;strong&gt;redirect_uri&lt;/strong&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;h3&gt; Openid userinfo
+&lt;/h3&gt;&lt;br /&gt;
+végpont:
+&lt;br /&gt;
+&lt;pre&gt;&lt;code&gt;&lt;br /&gt;
+&amp;lt;ukloginDomain&amp;gt;/openid/userinfo
+&lt;/code&gt;&lt;/pre&gt;&lt;br /&gt;
+&lt;br /&gt;
+POST vagy GET pareméterek:
+&lt;br /&gt;
+&lt;strong&gt;access_token&lt;/strong&gt;
+&lt;br /&gt;
+result a korábbi "authorize" hívásban vagy a kliens regisztrációban megadott "scope" paraméterben kért user információk json string vagy JWE formájában.
+&lt;br /&gt;
+Ha kliens regisztrációban JWE formátum van beállítva akkor a visszadaott string három részből áll, ezek &lt;strong&gt;pont&lt;/strong&gt; -al vannak szeparálva. Mindhárom elem külön-külön base64 eljárással kodolva van. Az egyes elemek tartalma:
+&lt;br /&gt;
+&lt;ul&gt;&lt;li&gt;JWE header ``` {"alg":"RSA-OAEP", "enc":"A256CBC", "iv":"..."}';
+&lt;/li&gt;&lt;li&gt;egy a kliens regisztrációban megadott publikus kulcsal kodolt "szimetrikus titkositó kulcs"
+&lt;/li&gt;&lt;li&gt;a userinfot tartalmazó JSON string a 2.részben (kodoltan) küldött "szimetrikus titkositó kulccsal" az 1.részben megadott szimetrikus titkosító algoritmussal ("enc") és "iv" -vel titkositva.
+&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;h3&gt; GDPR megfelelés
+&lt;/h3&gt;&lt;br /&gt;
+&lt;h4&gt; Az app adminisztrátorokkal kapcsolatban a rendszer a következő adatokat tárolja:
+&lt;/h4&gt;&lt;ul&gt;&lt;li&gt;nicknév
+&lt;/li&gt;&lt;li&gt;jelszó hash
+&lt;/li&gt;&lt;li&gt;kezelt app adatai
+&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;
+Itt személyes adat nincs kezelve, tehát ez nem tartozik a GDPR hatálya alá,erről tájékoztatást írunk ki.
+&lt;br /&gt;
+&lt;h4&gt; a "normál" felhasználókkal kapcsolatban tárolt adatok :
+&lt;/h4&gt;&lt;br /&gt;
+A szerver két adatkezelési beállítással üzemeltethető
+&lt;br /&gt;
+&lt;strong&gt;Csökkentet openid adatkezelési beállításnál&lt;/strong&gt;
+&lt;ul&gt;&lt;li&gt;azonsoító kód
+&lt;/li&gt;&lt;li&gt;bejelentkezési név
+&lt;/li&gt;&lt;li&gt;állandó lakcímből az irányító szám és település név
+&lt;/li&gt;&lt;li&gt;jelszó hash
+&lt;/li&gt;&lt;li&gt;email
+&lt;/li&gt;&lt;li&gt;ügyfélkapunál megadott aláírásból képzett (reális idő alatt nem visszafejthető) kód
+&lt;/li&gt;&lt;li&gt;system adminisztrátor (Igen vagy nem)
+&lt;/li&gt;&lt;li&gt;hitelesített adat (Igen vagy nem)
+&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;
+&lt;strong&gt; Teljes Openid adatkezelési beállításnál&lt;/strong&gt;
+&lt;ul&gt;&lt;li&gt;Azonoító kód
+&lt;/li&gt;&lt;li&gt;Bejelentkezési név
+&lt;/li&gt;&lt;li&gt;Jelszó hash
+&lt;/li&gt;&lt;li&gt;Postai irányító szám
+&lt;/li&gt;&lt;li&gt;Település
+&lt;/li&gt;&lt;li&gt;utca és házszám
+&lt;/li&gt;&lt;li&gt;E-mail
+&lt;/li&gt;&lt;li&gt;E-mail ellenörzött (Igen vagy Nem)
+&lt;/li&gt;&lt;li&gt;Második kersztnév
+&lt;/li&gt;&lt;li&gt;Első keresztnév
+&lt;/li&gt;&lt;li&gt;Vezeték név
+&lt;/li&gt;&lt;li&gt;Avatar kép URI
+&lt;/li&gt;&lt;li&gt;Születési dátum
+&lt;/li&gt;&lt;li&gt;Telefon szám
+&lt;/li&gt;&lt;li&gt;Telefon szám ellenörzött  (Igen vagy Nem)
+&lt;/li&gt;&lt;li&gt;Utolsó módosítás időpontja
+&lt;/li&gt;&lt;li&gt;Az aláírás adataiból képzett (reális idő alatt nem visszafejthető) kód
+&lt;/li&gt;&lt;li&gt;system adminisztrátor (Igen vagy nem)
+&lt;/li&gt;&lt;li&gt;hitelesített adat (Igen vagy nem)
+&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;strong&gt;Ezek személyes adatok, kezelésüknél a GDPR ide vonatkozó előírásait kell érvényesíteni.&lt;/strong&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+Megjegyzés: A feldolgozás során - technikai okokból - néhány másodpercig a rendszer tárolja az aláírt pdf fájlt és  az abban lévő csatolmányokat. Ezek tartalmazzák az aláíró személyi adatait (név, lakcím, születési dátum, anyja neve, születési név, okmány azonosítók, személyi szám).
+ Ezen adatok közül a rendszer kizárólag a születési névből, születési dátumból és anyja nevéből SHA256 hash algoritmussal
+ képzett hash kódját, valamint a fentebb leirt user adatokat használja és tárolja adatbázisában. A többi személyes adatot nem tárolja. (a hash kódból reális idő alatt nem fejthetőek vissz az adatok)
+Az aláírt pdf fájlt és csatolmányait a a kód előállítása, és a kezelt user adatok tárolása  után azonnal törli,
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;h4&gt; cookie kezelés
+&lt;/h4&gt;A működéshez egy darab un. "munkamenet cookie" használata szükséges, erről tájékoztatás jelenik meg és a felhasználónak ezt el kell fogadnia.
+&lt;br /&gt;
+&lt;h3&gt; Tesztelés
+&lt;/h3&gt;&lt;pre&gt;&lt;code&gt;&lt;br /&gt;
+cd repoRoot
+./tools/test.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;br /&gt;
+&lt;br /&gt;
+&lt;h2&gt; Dokumentálás
+&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;&lt;br /&gt;
+cd repoRoot
+./tools/documentor.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;br /&gt;
+A dokumentáció a "doc" könyvtárba kerül
+&lt;br /&gt;
+&lt;a href="https://uklogin.tk/doc/"&gt;documentation&lt;/a&gt;
+&lt;br /&gt;
+&lt;h2&gt; kód minőség ellenörzés
+&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;&lt;br /&gt;
+cd repoRoot
+./tools/sonar.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;br /&gt;
+Utolsó teszt eredménye:
+&lt;br /&gt;
+&lt;a href="https://sonarcloud.io/dashboard?id=utopszkij-uklogin"&gt;sonarcloud.io&lt;/a&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;h2&gt; Telepítés web szerverre
+&lt;/h2&gt;&lt;br /&gt;
+&lt;h3&gt; Rendszer igény:
+&lt;/h3&gt;&lt;br /&gt;
+&lt;ul&gt;&lt;li&gt;PHP 7.1+  shell_exec funkciónak engedélyezve kell lennie
+&lt;/li&gt;&lt;li&gt;MYSQL 5.7+
+&lt;/li&gt;&lt;li&gt;web server (.htaccess értelmezéssel)
+&lt;/li&gt;&lt;li&gt;https tanusitvány
+&lt;/li&gt;&lt;li&gt;php shell_exec -al hívhatóan  pdfsig, pdfdetach, pdftotext, pdfinfo parancsok (lásd: poppler-utils)
+&lt;/li&gt;&lt;li&gt;Létrehozandó egy MYSQL adatbázis: &lt;strong&gt;uklogin&lt;/strong&gt; (utf8, magyar rendezéssel)
+&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;
+Ha facebbok és/vagy google bejelentkezési opciót is akarunk akkor ezt a wbhelyet  regsiztrálni kell OAuth2 kliensként az Fb/Google adminisztrátori felületein,és az ott kapott client_id és client_secret adatokat beirni a .config.php -ba (lásd controllers/fblogin.php és controllers/googlelogin.php). 
+&lt;br /&gt;
+Telepítendő  könyvtárak:
+&lt;ul&gt;&lt;li&gt;controllers
+&lt;/li&gt;&lt;li&gt;core
+&lt;/li&gt;&lt;li&gt;images
+&lt;/li&gt;&lt;li&gt;js
+&lt;/li&gt;&lt;li&gt;langs
+&lt;/li&gt;&lt;li&gt;log (legyen irható a web szerver számára!)
+&lt;/li&gt;&lt;li&gt;models
+&lt;/li&gt;&lt;li&gt;templates
+&lt;/li&gt;&lt;li&gt;vendor
+&lt;/li&gt;&lt;li&gt;views
+&lt;/li&gt;&lt;li&gt;work (legyen irható a web szerver számára!)
+&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;
+Telepítendő fájlok
+&lt;ul&gt;&lt;li&gt;index.php
+&lt;/li&gt;&lt;li&gt;.config.php  (config.txt átnevezve és értelemszerüen javítva)
+&lt;/li&gt;&lt;li&gt;.htaccess (a htaccess.txt átnevezve)
+&lt;/li&gt;&lt;li&gt;example.php
+&lt;/li&gt;&lt;li&gt;readme.md
+&lt;/li&gt;&lt;/ul&gt;&lt;br /&gt;
+Ahol ezt  külön nem jelöltük ott a fájlok, könyvtárak csak olvashatóak legyenek a web szerver számára.(oktális 640 jogosultság)
+&lt;br /&gt;
+&lt;strong&gt;Telepítés, beüzemelés után, az első regisztrált user "sysadmin=1" jelölést kap, ez lesz az első rendszer adminisztrátor.&lt;/strong&gt;
+       	&lt;/div&gt;
+       	      	&lt;div id="footer"&gt;
+      	&lt;p&gt;
+			&lt;a href="MYDOMAIN/opt/impresszum/show" target="_self"&gt;
+				&lt;em class="fa fa-pencil"&gt;&lt;/em&gt;&amp;nbsp;IMPRESSUM&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+			&lt;a href="MYDOMAIN/opt/adatkezeles/show" target="_self"&gt;
+				&lt;em class="fa fa-lock"&gt;&lt;/em&gt;&amp;nbsp;DATAPROCESS&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+			&lt;a href="http://www.gnu.hu/gpl.html" target="_new"&gt;
+				&lt;em class="fa fa-copyright"&gt;&lt;/em&gt;&amp;nbsp;LICENCE: GNU/GPL&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+			&lt;a href="https://github.com/utopszkij/uklogin" target="_self"&gt;
+				&lt;em class="fa fa-github"&gt;&lt;/em&gt;&amp;nbsp;SOURCE&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+			&lt;a href="/opt/issu/form" target="_self"&gt;
+				&lt;em class="fa fa-bug"&gt;&lt;/em&gt;&amp;nbsp;BUGMSG&lt;/a&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+      	&lt;/p&gt;
+		&lt;p&gt;SWRESOURCE:
+				&lt;a href="https://www.php.net/manual/en/index.php" target="_self"&gt;php&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://fontawesome.com/icons?d=gallery" target="_self"&gt;fontAwesome&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://www.w3schools.com/css/" target="_self"&gt;css&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://getbootstrap.com/" target="_self"&gt;bootstrap&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://jquery.com/" target="_self"&gt;Jquery&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://angularjs.org/" target="_self"&gt;AngularJs&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://www.fpdf.org" target="_self"&gt;fpdf&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://github.com/smalot/pdfparser" target="_self"&gt;smalot&lt;/a&gt;&amp;nbsp;
+				&lt;a href="https://github.com/tan-tan-kanarek/github-php-client"&gt;
+					tan-tan-kanarek_github_kliens
+				&lt;/a&gt;
+		&lt;/p&gt;
+		&lt;p&gt;Teszteléshez: phpunit&amp;nbsp;mocha&amp;nbsp;sonar-cloud&amp;nbsp;&lt;/p&gt;
+		&lt;p&gt;SWFORKINFO&amp;nbsp;
+	    	&lt;a href="https://gitlab.com/mark.szabo-simon/elovalaszto-app?fbclid=IwAR2X4RlNDA4vHw5-4ABkDCzzuifNpE5-u9T7j1X-wuubag4ZY0fSvnifvMA"&gt;lásd itt&lt;/a&gt;&lt;/p&gt;
+		&lt;/div&gt;
+               	&lt;/body&gt;
+       	&lt;/html&gt;
+        </system-out>
+      </testcase>
+    </testsuite>
+    <testsuite name="txtControllerTest" file="/var/www/html/uklogin/tests/txt_controller_Test.php" tests="4" assertions="4" errors="0" failures="0" skipped="0" time="0.002669">
+      <testcase name="test_start" class="txtControllerTest" classname="txtControllerTest" file="/var/www/html/uklogin/tests/txt_controller_Test.php" line="28" assertions="1" time="0.000943"/>
+      <testcase name="test_add" class="txtControllerTest" classname="txtControllerTest" file="/var/www/html/uklogin/tests/txt_controller_Test.php" line="35" assertions="1" time="0.000538">
+        <system-out>&lt;!doctype html&gt;
+        &lt;html lang="hu"&gt;
+        &lt;head&gt;
+            &lt;title&gt;languaga constant manager&lt;/tile&gt;
+            &lt;meta charset="utf-8"&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+        &lt;h2&gt;Define language constant&lt;/h2&gt;
+        &lt;form method="post" action="/opt/txt/doadd"&gt;
+            &lt;p&gt;langs_&lt;input type="text" name="lngname" value="" /&gt;_hu.php&lt;/p&gt;
+            &lt;p&gt;Token:&lt;input type="text" name="token" value="TEST" /&gt;&lt;/p&gt;
+            &lt;p&gt;&lt;input type="text" name="value" size="80"/&gt;&lt;/p&gt;
+            &lt;p&gt;&lt;button type="submit"&gt;SAVE&lt;/button&gt;
+        &lt;/form&gt;
+        &lt;/body&gt;
+        &lt;/html&gt;
+        </system-out>
+      </testcase>
+      <testcase name="test_doadd" class="txtControllerTest" classname="txtControllerTest" file="/var/www/html/uklogin/tests/txt_controller_Test.php" line="43" assertions="1" time="0.000635">
+        <system-out>&lt;!doctype html&gt;
+        &lt;html lang="hu"&gt;
+        &lt;head&gt;
+            &lt;title&gt;Language contant manager&lt;/title&gt;
+            &lt;meta charset="utf-8"&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+        &lt;h2&gt;Language constant saved&lt;/h2&gt;
+        &lt;/body&gt;
+        &lt;/html&gt;
+        </system-out>
+      </testcase>
+      <testcase name="test_end" class="txtControllerTest" classname="txtControllerTest" file="/var/www/html/uklogin/tests/txt_controller_Test.php" line="53" assertions="1" time="0.000553"/>
     </testsuite>
   </testsuite>
 </testsuites>

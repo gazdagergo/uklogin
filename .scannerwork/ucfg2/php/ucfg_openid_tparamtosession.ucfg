@@ -1,0 +1,136 @@
+
+#openidcontroller::setparamtosession8
+,/var/www/html/uklogin/controllers/openid.phpò ò(&"1*b
+2
+
+openid.php"O
+8
+,/var/www/html/uklogin/controllers/openid.phpú ú(
+implicit return*©
+18
+,/var/www/html/uklogin/controllers/openid.phpó ó(8_
+]
+8
+,/var/www/html/uklogin/controllers/openid.phpó) ó(6
+%1"__id**
+
+$p"
+	client_idus
+8
+,/var/www/html/uklogin/controllers/openid.phpó ó(7
+%2*
+
+
+$request*
+'client_id'*
+
+%12
+sessionsetb
+`
+8
+,/var/www/html/uklogin/controllers/openid.phpô, ô(<
+%3"__id**
+
+$p"
+redirect_urixv
+8
+,/var/www/html/uklogin/controllers/openid.phpô ô(=
+%4*
+
+
+$request*
+'redirect_uri'*
+
+%32
+sessionset[
+Y
+8
+,/var/www/html/uklogin/controllers/openid.phpõ% õ(.
+%5"__id**
+
+$p"
+scopeqo
+8
+,/var/www/html/uklogin/controllers/openid.phpõ õ(/
+%6*
+
+
+$request*	
+'scope'*
+
+%52
+sessionset[
+Y
+8
+,/var/www/html/uklogin/controllers/openid.phpö% ö(.
+%7"__id**
+
+$p"
+stateqo
+8
+,/var/www/html/uklogin/controllers/openid.phpö ö(/
+%8*
+
+
+$request*	
+'state'*
+
+%72
+sessionset[
+Y
+8
+,/var/www/html/uklogin/controllers/openid.php÷% ÷(.
+%9"__id**
+
+$p"
+noncerp
+8
+,/var/www/html/uklogin/controllers/openid.php÷ ÷(/
+%10*
+
+
+$request*	
+'nonce'*
+
+%92
+sessionseta
+_
+8
+,/var/www/html/uklogin/controllers/openid.phpø* ø(8
+%11"__id**
+
+$p"
+
+policy_urixv
+8
+,/var/www/html/uklogin/controllers/openid.phpø ø(9
+%12*
+
+
+$request*
+'policy_uri'*
+
+%112
+sessionsetd
+b
+8
+,/var/www/html/uklogin/controllers/openid.phpù- ù(>
+%13"__id**
+
+$p"
+response_type{y
+8
+,/var/www/html/uklogin/controllers/openid.phpù ù(?
+%14*
+
+
+$request*
+'response_type'*
+
+%132
+sessionset*
+2:
+
+$request:
+$pB
+openidcontroller
